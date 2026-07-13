@@ -1,0 +1,21 @@
+@theme {
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #a9aec8;
+    --color-text-dark: #1B1A55;
+
+    --color-icon-primary: #FFFFFF;
+    --color-icon-secondary: #a9aec8;
+
+    --color-body: #070F2B;
+    --color-surface: #1B1A55;
+    --color-gradient-card:  linear-gradient(0.00deg, rgba(0, 0, 0, 0.2) -60.859%,rgba(255, 255, 255, 0.2) 100%);
+    --color-input-primary: #1B1A55;
+    --color-input-secondary: #535C91;
+    --color-button-primary: #FFFFFF;
+    --color-button-secondary: #1B1A55;
+
+    --radius-sm: 0.6rem;
+    --radius-md: 1.2rem;
+    --radius-lg: 1.5rem;
+    --radius-circle: 50%;
+}
