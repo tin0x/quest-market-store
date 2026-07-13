@@ -1,15 +1,39 @@
 import React from 'react';
 import type { ButtonProps } from '@shared/ui/button/types.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
+import { Link } from 'react-router-dom';
 
 const buttonStyles = {
-  accent: 'bg-button-primary text-text-dark rounded-lg p-2.5',
-  transparent: 'text-text-primary rounded-lg bg-transparent p-2.5',
-  dark: 'bg-button-secondary rounded-lg text-text-primary p-2.5',
+  accent: 'bg-button-primary text-text-dark rounded-lg',
+  transparent: 'text-text-primary rounded-lg bg-transparent border-2 hover:bg-white hover:text-black',
+  dark: 'bg-button-secondary rounded-lg text-text-primary border-2 border-transparent hover:bg-transparent hover:border-white',
   blur: 'blur-lg bg-white text-text-primary',
 } as const;
 
-const Button: React.FC<ButtonProps> = ({ className, buttonStyle, variant = 'accent', text, Icon, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({
+  className,
+  buttonStyle,
+  variant = 'accent',
+  text,
+  pathTo,
+  asLink,
+  Icon,
+  ...rest
+}) => {
+  if (asLink && pathTo) {
+    return (
+      <Link
+        className={cn('flex items-center gap-2 px-5 py-3 font-bold', buttonStyles[variant], className, {
+          'rounded-circle text-text-primary p-1': Icon && !text,
+        })}
+        to={pathTo}
+      >
+        {Icon && <Icon className={cn('h-6 w-6', buttonStyle)} />}
+        {text && <span>{text}</span>}
+      </Link>
+    );
+  }
+
   return (
     <button
       className={cn('flex items-center gap-2 font-bold', buttonStyles[variant], className, {

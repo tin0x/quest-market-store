@@ -6,4 +6,6 @@ export type ButtonProps = {
   text?: string;
   Icon?: React.FC<SVGProps<SVGSVGElement>>;
   buttonStyle?: string;
+  asLink?: boolean;
+  pathTo?: string;
 } & React.ComponentPropsWithoutRef<'button'>;

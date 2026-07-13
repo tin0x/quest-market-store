@@ -5,9 +5,9 @@ import LogoIcon from '@shared/assets/icons/logo.svg?react';
 
 const Logo: React.FC<LogoProps> = ({ children, pathTo }) => {
   const content = (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-4">
       <LogoIcon className="h-16 w-16" />
-      <span>{children}</span>
+      <span className="text-xl font-bold tracking-wider">{children}</span>
     </div>
   );
 

@@ -12,10 +12,10 @@ const App = () => {
           index: true,
           element: <HomePage />,
         },
-        {
-          path: 'auth',
-          element: <AuthPage />,
-        },
+        // {
+        //   path: 'auth',
+        //   element: <AuthPage />,
+        // },
         // {
         //   element: <ProtectedRoute />,
         //   children: [
