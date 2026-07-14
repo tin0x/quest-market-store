@@ -12,7 +12,7 @@ const Logo: React.FC<LogoProps> = ({ children, pathTo }) => {
   );
 
   return pathTo ? (
-    <Link className='className="flex gap-1" items-center' to={pathTo}>
+    <Link className='gap-1" flex w-max items-center' to={pathTo}>
       {content}
     </Link>
   ) : (

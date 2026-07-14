@@ -6,6 +6,8 @@ import Logo from '@shared/ui/logo/Logo.tsx';
 import SearchByName from '@features/search-by-name/ui/SearchByName.tsx';
 import NavigationWidget from '@widgets/navigation-widget/NavigationWidget.tsx';
 import AuthButtons from '@features/auth/auth-buttons/AuthButtons.tsx';
+import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
+import HelpList from '@shared/ui/help/HelpList.tsx';
 
 const Layout: React.FC = () => {
   return (
@@ -19,7 +21,16 @@ const Layout: React.FC = () => {
       <main>
         <Outlet />
       </main>
-      <FooterWidget>...</FooterWidget>
+      <FooterWidget>
+        <div className="flex gap-3">
+          <ApplicationDescription className="flex-1 border-r-2 pr-5" logoSlot={<Logo pathTo="/">Quest Market</Logo>}>
+            Quest Market — Level up your gaming experience. We bring you the hottest PC games without breaking the bank.
+            Instant activation, reliable support, and constant deals waiting for you. Get the game you want, pay less,
+            and start playing today!
+          </ApplicationDescription>
+          <HelpList className="flex-1 pl-5" />
+        </div>
+      </FooterWidget>
     </div>
   );
 };
