@@ -1,0 +1,30 @@
+import { useGetTrendingGamesQuery } from '@entities/game/api/trendingGamesApi.ts';
+import { useCallback, useEffect, useState } from 'react';
+
+export const useGetTrendingGames = () => {
+  const { data, isLoading, isFetching, isError } = useGetTrendingGamesQuery();
+
+  const [selectedSlide, setSelectedSlide] = useState(0);
+
+  const handleSelectSlideIndex = useCallback((index: number) => {
+    setSelectedSlide(index);
+  }, []);
+
+  useEffect(() => {
+    if (data?.results) {
+      data?.results.forEach((game) => {
+        const img = new Image();
+        img.src = game.cover;
+      });
+    }
+  }, [data?.results]);
+
+  return {
+    games: data?.results ?? [],
+    isEmpty: data?.results?.length === 0,
+    isLoading: isLoading || isFetching,
+    isError,
+    selectedSlide,
+    handleSelectSlideIndex,
+  };
+};

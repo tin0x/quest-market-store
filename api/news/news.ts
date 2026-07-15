@@ -1,6 +1,6 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export const handler = async (req: VercelRequest, res: VercelResponse) => {
+export default async function (req: VercelRequest, res: VercelResponse) {
   const apiKey = process.env.CURRENTS_NEWS_API_KEY;
   const params = new URLSearchParams(req.query as Record<string, string>).toString();
 
@@ -13,4 +13,4 @@ export const handler = async (req: VercelRequest, res: VercelResponse) => {
   } catch (error) {
     return res.status(500).json({ error: `${error}: failed to fetch news` });
   }
-};
+}

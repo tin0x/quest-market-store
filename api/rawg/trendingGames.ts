@@ -1,6 +1,10 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+import * as path from 'node:path';
+import { configDotenv } from 'dotenv';
 
-export const handler = async (req: VercelRequest, res: VercelResponse) => {
+configDotenv({ path: path.resolve(process.cwd(), '.env.local') });
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   const apiKey = process.env.RAWG_API_KEY;
   const params = new URLSearchParams(req.query as Record<string, string>).toString();
 
@@ -13,4 +17,4 @@ export const handler = async (req: VercelRequest, res: VercelResponse) => {
   } catch (error) {
     return res.status(500).json(`${error}: failed to fetch popular games`);
   }
-};
+}

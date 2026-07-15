@@ -5,7 +5,7 @@ export type ButtonProps = {
   variant?: 'accent' | 'transparent' | 'dark' | 'blur';
   text?: string;
   Icon?: React.FC<SVGProps<SVGSVGElement>>;
-  buttonStyle?: string;
+  iconStyles?: string;
   asLink?: boolean;
   pathTo?: string;
 } & React.ComponentPropsWithoutRef<'button'>;

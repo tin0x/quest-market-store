@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 const buttonStyles = {
   accent: 'bg-button-primary text-text-dark rounded-lg',
-  transparent: 'text-text-primary rounded-lg bg-transparent border-2 hover:bg-white hover:text-black',
+  transparent:
+    'text-text-primary rounded-lg bg-transparent border-2 hover:border-white hover:bg-white hover:text-black',
   dark: 'bg-button-secondary rounded-lg text-text-primary border-2 border-transparent hover:bg-transparent hover:border-white',
-  blur: 'blur-lg bg-white text-text-primary',
+  blur: 'bg-white bg-gray-200/10 backdrop-blur-sm text-text-primary rounded-md hover:bg-gray-200/1',
 } as const;
 
 const Button: React.FC<ButtonProps> = ({
   className,
-  buttonStyle,
+  iconStyles,
   variant = 'accent',
   text,
   pathTo,
@@ -23,12 +24,12 @@ const Button: React.FC<ButtonProps> = ({
   if (asLink && pathTo) {
     return (
       <Link
-        className={cn('flex items-center gap-2 px-5 py-3 font-bold', buttonStyles[variant], className, {
+        className={cn('flex items-center justify-center gap-2 px-5 py-3 font-bold', buttonStyles[variant], className, {
           'rounded-circle text-text-primary p-1': Icon && !text,
         })}
         to={pathTo}
       >
-        {Icon && <Icon className={cn('h-6 w-6', buttonStyle)} />}
+        {Icon && <Icon className={cn('h-full w-full', iconStyles)} />}
         {text && <span>{text}</span>}
       </Link>
     );
@@ -36,12 +37,17 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={cn('flex items-center gap-2 font-bold', buttonStyles[variant], className, {
-        'rounded-circle text-text-primary p-1': Icon && !text,
-      })}
+      className={cn(
+        'flex items-center justify-center gap-2 px-5 py-3 font-bold hover:cursor-pointer',
+        buttonStyles[variant],
+        className,
+        {
+          'rounded-circle text-text-primary p-1': Icon && !text,
+        },
+      )}
       {...rest}
     >
-      {Icon && <Icon className={cn('h-6 w-6', buttonStyle)} />}
+      {Icon && <Icon className={cn('h-full w-full', iconStyles)} />}
       {text && <span>{text}</span>}
     </button>
   );

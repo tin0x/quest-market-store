@@ -7,7 +7,7 @@ export const store = configureStore({
     [rawgApi.reducerPath]: rawgApi.reducer,
     [newsApi.reducerPath]: newsApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(rawgApi.middleware, newsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

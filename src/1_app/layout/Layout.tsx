@@ -18,7 +18,7 @@ const Layout: React.FC = () => {
         <NavigationWidget />
         <AuthButtons />
       </HeaderWidget>
-      <main>
+      <main className="py-5">
         <Outlet />
       </main>
       <FooterWidget>
