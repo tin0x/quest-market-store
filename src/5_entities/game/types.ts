@@ -1,19 +1,9 @@
-export type TrendingGameDTO = {
+export type GameSlide = {
   id: number;
   name: string;
-  background_image: string;
+  cover: string | null;
 };
 
-export type TrendingGame = {
-  id: number;
-  name: string;
-  cover: string;
-};
-
-export type TrendingGamesDTO = {
-  results: TrendingGameDTO[];
-};
-
-export type TrendingGames = {
-  results: TrendingGame[];
+export type GameSlides = {
+  results: GameSlide[];
 };

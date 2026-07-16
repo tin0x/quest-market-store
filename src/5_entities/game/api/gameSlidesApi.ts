@@ -1,10 +1,11 @@
 import { rawgApi } from '@shared/api/rawgApi.ts';
-import type { TrendingGames, TrendingGamesDTO } from '@entities/game/types.ts';
-import { mapTrendingGames } from '@entities/game/mappers/mapTrendingGame.ts';
+import type { GameSlides } from '@entities/game/types.ts';
+import { mapGameSlides } from '@entities/game/mappers/mapGameSlides.ts';
+import { GameSlidesSchema } from '@entities/game/schemas/GameSlidesSchema.ts';
 
 export const gameSlidesApi = rawgApi.injectEndpoints({
   endpoints: (build) => ({
-    getTrendingGames: build.query<TrendingGames, void>({
+    getTrendingGames: build.query<GameSlides, void>({
       query: () => ({
         url: '/gameSlides',
         params: {
@@ -14,12 +15,13 @@ export const gameSlidesApi = rawgApi.injectEndpoints({
           page_size: 6,
         },
       }),
-      transformResponse: (response: TrendingGamesDTO): TrendingGames => {
-        const gameSlides = response.results.map(mapTrendingGames);
+      transformResponse: (response: unknown): GameSlides => {
+        const dto = GameSlidesSchema.parse(response);
+        const gameSlides = dto.results.map(mapGameSlides);
         return { results: gameSlides };
       },
     }),
-    getReleasedGames: build.query<TrendingGames, void>({
+    getReleasedGames: build.query<GameSlides, void>({
       query: () => ({
         url: '/gameSlides',
         params: {
@@ -29,8 +31,9 @@ export const gameSlidesApi = rawgApi.injectEndpoints({
           page_size: 6,
         },
       }),
-      transformResponse: (response: TrendingGamesDTO): TrendingGames => {
-        const gameSlides = response.results.map(mapTrendingGames);
+      transformResponse: (response: unknown): GameSlides => {
+        const dto = GameSlidesSchema.parse(response);
+        const gameSlides = dto.results.map(mapGameSlides);
         return { results: gameSlides };
       },
     }),

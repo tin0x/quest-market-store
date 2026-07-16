@@ -1,8 +1,8 @@
-import { useGetReleasedGamesQuery } from '@entities/game/api/gameSlidesApi.ts';
+import { useGetTrendingGamesQuery } from '@entities/game/api/gameSlidesApi.ts';
 import { useCallback, useEffect, useState } from 'react';
 
 export const useGetTrendingGames = () => {
-  const { data, isLoading, isFetching, isError } = useGetReleasedGamesQuery();
+  const { data, isLoading, isFetching, isError } = useGetTrendingGamesQuery();
 
   const [selectedSlide, setSelectedSlide] = useState(0);
 
@@ -14,7 +14,8 @@ export const useGetTrendingGames = () => {
     if (data?.results) {
       data?.results.forEach((game) => {
         const img = new Image();
-        img.src = game.cover;
+
+        if (game.cover) img.src = game.cover;
       });
     }
   }, [data?.results]);

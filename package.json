@@ -22,7 +22,8 @@
     "react-loading-skeleton": "^3.5.0",
     "react-redux": "^9.3.0",
     "react-router-dom": "^7.18.1",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

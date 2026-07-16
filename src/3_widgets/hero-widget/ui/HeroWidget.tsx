@@ -10,7 +10,7 @@ const HeroWidget: React.FC = () => {
 
   const renderContent = () => {
     if (isLoading) return <HeroSkeleton />;
-    if (!games || isEmpty) return;
+    if (!games || isEmpty) return; // Query Placeholder
 
     return (
       <Slider className="h-full" onSelectSlide={handleSelectSlideIndex}>
