@@ -1,6 +1,8 @@
 
 :root {
     --bg-primary: #070F2B;
+    --skeleton-base:  #1B1A55;
+    --skeleton-highlight: rgb(199 193 193 / 0.6);
 }
 
 html {
