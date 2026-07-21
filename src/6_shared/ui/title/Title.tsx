@@ -10,7 +10,7 @@ const Title: React.FC<TitleProps> = ({ className, children, type, toPath }) => {
   const content = (
     <Tag className={cn('text-text-primary flex items-center gap-1 text-xl font-bold', className)}>
       <span>{children}</span>
-      <ArrowRightIcon className="h-6 w-6" />
+      {toPath && <ArrowRightIcon className="h-6 w-6" />}
     </Tag>
   );
 

@@ -20,7 +20,7 @@ const HeroWidget: React.FC = () => {
         className="h-full"
         onSelectSlide={handleSelectSlideIndex}
         options={{ loop: true }}
-        plugins={[Autoplay({ delay: 4000, stopOnInteraction: true })]}
+        plugins={[Autoplay({ delay: 4000, stopOnInteraction: false })]}
       >
         {games.map((game) => (
           <li
