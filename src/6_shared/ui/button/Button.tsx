@@ -4,7 +4,7 @@ import { cn } from '@shared/lib/utils/cn.ts';
 import { Link } from 'react-router-dom';
 
 const buttonStyles = {
-  accent: 'bg-button-primary text-text-dark rounded-lg',
+  accent: 'bg-button-primary text-text-dark rounded-lg hover:opacity-90',
   transparent:
     'text-text-primary rounded-lg bg-transparent border-2 hover:border-white hover:bg-white hover:text-black',
   dark: 'bg-button-secondary rounded-lg text-text-primary border-2 border-transparent hover:bg-transparent hover:border-white',

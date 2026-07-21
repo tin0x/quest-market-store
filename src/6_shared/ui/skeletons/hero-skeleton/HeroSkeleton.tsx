@@ -4,7 +4,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 const HeroSkeleton: React.FC = () => {
   return (
     <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
-      <div className="bg-primary relative h-full w-full overflow-hidden">
+      <div className="relative h-full w-full overflow-hidden">
         <ul className="flex h-full">
           {Array.from({ length: 1 }).map((_, i) => (
             <li key={i} className="flex h-full w-full shrink-0 items-start justify-between p-20">

@@ -10,14 +10,12 @@ const Image: React.FC<ImageProps> = ({ className, type, source, alt, ...rest }) 
 
   const currentImage = hasError || !source ? stubs[type] : source;
 
-  console.log(currentImage, source);
-
   return (
     <div className="relative h-full w-full">
       {isLoading && (
         <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
           <div className="absolute inset-0 z-50 h-full w-full rounded-md">
-            <Skeleton className="rounded-md" />
+            <Skeleton className="h-full w-full rounded-md" />
           </div>
         </SkeletonTheme>
       )}

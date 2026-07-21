@@ -21,7 +21,10 @@ const HeroWidget: React.FC = () => {
         plugins={[Autoplay({ delay: 4000, stopOnInteraction: true })]}
       >
         {games.map((game) => (
-          <li className="flex min-w-0 flex-[0_0_100%] justify-between px-20 py-10" key={game.id}>
+          <li
+            className="flex min-w-0 flex-[0_0_100%] cursor-grab justify-between px-20 py-10 active:cursor-grabbing"
+            key={game.id}
+          >
             <div className="max-w-1/2">
               <span className="text-[40px] font-bold uppercase">{game.name}</span>
             </div>

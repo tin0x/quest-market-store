@@ -11,7 +11,7 @@ export type GamesSlides = {
 };
 
 export type GamesSlidesArgs = {
-  ordering: '-released' | '-rating' | '-metacritic';
+  ordering: '-added' | '-released' | '-rating' | '-metacritic';
 };
 
 export type SlideItemProps = {
