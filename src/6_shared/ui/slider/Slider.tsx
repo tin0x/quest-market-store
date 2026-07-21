@@ -6,35 +6,37 @@ import IconArrowRight from '@shared/assets/icons/arrow-right.svg?react';
 import useEmblaCarousel from 'embla-carousel-react';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { cn } from '@shared/lib/utils/cn.ts';
-import Autoplay from 'embla-carousel-autoplay';
 
-const Slider: React.FC<SlideProps> = ({ className, children, onSelectSlide }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay({ delay: 4000, stopOnInteraction: true })]);
+const Slider: React.FC<SlideProps> = ({ className, children, onSelectSlide, options, plugins }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
   const [isDisabledPrev, setIsDisabledPrev] = useState(true);
-  const [isDisabledNext, setIsDisabledNext] = useState(true);
+  const [isDisabledNext, setIsDisabledNext] = useState(false);
 
-  const onSelect = useCallback((api: EmblaCarouselType) => {
-    setIsDisabledPrev(!api?.canScrollPrev());
-    setIsDisabledNext(!api?.canScrollNext());
-  }, []);
+  const update = useCallback(
+    (api: EmblaCarouselType) => {
+      setIsDisabledPrev(!api.canScrollPrev());
+      setIsDisabledNext(!api.canScrollNext());
 
-  const onSelectIndex = useCallback(() => {
-    onSelectSlide(emblaApi?.selectedScrollSnap() || 0);
-  }, [emblaApi, onSelectSlide]);
+      onSelectSlide?.(api.selectedScrollSnap());
+    },
+    [onSelectSlide],
+  );
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    emblaApi.on('init', onSelect);
-    emblaApi.on('reInit', onSelect);
-    emblaApi.on('select', onSelectIndex);
+    setTimeout(() => {
+      update(emblaApi);
+    }, 0);
+
+    emblaApi.on('select', update);
+    emblaApi.on('reInit', update);
 
     return () => {
-      emblaApi.off('init', onSelect);
-      emblaApi.off('reInit', onSelect);
-      emblaApi.off('select', onSelectIndex);
+      emblaApi.off('select', update);
+      emblaApi.off('reInit', update);
     };
-  }, [emblaApi, onSelect, onSelectIndex, onSelectSlide]);
+  }, [emblaApi, update]);
 
   return (
     <div className={cn('relative w-full', className)}>

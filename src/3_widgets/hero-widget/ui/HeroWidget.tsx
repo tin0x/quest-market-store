@@ -4,6 +4,7 @@ import Slider from '@shared/ui/slider/Slider.tsx';
 import { useGetTrendingGames } from '@widgets/hero-widget/model/useGetTrendingGames.ts';
 import Button from '@shared/ui/button/Button.tsx';
 import HeroSkeleton from '@shared/ui/skeletons/hero-skeleton/HeroSkeleton.tsx';
+import Autoplay from 'embla-carousel-autoplay';
 
 const HeroWidget: React.FC = () => {
   const { games, isLoading, isEmpty, selectedSlide, handleSelectSlideIndex } = useGetTrendingGames();
@@ -13,9 +14,14 @@ const HeroWidget: React.FC = () => {
     if (!games || isEmpty) return; // Query Placeholder
 
     return (
-      <Slider className="h-full" onSelectSlide={handleSelectSlideIndex}>
+      <Slider
+        className="h-full"
+        onSelectSlide={handleSelectSlideIndex}
+        options={{ loop: true }}
+        plugins={[Autoplay({ delay: 4000, stopOnInteraction: true })]}
+      >
         {games.map((game) => (
-          <li className="flex h-full min-w-0 flex-[0_0_100%] justify-between px-20 py-10" key={game.id}>
+          <li className="flex min-w-0 flex-[0_0_100%] justify-between px-20 py-10" key={game.id}>
             <div className="max-w-1/2">
               <span className="text-[40px] font-bold uppercase">{game.name}</span>
             </div>
@@ -32,7 +38,7 @@ const HeroWidget: React.FC = () => {
 
   return (
     <section
-      className="h-full max-h-175 mask-[linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)] bg-cover bg-no-repeat transition-all"
+      className="h-175 mask-[linear-gradient(to_bottom,transparent_0%,black_5%,black_95%,transparent_100%)] bg-cover bg-no-repeat transition-all"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${games[selectedSlide]?.cover})`,
       }}

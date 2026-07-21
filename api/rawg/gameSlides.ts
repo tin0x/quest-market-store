@@ -4,7 +4,7 @@ import { configDotenv } from 'dotenv';
 
 configDotenv({ path: path.resolve(process.cwd(), '.env.local') });
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+const handler = async (req: VercelRequest, res: VercelResponse) => {
   const apiKey = process.env.RAWG_API_KEY;
   const params = new URLSearchParams(req.query as Record<string, string>).toString();
 
@@ -17,4 +17,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   } catch (error) {
     return res.status(500).json(`${error}: failed to fetch popular games`);
   }
-}
+};
+
+export default handler;
