@@ -5,13 +5,15 @@ import { useGetTrendingGames } from '@widgets/hero-widget/model/useGetTrendingGa
 import Button from '@shared/ui/button/Button.tsx';
 import HeroSkeleton from '@shared/ui/skeletons/hero-skeleton/HeroSkeleton.tsx';
 import Autoplay from 'embla-carousel-autoplay';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 
 const HeroWidget: React.FC = () => {
-  const { games, isLoading, isEmpty, selectedSlide, handleSelectSlideIndex } = useGetTrendingGames();
+  const { games, isLoading, isError, isEmpty, selectedSlide, refetch, handleSelectSlideIndex } = useGetTrendingGames();
 
   const renderContent = () => {
     if (isLoading) return <HeroSkeleton />;
-    if (!games || isEmpty) return; // Query Placeholder
+    if (isError) return <QueryPlaceholder type="error" onClick={refetch} />;
+    if (isEmpty) return <QueryPlaceholder type="emptyData" />;
 
     return (
       <Slider

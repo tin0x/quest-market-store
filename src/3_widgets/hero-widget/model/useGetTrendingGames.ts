@@ -2,7 +2,7 @@ import { useGetGamesSlidesQuery } from '@entities/game/api/gameSlidesApi.ts';
 import { useCallback, useEffect, useState } from 'react';
 
 export const useGetTrendingGames = () => {
-  const { data, isLoading, isFetching, isError } = useGetGamesSlidesQuery({ ordering: '-added' });
+  const { data, isLoading, isFetching, isError, refetch } = useGetGamesSlidesQuery({ ordering: '-added' });
 
   const [selectedSlide, setSelectedSlide] = useState(0);
 
@@ -26,6 +26,7 @@ export const useGetTrendingGames = () => {
     isLoading: isLoading || isFetching,
     isError,
     selectedSlide,
+    refetch,
     handleSelectSlideIndex,
   };
 };

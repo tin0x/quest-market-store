@@ -1,19 +1,21 @@
 import React from 'react';
 import Container from '@shared/ui/container/Container.tsx';
-import Slider from '@shared/ui/slider/Slider.tsx';
 import { useFetchGamesSlides } from '@widgets/slider-widget/model/useFetchGamesSlides.ts';
 import type { SliderWidgetProps } from '@widgets/slider-widget/types.ts';
-import SlideItem from '@entities/game/ui/slide-item/SlideItem.tsx';
-import Title from '@shared/ui/title/Title.tsx';
-import PlacePreOrder from '@features/place-pre-order/ui/PlacePreOrder.tsx';
 import SliderSkeleton from '@shared/ui/skeletons/slider-skeleton/SliderSkeleton.tsx';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import Title from '@shared/ui/title/Title';
+import SlideItem from '@entities/game/ui/slide-item/SlideItem.tsx';
+import PlacePreOrder from '@features/place-pre-order/ui/PlacePreOrder.tsx';
+import Slider from '@shared/ui/slider/Slider';
 
 const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
-  const { slides, isLoading, isEmpty, isError } = useFetchGamesSlides(ordering);
+  const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides(ordering);
 
   const renderContent = () => {
     if (isLoading) return <SliderSkeleton />;
-    if (isError || isEmpty) return;
+    if (isError) return <QueryPlaceholder type="error" onClick={refetch} />;
+    if (isEmpty) return <QueryPlaceholder type="emptyData" />;
 
     return (
       <div className="flex flex-col gap-8">
