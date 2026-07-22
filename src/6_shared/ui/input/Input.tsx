@@ -10,7 +10,19 @@ const inputStyles = {
   secondary: 'text-text-primary bg-input-secondary rounded-sm border',
 } as const;
 
-const Input: React.FC<InputProps> = ({ className, variant = 'primary', Icon, isPassword, type = 'text', ...rest }) => {
+const handleClearValue = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  if (e.key === 'Escape') e.currentTarget.value = '';
+};
+
+const Input: React.FC<InputProps> = ({
+  clearOnEscape,
+  className,
+  variant = 'primary',
+  Icon,
+  isPassword,
+  type = 'text',
+  ...rest
+}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
@@ -22,8 +34,9 @@ const Input: React.FC<InputProps> = ({ className, variant = 'primary', Icon, isP
       )}
       <input
         type={inputType}
+        onKeyDown={clearOnEscape ? handleClearValue : undefined}
         className={cn(
-          'h-full w-full border py-5 pr-6 pl-14 placeholder:font-bold hover:cursor-pointer focus:border-white',
+          'h-full w-full border border-none py-5 pr-6 pl-14 outline-white placeholder:font-bold hover:cursor-pointer focus:outline-2',
           inputStyles[variant],
           className,
         )}
