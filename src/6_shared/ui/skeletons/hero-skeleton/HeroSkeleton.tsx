@@ -12,7 +12,9 @@ const HeroSkeleton: React.FC = () => {
                 <Skeleton className="mb-2" height={40} count={2.5} width="100%" borderRadius={9999} />
               </div>
               <div className="flex w-1/4 flex-col gap-3 self-end">
-                <Skeleton height={20} width="60px" />
+                <div className="self-end">
+                  <Skeleton height={40} width="60px" />
+                </div>
                 <div className="w-full">
                   <Skeleton height={45} borderRadius={9999} />
                 </div>

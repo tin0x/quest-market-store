@@ -31,6 +31,7 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
               {slideGroup.map((slide) => (
                 <SlideItem
                   key={slide.id}
+                  id={slide.id}
                   name={slide.name}
                   image={slide.cover}
                   alt={slide.name}

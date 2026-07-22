@@ -12,10 +12,12 @@ const OfferCard: React.FC<OfferCardProps> = ({ image, title, text, pathTo }) => 
           <Image source={image} type="game" alt={title} />
         </div>
         <div>
-          <Title type="secondary">{title}</Title>
-          <p className="text-text-secondary mt-4">{text}</p>
+          <Title className="text-[24px]" type="secondary">
+            {title}
+          </Title>
+          <p className="text-text-secondary mt-4 text-[18px]">{text}</p>
         </div>
-        <Button className="mt-auto" text="Browse" variant="dark" asLink pathTo={pathTo} />
+        <Button className="mt-auto text-[18px]" text="Browse" variant="dark" asLink pathTo={pathTo} />
       </div>
     </div>
   );

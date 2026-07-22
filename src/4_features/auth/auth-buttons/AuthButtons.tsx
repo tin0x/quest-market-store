@@ -7,8 +7,8 @@ const [loginData, registerData] = linkButtons;
 const AuthButtons: React.FC = () => {
   return (
     <div className="flex items-center gap-4">
-      <Button asLink pathTo={loginData.path} variant="transparent" text={loginData.title} />
-      <Button asLink pathTo={registerData.path} variant="dark" text={registerData.title} />
+      <Button className="text-[18px]" asLink pathTo={loginData.path} variant="transparent" text={loginData.title} />
+      <Button className="text-[18px]" asLink pathTo={registerData.path} variant="dark" text={registerData.title} />
     </div>
   );
 };

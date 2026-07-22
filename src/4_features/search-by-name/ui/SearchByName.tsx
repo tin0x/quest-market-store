@@ -5,7 +5,16 @@ import { useSearchByName } from '@features/search-by-name/model/useSearchByName.
 
 const SearchByName: React.FC = () => {
   const { name, handleChangeInput } = useSearchByName();
-  return <Input Icon={SearchIcon} value={name} placeholder="Search store" onChange={handleChangeInput} />;
+  return (
+    <Input
+      clearOnEscape
+      className="text-[18px]"
+      Icon={SearchIcon}
+      value={name}
+      placeholder="Search store"
+      onChange={handleChangeInput}
+    />
+  );
 };
 
 export default SearchByName;

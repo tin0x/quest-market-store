@@ -6,6 +6,7 @@ import Button from '@shared/ui/button/Button.tsx';
 import HeroSkeleton from '@shared/ui/skeletons/hero-skeleton/HeroSkeleton.tsx';
 import Autoplay from 'embla-carousel-autoplay';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import { Link } from 'react-router-dom';
 
 const HeroWidget: React.FC = () => {
   const { games, isLoading, isError, isEmpty, selectedSlide, refetch, handleSelectSlideIndex } = useGetTrendingGames();
@@ -28,10 +29,12 @@ const HeroWidget: React.FC = () => {
             key={game.id}
           >
             <div className="max-w-1/2">
-              <span className="text-[40px] font-bold uppercase">{game.name}</span>
+              <Link className="text-[40px] font-bold uppercase" to={`/game/${game.id}`}>
+                {game.name}
+              </Link>
             </div>
             <div className="flex flex-col gap-2 self-end">
-              <span className="text-end text-xl font-bold">$50.99</span>
+              <span className="text-end text-[25px] font-bold">$50.99</span>
               <Button className="text-xl" variant="accent" asLink pathTo="/cart" text="Buy Now" />
               <Button className="text-xl" variant="transparent" text="Add to Wishlist" />
             </div>

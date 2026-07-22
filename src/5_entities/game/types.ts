@@ -15,6 +15,7 @@ export type GamesSlidesArgs = {
 };
 
 export type SlideItemProps = {
+  id: number;
   image: string | null;
   alt: string;
   name: string;

@@ -11,7 +11,7 @@ const NavigationWidget: React.FC = () => {
           <li key={link.title}>
             <NavLink
               className={({ isActive }) =>
-                cn('text-text-secondary hover:text-text-primary p-6 text-lg font-bold', {
+                cn('text-text-secondary hover:text-text-primary p-6 text-[20px] font-bold', {
                   'text-text-primary': isActive,
                 })
               }
