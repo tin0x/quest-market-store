@@ -4,6 +4,7 @@ import HeroWidget from '@widgets/hero-widget/ui/HeroWidget.tsx';
 import SliderWidget from '@widgets/slider-widget/ui/SliderWidget.tsx';
 import GameOfferList from '@entities/game/ui/game-offer/game-offer-list/GameOfferList.tsx';
 import Container from '@shared/ui/container/Container.tsx';
+import CategoryNavigationWidget from '@widgets/category-navigation-widget/ui/CategoryNavigationWidget.tsx';
 
 const HomePage: React.FC = () => {
   useToggleTitle('Home');
@@ -19,6 +20,7 @@ const HomePage: React.FC = () => {
           <GameOfferList />
         </Container>
       </article>
+      <CategoryNavigationWidget />
     </div>
   );
 };

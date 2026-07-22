@@ -20,3 +20,10 @@ export type SlideItemProps = {
   name: string;
   actionSlot: React.ReactNode;
 };
+
+export type GameCategoryCardProps = {
+  heroImage: string;
+  cover: string;
+  genre: string;
+  pathTo: string;
+};
