@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Layout from '@app/layout/Layout.tsx';
 import HomePage from '@pages/home-page/ui/HomePage.tsx';
+import RegisterPage from '@pages/auth-page/register-page/RegisterPage.tsx';
+import Layout from '@app/layouts/Layout.tsx';
+import AuthLayout from '@app/layouts/AuthLayout.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -12,10 +14,6 @@ const App = () => {
           index: true,
           element: <HomePage />,
         },
-        // {
-        //   path: 'auth',
-        //   element: <AuthPage />,
-        // },
         // {
         //   element: <ProtectedRoute />,
         //   children: [
@@ -29,6 +27,15 @@ const App = () => {
         //   path: '*',
         //   element: <NotFoundPage />,
         // },
+      ],
+    },
+    {
+      element: <AuthLayout />,
+      children: [
+        {
+          path: '/register',
+          element: <RegisterPage />,
+        },
       ],
     },
   ]);

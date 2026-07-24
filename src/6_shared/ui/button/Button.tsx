@@ -38,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        'flex items-center justify-center gap-2 px-5 py-3 font-bold hover:cursor-pointer',
+        'flex items-center justify-center gap-2 px-5 py-3 font-bold hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50',
         buttonStyles[variant],
         className,
         {

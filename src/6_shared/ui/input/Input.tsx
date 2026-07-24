@@ -44,6 +44,9 @@ const Input: React.FC<InputProps> = ({
       />
       {isPassword && (
         <Button
+          iconStyles=""
+          className="absolute top-1/2 right-2 h-8 w-8 -translate-y-1/2"
+          type="button"
           onClick={() => setShowPassword((prev) => !prev)}
           variant="transparent"
           Icon={showPassword ? IconEye : IconClosedEye}

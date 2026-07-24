@@ -1,10 +1,10 @@
 import React from 'react';
 import Button from '@shared/ui/button/Button.tsx';
-import { linkButtons } from '@features/auth/auth-buttons/constants.ts';
+import { linkButtons } from '@features/auth/redirect-to-form/constants.ts';
 
 const [loginData, registerData] = linkButtons;
 
-const AuthButtons: React.FC = () => {
+const RedirectToForm: React.FC = () => {
   return (
     <div className="flex items-center gap-4">
       <Button className="text-[18px]" asLink pathTo={loginData.path} variant="transparent" text={loginData.title} />
@@ -13,4 +13,4 @@ const AuthButtons: React.FC = () => {
   );
 };
 
-export default AuthButtons;
+export default RedirectToForm;

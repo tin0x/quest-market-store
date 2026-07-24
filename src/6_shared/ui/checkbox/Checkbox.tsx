@@ -4,10 +4,10 @@ import CheckmarkIcon from '@shared/assets/icons/checkmark.svg?react';
 import Input from '@shared/ui/input/Input.tsx';
 import type { CheckboxProps } from '@shared/ui/checkbox/types.ts';
 
-const Checkbox: React.FC<CheckboxProps> = ({ text }) => {
+const Checkbox: React.FC<CheckboxProps> = ({ text, ...rest }) => {
   return (
     <label className="group cursor-pointer">
-      <Input className="sr-only" id="license" type="checkbox" />
+      <Input className="sr-only" type="checkbox" {...rest} />
       <div className="flex items-center gap-3">
         <span
           className={cn(
