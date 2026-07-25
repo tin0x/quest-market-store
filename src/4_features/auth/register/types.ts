@@ -7,10 +7,3 @@ export type RegisterArgs = {
   email: string;
   password: string;
 };
-
-export type ApiError = {
-  status: number;
-  data: {
-    message: string;
-  };
-};

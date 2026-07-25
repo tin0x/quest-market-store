@@ -2,7 +2,7 @@ import { useRegisterMutation } from '@features/auth/register/api/authApi.ts';
 import type { RegisterForm } from '@features/auth/register/schemas/RegisterSchema.ts';
 import { useNavigate } from 'react-router-dom';
 import type { UseFormSetError } from 'react-hook-form';
-import type { ApiError } from '@features/auth/register/types.ts';
+import type { ApiError } from '@features/auth/types.ts';
 
 export const useRegister = (setError: UseFormSetError<RegisterForm>) => {
   const [registerUser, { isLoading }] = useRegisterMutation();

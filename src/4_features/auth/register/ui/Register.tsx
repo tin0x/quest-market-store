@@ -8,6 +8,7 @@ import { type RegisterForm, RegisterSchema } from '@features/auth/register/schem
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cn } from '@shared/lib/utils/cn.ts';
 import { useRegister } from '@features/auth/register/model/useRegister.ts';
+import { clearFormInputField } from '@features/auth/utils/clearFormInputField.ts';
 
 const Register: React.FC = () => {
   const {
@@ -19,14 +20,6 @@ const Register: React.FC = () => {
   } = useForm<RegisterForm>({ mode: 'onSubmit', reValidateMode: 'onChange', resolver: zodResolver(RegisterSchema) });
 
   const { isLoading, onSubmit } = useRegister(setError);
-
-  const handleClearValue = (e: React.KeyboardEvent<HTMLInputElement>, inputName: keyof RegisterForm) => {
-    if (e.key === 'Escape') {
-      setValue(inputName, '', {
-        shouldValidate: true,
-      });
-    }
-  };
 
   return (
     <form className="flex w-full flex-col justify-center" onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +33,7 @@ const Register: React.FC = () => {
             autoFocus
             variant="secondary"
             placeholder="Full Name"
-            onKeyDown={(e) => handleClearValue(e, 'fullName')}
+            onKeyDown={(e) => clearFormInputField<RegisterForm>(e, 'fullName', setValue)}
             autoComplete="name"
             {...register('fullName')}
           />
@@ -51,7 +44,7 @@ const Register: React.FC = () => {
             className={cn({ 'text-red-300 outline-2 outline-red-600': errors.email })}
             variant="secondary"
             placeholder="Email Address"
-            onKeyDown={(e) => handleClearValue(e, 'email')}
+            onKeyDown={(e) => clearFormInputField<RegisterForm>(e, 'email', setValue)}
             autoComplete="email"
             {...register('email')}
           />
@@ -63,7 +56,7 @@ const Register: React.FC = () => {
             variant="secondary"
             placeholder="Password"
             isPassword
-            onKeyDown={(e) => handleClearValue(e, 'password')}
+            onKeyDown={(e) => clearFormInputField<RegisterForm>(e, 'password', setValue)}
             autoComplete="new-password"
             {...register('password')}
           />
