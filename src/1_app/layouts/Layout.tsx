@@ -4,8 +4,8 @@ import HeaderWidget from '@widgets/header-widget/ui/HeaderWidget.tsx';
 import FooterWidget from '@widgets//footer-widget/ui/FooterWidget.tsx';
 import Logo from '@shared/ui/logo/Logo.tsx';
 import SearchByName from '@features/search-by-name/ui/SearchByName.tsx';
-import NavigationWidget from '@widgets/navigation-widget/NavigationWidget.tsx';
-import RedirectToForm from '@features/auth/redirect-to-form/RedirectToForm.tsx';
+import NavigationWidget from '@widgets/navigation-widget/ui/NavigationWidget.tsx';
+import RedirectToForm from '@features/auth/redirect-to-form/ui/RedirectToForm.tsx';
 import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
 import HelpList from '@shared/ui/help/HelpList.tsx';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@shared/ui/button/Button.tsx';
-import { linkButtons } from '@features/auth/redirect-to-form/constants.ts';
+import { linkButtons } from '@features/auth/redirect-to-form/model/constants.ts';
 
 const [loginData, registerData] = linkButtons;
 

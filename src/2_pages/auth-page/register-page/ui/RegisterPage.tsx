@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthWrapper from '@shared/ui/auth-wrapper/AuthWrapper.tsx';
 import { useToggleTitle } from '@shared/hooks/router/useToggleTitle.ts';
-import Register from '@features/auth/register/Register.tsx';
+import Register from '@features/auth/register/ui/Register.tsx';
 
 const RegisterPage: React.FC = () => {
   useToggleTitle('Register');
