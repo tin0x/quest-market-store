@@ -9,11 +9,11 @@ const QueryPlaceholder: React.FC<QueryPlaceholderProps> = ({ type, onClick }) =>
   const buttonText = type !== 'emptyData' && placeholders[type]?.buttonText;
 
   return (
-    <div className="flex flex-col items-center gap-6">
+    <section className="flex h-full flex-col items-center justify-center gap-6">
       <IconStub className="h-40 w-40" />
       <p className="text-center text-[20px] font-bold">{text}</p>
       {buttonText && <Button className="text-[18px]" onClick={onClick} variant="dark" text={buttonText} />}
-    </div>
+    </section>
   );
 };
 

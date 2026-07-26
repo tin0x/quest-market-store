@@ -14,7 +14,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       setIsLoading(false);
     };
 
-    getSession();
+    void getSession();
 
     const { data: listener } = supabase.auth.onAuthStateChange((_, session) => {
       setSession(session);
