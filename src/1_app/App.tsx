@@ -4,6 +4,7 @@ import RegisterPage from '@pages/auth-page/register-page/ui/RegisterPage.tsx';
 import Layout from '@app/layouts/Layout.tsx';
 import AuthLayout from '@app/layouts/AuthLayout.tsx';
 import LoginPage from '@pages/auth-page/login-page/ui/LoginPage.tsx';
+import AuthProvider from '@app/providers/auth-provider/AuthProvider.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -45,7 +46,11 @@ const App = () => {
     },
   ]);
 
-  return <RouterProvider router={routes} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={routes} />;
+    </AuthProvider>
+  );
 };
 
 export default App;
