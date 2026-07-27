@@ -20,4 +20,18 @@
     --radius-md: 1.2rem;
     --radius-lg: 1.5rem;
     --radius-circle: 50%;
+
+    @keyframes wobble {
+        0%, 100% {
+            transform: rotate(0deg);
+        }
+        15%, 45%, 75% {
+            transform: rotate(-10deg);
+        }
+        30%, 60% {
+            transform: rotate(15deg);
+        }
+    }
+
+    --animate-wobble: wobble 1.6s infinite ease-in-out;
 }
