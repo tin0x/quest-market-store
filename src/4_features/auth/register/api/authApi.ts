@@ -33,6 +33,7 @@ export const authApi = supabaseApi.injectEndpoints({
         const { error: ProfileError } = await supabase.from('profiles').insert({
           id: user.id,
           full_name: fullName,
+          email: email,
         });
 
         if (ProfileError) {

@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
     return (
       <Link
         className={cn('flex items-center justify-center gap-2 px-5 py-3 font-bold', buttonStyles[variant], className, {
-          'rounded-circle text-text-primary p-1': Icon && !text,
+          'text-text-primary p-1': Icon && !text,
         })}
         to={pathTo}
       >
@@ -42,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
         buttonStyles[variant],
         className,
         {
-          'rounded-circle text-text-primary p-1': Icon && !text,
+          'p-1': Icon && !text,
         },
       )}
       {...rest}

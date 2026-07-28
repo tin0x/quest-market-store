@@ -5,9 +5,9 @@ import FooterWidget from '@widgets//footer-widget/ui/FooterWidget.tsx';
 import Logo from '@shared/ui/logo/Logo.tsx';
 import SearchByName from '@features/search-by-name/ui/SearchByName.tsx';
 import NavigationWidget from '@widgets/navigation-widget/ui/NavigationWidget.tsx';
-import RedirectToForm from '@features/auth/redirect-to-form/ui/RedirectToForm.tsx';
 import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
 import HelpList from '@shared/ui/help/HelpList.tsx';
+import UserMenuWidget from '@widgets/user-menu-widget/ui/UserMenuWidget.tsx';
 
 const Layout: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ const Layout: React.FC = () => {
         <Logo pathTo="/">Quest Market</Logo>
         <SearchByName />
         <NavigationWidget />
-        <RedirectToForm />
+        <UserMenuWidget />
       </HeaderWidget>
       <main className="py-15">
         <Outlet />
