@@ -5,7 +5,6 @@ export type UserDropdownProps = {
   email: string;
   isOpen: boolean;
   actions: React.ReactNode;
-  onClose: () => void;
 };
 
 export type UserProfileProps = {

@@ -5,6 +5,7 @@ import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import RedirectToForm from '@features/auth/redirect-to-form/ui/RedirectToForm.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import Logout from '@features/auth/logout/ui/Logout.tsx';
+import UserCart from '@entities/cart/ui/UserCart.tsx';
 
 const UserMenuWidget: React.FC = () => {
   const { session } = useAuth();
@@ -15,7 +16,12 @@ const UserMenuWidget: React.FC = () => {
     if (isLoading) return <span>Loading...</span>;
     if (!user) return <QueryPlaceholder type="error" onClick={refetch} />;
 
-    return <UserProfile email={user.email} name={user.fullName} actions={<Logout />} />;
+    return (
+      <>
+        <UserCart orders={[]} actions="text" />
+        <UserProfile email={user.email} name={user.fullName} actions={<Logout />} />
+      </>
+    );
   };
 
   return <div className="flex items-center gap-7">{renderContent()}</div>;

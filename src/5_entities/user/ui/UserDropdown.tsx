@@ -5,9 +5,9 @@ import { userLinks } from '@entities/user/constants.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
 import Button from '@shared/ui/button/Button.tsx';
 
-const UserDropdown: React.FC<UserDropdownProps> = ({ name, email, isOpen, actions, onClose }) => {
+const UserDropdown: React.FC<UserDropdownProps> = ({ name, email, isOpen, actions }) => {
   return (
-    <Dropdown className="w-40rounded-sm absolute top-full right-0 p-5" isOpen={isOpen} onClose={onClose}>
+    <Dropdown className="absolute top-full right-0 w-40 rounded-sm" isOpen={isOpen}>
       <div className="flex flex-col gap-4 overflow-hidden">
         <div className="text-text-secondary flex flex-col gap-1 font-bold">
           <span className={cn('overflow-hidden text-ellipsis', 'hover:animate-scroll hover:w-max')}>{name}</span>
