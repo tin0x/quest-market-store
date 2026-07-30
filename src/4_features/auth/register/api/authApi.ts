@@ -1,6 +1,8 @@
-import { supabaseApi } from '@shared/api/supabaseApi.ts';
-import { supabase } from '@shared/api/supabase.ts';
+import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
+import { supabase } from '@shared/api/supabase/supabase.ts';
 import type { RegisterArgs, RegisterResponse } from '@features/auth/register/types.ts';
+import mapAuthError from '@features/auth/mappers/mapAuthError.ts';
+import mapProfileError from '@features/auth/mappers/mapProfileError.ts';
 
 export const authApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,12 +15,7 @@ export const authApi = supabaseApi.injectEndpoints({
 
         if (error) {
           return {
-            error: {
-              status: error.status ?? 400,
-              data: {
-                message: 'User already registered',
-              },
-            },
+            error: mapAuthError(error),
           };
         }
 
@@ -38,7 +35,7 @@ export const authApi = supabaseApi.injectEndpoints({
 
         if (ProfileError) {
           return {
-            error: ProfileError,
+            error: mapProfileError(ProfileError),
           };
         }
 

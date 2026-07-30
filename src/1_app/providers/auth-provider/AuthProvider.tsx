@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@shared/api/supabase.ts';
+import { supabase } from '@shared/api/supabase/supabase.ts';
 import type { Session } from '@supabase/supabase-js';
 import Loader from '@shared/ui/loader/Loader.tsx';
 import AuthContext from './AuthContext';

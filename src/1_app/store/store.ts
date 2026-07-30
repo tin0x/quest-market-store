@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { rawgApi } from '@shared/api/rawgApi.ts';
-import { newsApi } from '@shared/api/newsApi.ts';
-import { supabaseApi } from '@shared/api/supabaseApi.ts';
+import { rawgApi } from '@shared/api/game/rawgApi.ts';
+import { newsApi } from '@shared/api/news/newsApi.ts';
+import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
+import toastReducer from '@shared/lib/slices/toast/toastSlice.ts';
 
 export const store = configureStore({
   reducer: {
+    toast: toastReducer,
     [rawgApi.reducerPath]: rawgApi.reducer,
     [newsApi.reducerPath]: newsApi.reducer,
     [supabaseApi.reducerPath]: supabaseApi.reducer,

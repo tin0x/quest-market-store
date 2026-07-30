@@ -1,9 +1,20 @@
 import React from 'react';
 import Button from '@shared/ui/button/Button.tsx';
-import type { PlacePreOrderProps } from '@features/place-pre-order/types.ts';
+import { useAddToCart } from '@features/add-to-cart/model/useAddToCart.ts';
+import type { AddToCartProps } from '@features/add-to-cart/types.ts';
 
-const PlacePreOrder: React.FC<PlacePreOrderProps> = ({ id }) => {
-  return <Button text="Pre-Order" type="button" variant="accent" onClick={() => console.log(id)} />;
+const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
+  const { isLoading, handleAddToCart } = useAddToCart();
+
+  return (
+    <Button
+      text="Add to Cart"
+      type="button"
+      variant="accent"
+      disabled={isLoading}
+      onClick={() => handleAddToCart(product)}
+    />
+  );
 };
 
-export default PlacePreOrder;
+export default AddToCart;

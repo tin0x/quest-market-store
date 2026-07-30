@@ -1,4 +1,4 @@
-import { rawgApi } from '@shared/api/rawgApi.ts';
+import { rawgApi } from '@shared/api/game/rawgApi.ts';
 import type { GamesSlides, GamesSlidesArgs } from '@entities/game/types.ts';
 import { mapGameSlides } from '@entities/game/mappers/mapGameSlides.ts';
 import { GameSlidesSchema } from '@entities/game/schemas/GameSlidesSchema.ts';

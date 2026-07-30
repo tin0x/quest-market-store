@@ -8,6 +8,7 @@ import AuthProvider from '@app/providers/auth-provider/AuthProvider.tsx';
 import ProtectedRoute from '@features/auth/ui/ProtectedRoute.tsx';
 import InvalidPathPage from '@pages/invalid-path-page/ui/InvalidPathPage.tsx';
 import ErrorBoundaryPage from '@pages/error-boundary-page/ui/ErrorBoundaryPage.tsx';
+import ToastWidget from '@widgets/toast-widget/ui/ToastWidget.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -54,6 +55,7 @@ const App = () => {
   return (
     <AuthProvider>
       <RouterProvider router={routes} />;
+      <ToastWidget />
     </AuthProvider>
   );
 };

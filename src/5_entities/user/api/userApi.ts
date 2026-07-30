@@ -1,5 +1,5 @@
-import { supabaseApi } from '@shared/api/supabaseApi.ts';
-import { supabase } from '@shared/api/supabase.ts';
+import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
+import { supabase } from '@shared/api/supabase/supabase.ts';
 import { UserSchema } from '@entities/user/schemas/UserSchema.ts';
 import { parseResponse } from '@shared/lib/utils/parseResponse.ts';
 import { mapUser } from '@entities/user/mappers/mapUser.ts';

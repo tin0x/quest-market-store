@@ -1,6 +1,7 @@
-import { supabaseApi } from '@shared/api/supabaseApi.ts';
+import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
 import type { LoginArgs, LoginResponse } from '@features/auth/login/types.ts';
-import { supabase } from '@shared/api/supabase.ts';
+import { supabase } from '@shared/api/supabase/supabase.ts';
+import mapAuthError from '@features/auth/mappers/mapAuthError.ts';
 
 export const authApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -13,12 +14,7 @@ export const authApi = supabaseApi.injectEndpoints({
 
         if (error) {
           return {
-            error: {
-              status: error.status || 400,
-              data: {
-                message: error.message,
-              },
-            },
+            error: mapAuthError(error),
           };
         }
 
