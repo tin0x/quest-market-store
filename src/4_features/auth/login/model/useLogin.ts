@@ -2,7 +2,7 @@ import { useLoginMutation } from '@features/auth/login/api/authApi.ts';
 import type { LoginForm } from '@features/auth/login/schemas/LoginSchemas.ts';
 import { useNavigate } from 'react-router-dom';
 import type { UseFormSetError } from 'react-hook-form';
-import type { ApiError } from '@features/auth/types.ts';
+import type { ApiError } from '@shared/api/error/types.ts';
 
 export const useLogin = (setError: UseFormSetError<LoginForm>) => {
   const [loginUser, { isLoading }] = useLoginMutation();

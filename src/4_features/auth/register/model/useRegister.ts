@@ -2,7 +2,7 @@ import { useRegisterMutation } from '@features/auth/register/api/authApi.ts';
 import type { RegisterForm } from '@features/auth/register/schemas/RegisterSchema.ts';
 import { useNavigate } from 'react-router-dom';
 import type { UseFormSetError } from 'react-hook-form';
-import type { ApiError } from '@features/auth/types.ts';
+import type { ApiError } from '@shared/api/error/types.ts';
 
 export const useRegister = (setError: UseFormSetError<RegisterForm>) => {
   const [registerUser, { isLoading }] = useRegisterMutation();
@@ -17,11 +17,9 @@ export const useRegister = (setError: UseFormSetError<RegisterForm>) => {
     } catch (error) {
       const apiError = error as ApiError;
 
-      if (apiError.data.message === 'User already registered') {
-        setError('root.server', {
-          message: 'User already registered',
-        });
-      }
+      setError('root.server', {
+        message: apiError.data.message,
+      });
     }
   };
 

@@ -1,14 +1,15 @@
 import React, { useCallback } from 'react';
-import UserProfile from '@entities/user/ui/UserProfile.tsx';
 import { useFetchUserInfo } from '@widgets/user-menu-widget/model/useFetchUserInfo.ts';
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import RedirectToForm from '@features/auth/redirect-to-form/ui/RedirectToForm.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import Logout from '@features/auth/logout/ui/Logout.tsx';
-import UserCart from '@entities/cart/ui/UserCart.tsx';
 import { useFetchProductCart } from '@widgets/user-menu-widget/model/useFetchProductCart.ts';
 import ToggleCartItemForItem from '@features/toggle-cart-item/ui/ToggleCartItemForItem.tsx';
 import type { Product } from '@widgets/user-menu-widget/types.ts';
+import UserMenuSkeleton from '@shared/ui/skeletons/user-menu-skeleton/UserMenuSkeleton.tsx';
+import UserProfile from '@entities/user/ui/UserProfile.tsx';
+import UserCart from '@entities/cart/ui/UserCart.tsx';
+import Logout from '@features/auth/logout/ui/Logout.tsx';
 
 const UserMenuWidget: React.FC = () => {
   const { session } = useAuth();
@@ -19,7 +20,7 @@ const UserMenuWidget: React.FC = () => {
 
   const renderContent = () => {
     if (!session) return <RedirectToForm />;
-    if (isLoading) return <span>Loading...</span>;
+    if (isLoading) return <UserMenuSkeleton />;
     if (!user) return <QueryPlaceholder type="error" onClick={refetch} />;
 
     return (
