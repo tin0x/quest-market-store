@@ -11,7 +11,7 @@ import { getCartItems } from '@features/toggle-cart-item/model/selectors.ts';
 import { useState } from 'react';
 
 export const useToggleCartItem = () => {
-  const { user } = useAuth();
+  const { session } = useAuth();
   const { data } = useAppSelector(getCartItems);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ export const useToggleCartItem = () => {
   const [removeFromCart] = useRemoveFromCartMutation();
 
   const handleToggleCartItem = async (product: Product) => {
-    if (!user) {
+    if (!session) {
       dispatch(
         showToast({
           title: 'Failed',
@@ -37,11 +37,11 @@ export const useToggleCartItem = () => {
 
     try {
       if (isExists) {
-        await removeFromCart({ productId: product.gameId }).unwrap();
+        await removeFromCart({ productId: product.gameId, userId: session.user.id }).unwrap();
         setIsExist(false);
         return;
       }
-      await addToCart({ ...product, userId: user.id }).unwrap();
+      await addToCart({ ...product, userId: session.user.id }).unwrap();
       setIsExist(true);
     } catch (error) {
       const apiError = error as ApiError;

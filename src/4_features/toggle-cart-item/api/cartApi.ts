@@ -25,10 +25,11 @@ const cartApi = supabaseApi.injectEndpoints({
           data: undefined,
         };
       },
+      invalidatesTags: ['Cart'],
     }),
     removeFromCart: builder.mutation<void, RemoveFromCartArgs>({
-      async queryFn({ productId }) {
-        const { error } = await supabase.from('cart').delete().eq('game_id', productId);
+      async queryFn({ productId, userId }) {
+        const { error } = await supabase.from('cart').delete().eq('game_id', productId).eq('user_id', userId);
 
         if (error) {
           return {
@@ -40,6 +41,7 @@ const cartApi = supabaseApi.injectEndpoints({
           data: undefined,
         };
       },
+      invalidatesTags: ['Cart'],
     }),
   }),
 });

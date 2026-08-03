@@ -8,6 +8,7 @@ export type AddToCartArgs = {
 
 export type RemoveFromCartArgs = {
   productId: number;
+  userId: string;
 };
 
 export type Product = Omit<AddToCartArgs, 'userId'>;
