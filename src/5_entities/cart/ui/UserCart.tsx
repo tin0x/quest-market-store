@@ -5,7 +5,7 @@ import type { UserCartProps } from '@entities/cart/types.ts';
 import CartDropdown from '@entities/cart/ui/CartDropdown.tsx';
 import { useClickOutside } from '@shared/hooks/ui/useClickOutside.ts';
 
-const UserCart: React.FC<UserCartProps> = ({ orders, actions }) => {
+const UserCart: React.FC<UserCartProps> = ({ orders, renderAction }) => {
   const [showCart, setShowCart] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   useClickOutside(dropdownRef, () => setShowCart(false));
@@ -17,7 +17,7 @@ const UserCart: React.FC<UserCartProps> = ({ orders, actions }) => {
         Icon={CartIcon}
         onClick={() => setShowCart((prev) => !prev)}
       />
-      <CartDropdown orders={orders} actions={actions} isOpen={showCart} />
+      <CartDropdown orders={orders} renderAction={renderAction} isOpen={showCart} />
     </div>
   );
 };

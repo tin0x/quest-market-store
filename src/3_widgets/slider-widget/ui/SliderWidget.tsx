@@ -6,8 +6,8 @@ import SliderSkeleton from '@shared/ui/skeletons/slider-skeleton/SliderSkeleton.
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import Title from '@shared/ui/title/Title';
 import SlideItem from '@entities/game/ui/slide-item/SlideItem.tsx';
-import AddToCart from '@features/add-to-cart/ui/AddToCart.tsx';
 import Slider from '@shared/ui/slider/Slider';
+import ToggleCartItemForCard from '@features/toggle-cart-item/ui/ToggleCartItemForCard.tsx';
 
 const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
   const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides(ordering);
@@ -36,7 +36,7 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
                   image={slide.cover}
                   alt={slide.name}
                   actionSlot={
-                    <AddToCart
+                    <ToggleCartItemForCard
                       product={{ title: slide.name, poster: slide.cover || '', price: 50.99, gameId: slide.id }}
                     />
                   }

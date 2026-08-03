@@ -1,6 +1,6 @@
 import type { PostgrestError } from '@supabase/supabase-js';
-import type { ApiError } from '@shared/api/error/types';
-import { errorMessages } from '@shared/api/error/constants';
+import type { ApiError } from '@shared/api/error/types.ts';
+import { errorMessages } from '@shared/api/error/constants.ts';
 
 const mapCartError = (error: PostgrestError): ApiError => {
   switch (error.code) {
