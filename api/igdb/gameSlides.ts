@@ -1,11 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import getAccessToken from '@shared/lib/services/getIGDBToken.ts';
+import getIGBDToken from './lib/getIGDBToken';
+import { configDotenv } from 'dotenv';
+import * as path from 'node:path';
+
+configDotenv({ path: path.resolve(process.cwd(), '.env.local') });
 
 const handler = async (_: VercelRequest, res: VercelResponse) => {
   const clientId = process.env.TWITCH_CLIENT_ID;
 
   try {
-    const currentToken = await getAccessToken();
+    const currentToken = await getIGBDToken();
 
     if (!clientId) {
       throw new Error('Client ID is missing');

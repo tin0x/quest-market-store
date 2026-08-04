@@ -1,8 +1,3 @@
-import { configDotenv } from 'dotenv';
-import * as path from 'node:path';
-
-configDotenv({ path: path.resolve(process.cwd(), '.env.local') });
-
 let cachedToken: string | null = null;
 let tokenExpiredAt = 0;
 

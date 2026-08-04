@@ -12,9 +12,9 @@ const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col gap-20">
       <HeroWidget />
-      <SliderWidget ordering="-released" subtitle="Released" />
-      <SliderWidget ordering="-rating" subtitle="Rating" />
-      <SliderWidget ordering="-metacritic" subtitle="Best Metacritic Score" />
+      <SliderWidget subtitle="Released" />
+      <SliderWidget subtitle="Rating" />
+      <SliderWidget subtitle="Best Metacritic Score" />
       <article>
         <Container>
           <GameOfferList />
