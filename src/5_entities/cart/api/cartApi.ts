@@ -26,7 +26,12 @@ export const cartApi = supabaseApi.injectEndpoints({
           data: result.data.map(mapCartWithItems),
         };
       },
-      providesTags: ['Cart'],
+      providesTags: [
+        {
+          type: 'Cart',
+          id: 'LIST',
+        },
+      ],
     }),
   }),
 });

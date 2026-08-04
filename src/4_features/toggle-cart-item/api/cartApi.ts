@@ -25,7 +25,12 @@ const cartApi = supabaseApi.injectEndpoints({
           data: undefined,
         };
       },
-      invalidatesTags: ['Cart'],
+      invalidatesTags: [
+        {
+          type: 'Cart',
+          id: 'LIST',
+        },
+      ],
     }),
     removeFromCart: builder.mutation<void, RemoveFromCartArgs>({
       async queryFn({ productId, userId }) {
@@ -41,7 +46,12 @@ const cartApi = supabaseApi.injectEndpoints({
           data: undefined,
         };
       },
-      invalidatesTags: ['Cart'],
+      invalidatesTags: [
+        {
+          type: 'Cart',
+          id: 'LIST',
+        },
+      ],
     }),
   }),
 });
