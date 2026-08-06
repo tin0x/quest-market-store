@@ -30,14 +30,14 @@ const HeroWidget: React.FC = () => {
             className="flex min-w-0 flex-[0_0_100%] cursor-grab justify-between gap-8 px-20 py-10 active:cursor-grabbing"
             key={game.id}
           >
-            <div className="flex-1">
+            <Link to={`game/${game.id}`} className="flex-1 overflow-hidden rounded-md">
               <Image
-                className="object-top"
+                className="object-top transition-transform duration-400 hover:scale-110"
                 source={games[selectedSlide]?.cover}
                 type="game"
                 alt={games[selectedSlide]?.name}
               />
-            </div>
+            </Link>
             <div className="flex flex-1 flex-col justify-between">
               <Link className="text-[40px] font-bold uppercase" to={`/game/${game.id}`}>
                 {game.name}
