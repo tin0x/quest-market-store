@@ -5,8 +5,51 @@ import * as path from 'node:path';
 
 configDotenv({ path: path.resolve(process.cwd(), '.env.local') });
 
-const handler = async (_: VercelRequest, res: VercelResponse) => {
+const handler = async (req: VercelRequest, res: VercelResponse) => {
   const clientId = process.env.TWITCH_CLIENT_ID;
+  const params = new URLSearchParams(req.query as Record<string, string>);
+
+  const ordering = params.get('ordering') ?? 'topRated';
+  const limit = params.get('limit') ?? 12;
+
+  const orderingType = {
+    topRated: {
+      where: 'cover != null & rating_count > 500',
+      sort: 'rating desc',
+    },
+
+    popular: {
+      where: 'cover != null',
+      sort: 'popularity desc',
+    },
+
+    mostReviewed: {
+      where: 'cover != null',
+      sort: 'rating_count desc',
+    },
+
+    newest: {
+      where: 'cover != null',
+      sort: 'first_release_date desc',
+    },
+
+    anticipated: {
+      where: 'cover != null & hypes > 0',
+      sort: 'hypes desc',
+    },
+
+    trending: {
+      where: 'cover != null & follows > 100',
+      sort: 'follows desc',
+    },
+
+    classics: {
+      where: 'cover != null & rating > 90 & rating_count > 2000',
+      sort: 'rating desc',
+    },
+  };
+
+  const currentOrdering = orderingType[ordering as keyof typeof orderingType];
 
   try {
     const currentToken = await getIGBDToken();
@@ -24,9 +67,9 @@ const handler = async (_: VercelRequest, res: VercelResponse) => {
       },
       body: `
         fields name, cover.url, rating, summary;
-        where cover != null & rating_count > 500;
-        sort rating desc;
-        limit 12;
+        where ${currentOrdering.where};
+        sort ${currentOrdering.sort};
+        limit ${limit};
       `,
     });
 
@@ -50,5 +93,3 @@ const handler = async (_: VercelRequest, res: VercelResponse) => {
 };
 
 export default handler;
-
-// реалізувати адавтивний запит на різні фільтри, пофіксити кнопку додавання та видалення, щоб при перезавантаженні зберігався стан кнопки, а також обробити інтерфейс кощтка коли він пустий

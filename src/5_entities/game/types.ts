@@ -12,7 +12,8 @@ export type GamesSlides = {
 };
 
 export type GamesSlidesArgs = {
-  ordering: '-added' | '-released' | '-rating' | '-metacritic';
+  ordering: 'topRated' | 'popular' | 'mostReviewed' | 'newest' | 'anticipated' | 'trending' | 'classics';
+  limit?: number;
 };
 
 export type SlideItemProps = {

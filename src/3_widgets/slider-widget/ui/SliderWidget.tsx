@@ -9,8 +9,8 @@ import SlideItem from '@entities/game/ui/slide-item/SlideItem.tsx';
 import Slider from '@shared/ui/slider/Slider';
 import ToggleCartItemForCard from '@features/toggle-cart-item/ui/ToggleCartItemForCard.tsx';
 
-const SliderWidget: React.FC<SliderWidgetProps> = ({ subtitle }) => {
-  const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides();
+const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
+  const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides(ordering);
 
   const renderContent = () => {
     if (isLoading) return <SliderSkeleton />;
