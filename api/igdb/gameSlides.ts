@@ -22,9 +22,12 @@ const handler = async (_: VercelRequest, res: VercelResponse) => {
         Authorization: `Bearer ${currentToken}`,
         'Content-Type': 'text/plain',
       },
-      body: `fields name, cover.url, rating, summary, platforms.name;
+      body: `
+        fields name, cover.url, rating, rating_count, summary;
+        where cover != null & rating_count > 500;
         sort rating desc;
-        limit 10;`,
+        limit 12;
+      `,
     });
 
     if (!response.ok) {
@@ -47,3 +50,5 @@ const handler = async (_: VercelRequest, res: VercelResponse) => {
 };
 
 export default handler;
+
+// реалізувати адавтивний запит на різні фільтри, пофіксити кнопку додавання та видалення, щоб при перезавантаженні зберігався стан кнопки, а також обробити інтерфейс кощтка коли він пустий

@@ -8,19 +8,27 @@ import { errorMessages } from '@shared/api/error/constants.ts';
 import { useAddToCartMutation, useRemoveFromCartMutation } from '@features/toggle-cart-item/api/cartApi.ts';
 import { useAppSelector } from '@shared/hooks/redux/useAppSelector.ts';
 import { getCartItems } from '@features/toggle-cart-item/model/selectors.ts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export const useToggleCartItem = () => {
+export const useToggleCartItem = (product: Product) => {
   const { session } = useAuth();
   const { data } = useAppSelector(getCartItems);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [isExist, setIsExist] = useState(false);
+  const [isExists, setIsExist] = useState(false);
 
-  const [addToCart, { isLoading }] = useAddToCartMutation();
-  const [removeFromCart] = useRemoveFromCartMutation();
+  const [addToCart, { isLoading: isLoadingAdding }] = useAddToCartMutation();
+  const [removeFromCart, { isLoading: isLoadingRemoving }] = useRemoveFromCartMutation();
 
-  const handleToggleCartItem = async (product: Product) => {
+  useEffect(() => {
+    const isExists = data?.some((current) => current.gameId === product?.gameId) ?? false;
+
+    setTimeout(() => {
+      setIsExist(isExists);
+    }, 0);
+  }, [data, product.gameId]);
+
+  const handleToggleCartItem = async () => {
     if (!session) {
       dispatch(
         showToast({
@@ -33,16 +41,12 @@ export const useToggleCartItem = () => {
       return;
     }
 
-    const isExists = data?.some((current) => current.gameId === product.gameId);
-
     try {
       if (isExists) {
         await removeFromCart({ productId: product.gameId, userId: session.user.id }).unwrap();
-        setIsExist(false);
         return;
       }
       await addToCart({ ...product, userId: session.user.id }).unwrap();
-      setIsExist(true);
     } catch (error) {
       const apiError = error as ApiError;
       dispatch(
@@ -55,5 +59,5 @@ export const useToggleCartItem = () => {
     }
   };
 
-  return { isLoading, isExist, handleToggleCartItem };
+  return { isLoading: isLoadingAdding || isLoadingRemoving, isExists, handleToggleCartItem };
 };

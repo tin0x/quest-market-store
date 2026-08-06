@@ -1,11 +1,13 @@
 import React from 'react';
 import Button from '@shared/ui/button/Button.tsx';
 import RemoveIcon from '@shared/assets/icons/cross.svg?react';
+import SpinnerLoader from '@shared/assets/icons/spinner.svg?react';
 import type { ToggleCartItemForItemProps } from '@features/toggle-cart-item/types.ts';
 import { useToggleCartItem } from '@features/toggle-cart-item/model/useToggleCartItem.ts';
+import { cn } from '@shared/lib/utils/cn.ts';
 
 const ToggleCartItemForItem: React.FC<ToggleCartItemForItemProps> = ({ product }) => {
-  const { isLoading, handleToggleCartItem } = useToggleCartItem();
+  const { isLoading, handleToggleCartItem } = useToggleCartItem(product);
 
   return (
     <Button
@@ -13,8 +15,9 @@ const ToggleCartItemForItem: React.FC<ToggleCartItemForItemProps> = ({ product }
       type="button"
       variant="transparent"
       disabled={isLoading}
-      onClick={() => handleToggleCartItem(product)}
-      Icon={RemoveIcon}
+      onClick={handleToggleCartItem}
+      iconStyles={cn('w-6 h-6', { 'hover:text-text-primary': isLoading })}
+      Icon={isLoading ? SpinnerLoader : RemoveIcon}
     />
   );
 };

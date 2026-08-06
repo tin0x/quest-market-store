@@ -12,7 +12,7 @@ const CartItem: React.FC<CartItemProps> = ({ title, gameId, cover, price, action
             <Image type="game" source={cover} alt={title} />
           </div>
           <div className="flex flex-2 flex-col gap-1">
-            <span className="text-text-primary text-[18px] font-bold">{title}</span>
+            <span className="text-text-primary line-clamp-2 text-[18px] font-bold text-ellipsis">{title}</span>
             <span className="text-text-secondary text-[14px] font-bold">${price}</span>
           </div>
         </div>

@@ -9,7 +9,7 @@ export const gameSlidesApi = igdbApi.injectEndpoints({
       query: () => '/gameSlides',
       transformResponse: (response: unknown): GamesSlides => {
         const dto = GameSlidesSchema.parse(response);
-        const gameSlides = dto.results.map(mapGameSlides);
+        const gameSlides = dto.map(mapGameSlides);
         return { results: gameSlides };
       },
     }),

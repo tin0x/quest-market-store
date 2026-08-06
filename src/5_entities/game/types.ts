@@ -4,6 +4,7 @@ export type GameSlide = {
   id: number;
   name: string;
   cover: string | null;
+  summary: string | null;
 };
 
 export type GamesSlides = {
