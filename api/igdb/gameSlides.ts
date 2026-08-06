@@ -23,7 +23,7 @@ const handler = async (_: VercelRequest, res: VercelResponse) => {
         'Content-Type': 'text/plain',
       },
       body: `
-        fields name, cover.url, rating, rating_count, summary;
+        fields name, cover.url, rating, summary;
         where cover != null & rating_count > 500;
         sort rating desc;
         limit 12;

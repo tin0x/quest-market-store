@@ -8,6 +8,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import { Link } from 'react-router-dom';
 import Image from '@shared/ui/image/Image.tsx';
+import BuyItemNow from '@features/buy-item-now/ui/ByItemNow.tsx';
 
 const HeroWidget: React.FC = () => {
   const { games, isLoading, isError, isEmpty, selectedSlide, refetch, handleSelectSlideIndex } = useGetTrendingGames();
@@ -41,10 +42,21 @@ const HeroWidget: React.FC = () => {
               <Link className="text-[40px] font-bold uppercase" to={`/game/${game.id}`}>
                 {game.name}
               </Link>
+              <div className="bg-grey-200/10 rounded-sm p-2 text-justify backdrop-blur-xl">
+                <p className="line-clamp-8 text-[22px] select-none">{game.summary}</p>
+              </div>
               <div className="flex flex-col gap-2">
                 <span className="text-end text-[25px] font-bold">$50.99</span>
-                <Button className="text-xl" variant="accent" asLink pathTo="/cart" text="Buy Now" />
-                <Button className="text-xl" variant="transparent" text="Add to Wishlist" />
+                <BuyItemNow
+                  product={{
+                    title: games[selectedSlide].name,
+                    poster: games[selectedSlide]?.cover || '',
+                    summary: games[selectedSlide]?.summary,
+                    price: 50.99,
+                    gameId: games[selectedSlide].id,
+                  }}
+                />
+                <Button className="border-white text-xl" variant="blur" text="Add to Wishlist" />
               </div>
             </div>
           </li>

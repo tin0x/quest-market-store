@@ -4,7 +4,7 @@ export type GameSlide = {
   id: number;
   name: string;
   cover: string | null;
-  summary: string | null;
+  summary?: string;
 };
 
 export type GamesSlides = {
@@ -20,6 +20,7 @@ export type SlideItemProps = {
   image: string | null;
   alt: string;
   name: string;
+  summary?: string;
   actionSlot: React.ReactNode;
 };
 

@@ -37,7 +37,13 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ subtitle }) => {
                   alt={slide.name}
                   actionSlot={
                     <ToggleCartItemForCard
-                      product={{ title: slide.name, poster: slide.cover || '', price: 50.99, gameId: slide.id }}
+                      product={{
+                        title: slide.name,
+                        poster: slide.cover || '',
+                        price: 50.99,
+                        gameId: slide.id,
+                        summary: slide.summary,
+                      }}
                     />
                   }
                 />

@@ -6,11 +6,12 @@ import mapCartError from '@features/toggle-cart-item/mappers/mapCartError.ts';
 const cartApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
     addToCart: builder.mutation<void, AddToCartArgs>({
-      async queryFn({ title, price, poster, gameId, userId }) {
+      async queryFn({ title, price, poster, gameId, userId, summary }) {
         const { error } = await supabase.from('cart').insert({
           title,
           price,
           poster,
+          summary,
           user_id: userId,
           game_id: gameId,
         });
