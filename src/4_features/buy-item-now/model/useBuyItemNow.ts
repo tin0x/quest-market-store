@@ -7,7 +7,7 @@ import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
 import type { ApiError } from '@shared/api/error/types.ts';
-import { errorMessages } from '@shared/api/error/constants.ts';
+import { appErrorMessages } from '@shared/api/error/constants.ts';
 
 const useBuyItemNow = (product: Product) => {
   const [addToCart, { isLoading }] = useAddToCartMutation();
@@ -24,7 +24,7 @@ const useBuyItemNow = (product: Product) => {
         showToast({
           type: 'failed',
           title: 'Failed',
-          message: errorMessages.UNAUTHORIZED,
+          message: appErrorMessages.UNAUTHORIZED,
         }),
       );
       navigate('/login');

@@ -8,6 +8,7 @@ import Title from '@shared/ui/title/Title';
 import SlideItem from '@entities/game/ui/slide-item/SlideItem.tsx';
 import Slider from '@shared/ui/slider/Slider';
 import ToggleCartItemForCard from '@features/toggle-cart-item/ui/ToggleCartItemForCard.tsx';
+import ToggleProductStatusWishlist from '@features/toggle-product-status-wishlist/ui/ToggleProductStatusWishlist.tsx';
 
 const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
   const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides(ordering);
@@ -35,7 +36,18 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
                   name={slide.name}
                   image={slide.cover}
                   alt={slide.name}
-                  actionSlot={
+                  favoriteSlot={
+                    <ToggleProductStatusWishlist
+                      product={{
+                        title: slide.name,
+                        poster: slide.cover || '',
+                        price: 50.99,
+                        gameId: slide.id,
+                        summary: slide.summary,
+                      }}
+                    />
+                  }
+                  purchaseSlot={
                     <ToggleCartItemForCard
                       product={{
                         title: slide.name,

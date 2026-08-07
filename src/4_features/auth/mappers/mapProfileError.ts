@@ -1,6 +1,6 @@
 import type { PostgrestError } from '@supabase/supabase-js';
 import type { ApiError } from '@shared/api/error/types';
-import { errorMessages } from '@shared/api/error/constants';
+import { appErrorMessages } from '@shared/api/error/constants.ts';
 
 const mapProfileError = (error: PostgrestError): ApiError => {
   switch (error.code) {
@@ -18,7 +18,7 @@ const mapProfileError = (error: PostgrestError): ApiError => {
         status: 400,
         data: {
           code: 'INVALID_DATA',
-          message: errorMessages.INVALID_DATA,
+          message: appErrorMessages.INVALID_DATA,
         },
       };
 
@@ -27,7 +27,7 @@ const mapProfileError = (error: PostgrestError): ApiError => {
         status: 500,
         data: {
           code: 'UNKNOWN_ERROR',
-          message: errorMessages.UNKNOWN_ERROR,
+          message: appErrorMessages.UNKNOWN_ERROR,
         },
       };
   }

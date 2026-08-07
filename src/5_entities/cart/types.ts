@@ -1,5 +1,15 @@
 import React, { type ReactNode } from 'react';
 
+type CartErrorCode = 'CART_ITEM_EXISTS' | 'CART_ITEM_NOT_FOUND' | 'UNKNOWN_ERROR';
+
+export type ApiError = {
+  status: number | string;
+  data: {
+    code: CartErrorCode;
+    message: string;
+  };
+};
+
 export type CartItemProps = {
   title: string;
   gameId: number;

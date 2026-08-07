@@ -4,11 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
-import { errorMessages } from '@shared/api/error/constants.ts';
 import { useAddToCartMutation, useRemoveFromCartMutation } from '@features/toggle-cart-item/api/cartApi.ts';
 import { useAppSelector } from '@shared/hooks/redux/useAppSelector.ts';
 import { getCartItems } from '@features/toggle-cart-item/model/selectors.ts';
 import { useEffect, useState } from 'react';
+import { appErrorMessages } from '@shared/api/error/constants.ts';
 
 export const useToggleCartItem = (product: Product) => {
   const { session } = useAuth();
@@ -33,7 +33,7 @@ export const useToggleCartItem = (product: Product) => {
       dispatch(
         showToast({
           title: 'Failed',
-          message: errorMessages.UNAUTHORIZED,
+          message: appErrorMessages.UNAUTHORIZED,
           type: 'failed',
         }),
       );

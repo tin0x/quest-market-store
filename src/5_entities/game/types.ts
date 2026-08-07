@@ -22,7 +22,8 @@ export type SlideItemProps = {
   alt: string;
   name: string;
   summary?: string;
-  actionSlot: React.ReactNode;
+  purchaseSlot: React.ReactNode;
+  favoriteSlot: React.ReactNode;
 };
 
 export type GameCategoryCardProps = {

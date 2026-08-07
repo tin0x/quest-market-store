@@ -1,6 +1,6 @@
 import type { AuthError } from '@supabase/supabase-js';
 import type { ApiError } from '@shared/api/error/types';
-import { errorMessages } from '@shared/api/error/constants';
+import { appErrorMessages } from '@shared/api/error/constants';
 
 const mapAuthError = (error: AuthError): ApiError => {
   switch (error.code) {
@@ -9,7 +9,7 @@ const mapAuthError = (error: AuthError): ApiError => {
         status: 401,
         data: {
           code: 'INVALID_CREDENTIALS',
-          message: errorMessages.INVALID_CREDENTIALS,
+          message: appErrorMessages.INVALID_CREDENTIALS,
         },
       };
 
@@ -27,7 +27,7 @@ const mapAuthError = (error: AuthError): ApiError => {
         status: 500,
         data: {
           code: 'UNKNOWN_ERROR',
-          message: errorMessages.UNKNOWN_ERROR,
+          message: appErrorMessages.UNKNOWN_ERROR,
         },
       };
   }
