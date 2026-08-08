@@ -7,7 +7,7 @@ const mapWishlist = (dto: WishlistDTOType): Wishlist => ({
   price: dto.price,
   userId: dto.user_id,
   gameId: dto.game_id,
-  createdAt: dto.createdAt,
+  createdAt: dto.created_at,
   summary: dto.summary ?? '',
   poster: dto.poster ?? '',
 });

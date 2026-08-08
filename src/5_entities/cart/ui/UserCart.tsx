@@ -24,7 +24,12 @@ const UserCart: React.FC<UserCartProps> = ({ orders, renderAction }) => {
         Icon={CartIcon}
         onClick={() => setShowCart((prev) => !prev)}
       />
-      <CartDropdown orders={orders} renderAction={renderAction} isOpen={showCart} />
+      <CartDropdown
+        orders={orders}
+        renderAction={renderAction}
+        closeDropdown={() => setShowCart(false)}
+        isOpen={showCart}
+      />
     </div>
   );
 };

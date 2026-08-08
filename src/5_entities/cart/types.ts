@@ -30,6 +30,7 @@ export type CartResponse = {
 
 export type CartDropdownProps = {
   orders: CartResponse[];
+  closeDropdown: () => void;
   isOpen: boolean;
   renderAction: (product: CartResponse) => ReactNode;
 };

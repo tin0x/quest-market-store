@@ -19,6 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   pathTo,
   asLink,
   Icon,
+  onLink,
   ...rest
 }) => {
   if (asLink && pathTo) {
@@ -28,6 +29,7 @@ const Button: React.FC<ButtonProps> = ({
           'text-text-primary p-1': Icon && !text,
         })}
         to={pathTo}
+        onClick={onLink}
       >
         {Icon && <Icon className={cn('h-full w-full', iconStyles)} />}
         {text && <span>{text}</span>}

@@ -8,4 +8,5 @@ export type ButtonProps = {
   iconStyles?: string;
   asLink?: boolean;
   pathTo?: string;
+  onLink?: () => void;
 } & React.ComponentPropsWithoutRef<'button'>;
