@@ -5,10 +5,10 @@ import type { SliderWidgetProps } from '@widgets/slider-widget/types.ts';
 import SliderSkeleton from '@shared/ui/skeletons/slider-skeleton/SliderSkeleton.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import Title from '@shared/ui/title/Title';
-import SlideItem from '@entities/game/ui/slide-item/SlideItem.tsx';
 import Slider from '@shared/ui/slider/Slider';
-import ToggleCartItemForCard from '@features/toggle-cart-item/ui/ToggleCartItemForCard.tsx';
-import ToggleProductStatusWishlist from '@features/toggle-product-status-wishlist/ui/ToggleProductStatusWishlist.tsx';
+import { ToggleProductStatusWishlist } from '@features/toggle-product-status-wishlist/';
+import { ToggleCartItemForCard } from '@features/toggle-cart-item';
+import { SlideItem } from '@entities/game';
 
 const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
   const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides(ordering);

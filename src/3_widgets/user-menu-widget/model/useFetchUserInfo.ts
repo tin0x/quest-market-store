@@ -1,4 +1,4 @@
-import { useGetUserQuery } from '@entities/user/api/userApi.ts';
+import { useGetUserQuery } from '@entities/user';
 import { skipToken } from '@reduxjs/toolkit/query';
 import type { Session } from '@supabase/supabase-js';
 

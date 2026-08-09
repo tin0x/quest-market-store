@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@shared/ui/container/Container.tsx';
 import Title from '@shared/ui/title/Title.tsx';
-import GameCategoriesList from '@entities/game/ui/game-category/games-categories-list/GameCategoriesList.tsx';
+import { GameCategoriesList } from '@entities/game';
 
 const CategoryNavigationWidget: React.FC = () => {
   return (

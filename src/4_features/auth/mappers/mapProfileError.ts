@@ -1,5 +1,5 @@
 import type { PostgrestError } from '@supabase/supabase-js';
-import type { ApiError } from '@shared/api/error/types';
+import type { ApiError } from '@shared/api/error/types.ts';
 import { appErrorMessages } from '@shared/api/error/constants.ts';
 
 const mapProfileError = (error: PostgrestError): ApiError => {

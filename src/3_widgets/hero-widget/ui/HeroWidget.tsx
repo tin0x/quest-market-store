@@ -8,7 +8,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import { Link } from 'react-router-dom';
 import Image from '@shared/ui/image/Image.tsx';
-import BuyItemNow from '@features/buy-item-now/ui/ByItemNow.tsx';
+import { BuyItemNow } from '@features/buy-item-now';
 
 const HeroWidget: React.FC = () => {
   const { games, isLoading, isError, isEmpty, selectedSlide, refetch, handleSelectSlideIndex } = useGetTrendingGames();

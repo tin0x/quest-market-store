@@ -1,6 +1,6 @@
 import type { AuthError } from '@supabase/supabase-js';
-import type { ApiError } from '@shared/api/error/types';
-import { appErrorMessages } from '@shared/api/error/constants';
+import type { ApiError } from '@shared/api/error/types.ts';
+import { appErrorMessages } from '@shared/api/error/constants.ts';
 
 const mapAuthError = (error: AuthError): ApiError => {
   switch (error.code) {

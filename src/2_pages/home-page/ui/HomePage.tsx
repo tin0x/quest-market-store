@@ -1,10 +1,10 @@
 import React from 'react';
 import { useToggleTitle } from '@shared/hooks/router/useToggleTitle.ts';
-import HeroWidget from '@widgets/hero-widget/ui/HeroWidget.tsx';
-import SliderWidget from '@widgets/slider-widget/ui/SliderWidget.tsx';
 import GameOfferList from '@entities/game/ui/game-offer/game-offer-list/GameOfferList.tsx';
 import Container from '@shared/ui/container/Container.tsx';
-import CategoryNavigationWidget from '@widgets/category-navigation-widget/ui/CategoryNavigationWidget.tsx';
+import { SliderWidget } from '@widgets/slider-widget';
+import { HeroWidget } from '@widgets/hero-widget';
+import { CategoryNavigationWidget } from '@widgets/category-navigation-widget';
 
 const HomePage: React.FC = () => {
   useToggleTitle('Home');

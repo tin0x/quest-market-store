@@ -1,13 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import HeaderWidget from '@widgets/header-widget/ui/HeaderWidget.tsx';
-import FooterWidget from '@widgets//footer-widget/ui/FooterWidget.tsx';
 import Logo from '@shared/ui/logo/Logo.tsx';
-import SearchByName from '@features/search-by-name/ui/SearchByName.tsx';
-import NavigationWidget from '@widgets/navigation-widget/ui/NavigationWidget.tsx';
 import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
 import HelpList from '@shared/ui/help/HelpList.tsx';
-import UserMenuWidget from '@widgets/user-menu-widget/ui/UserMenuWidget.tsx';
+import { SearchByName } from '@features/search-by-name';
+import { UserMenuWidget } from '@widgets/user-menu-widget';
+import { NavigationWidget } from '@widgets/navigation-widget';
+import { HeaderWidget } from '@widgets/header-widget';
+import { FooterWidget } from '@widgets/footer-widget';
 
 const Layout: React.FC = () => {
   return (

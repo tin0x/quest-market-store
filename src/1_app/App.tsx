@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from '@pages/home-page/ui/HomePage.tsx';
-import RegisterPage from '@pages/auth-page/register-page/ui/RegisterPage.tsx';
 import Layout from '@app/layouts/Layout.tsx';
 import AuthLayout from '@app/layouts/AuthLayout.tsx';
-import LoginPage from '@pages/auth-page/login-page/ui/LoginPage.tsx';
 import AuthProvider from '@app/providers/auth-provider/AuthProvider.tsx';
-import ProtectedRoute from '@features/auth/ui/ProtectedRoute.tsx';
-import InvalidPathPage from '@pages/invalid-path-page/ui/InvalidPathPage.tsx';
-import ErrorBoundaryPage from '@pages/error-boundary-page/ui/ErrorBoundaryPage.tsx';
-import ToastWidget from '@widgets/toast-widget/ui/ToastWidget.tsx';
+import { ProtectedRoute } from '@features/auth';
+import { ToastWidget } from '@widgets/toast-widget';
+import { ErrorBoundaryPage } from '@pages/error-boundary-page';
+import { HomePage } from '@pages/home-page';
+import { InvalidPathPage } from '@pages/invalid-path-page';
+import { RegisterPage } from '@pages/register-page';
+import { LoginPage } from '@pages/login-page';
 
 const App = () => {
   const routes = createBrowserRouter([
