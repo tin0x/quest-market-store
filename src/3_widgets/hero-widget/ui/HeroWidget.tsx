@@ -2,13 +2,13 @@ import React from 'react';
 import Container from '@shared/ui/container/Container.tsx';
 import Slider from '@shared/ui/slider/Slider.tsx';
 import { useGetTrendingGames } from '@widgets/hero-widget/model/useGetTrendingGames.ts';
-import Button from '@shared/ui/button/Button.tsx';
 import HeroSkeleton from '@shared/ui/skeletons/hero-skeleton/HeroSkeleton.tsx';
 import Autoplay from 'embla-carousel-autoplay';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import { Link } from 'react-router-dom';
 import Image from '@shared/ui/image/Image.tsx';
 import { BuyItemNow } from '@features/buy-item-now';
+import { ToggleProductStatusWishlist } from '@features/toggle-product-status-wishlist';
 
 const HeroWidget: React.FC = () => {
   const { games, isLoading, isError, isEmpty, selectedSlide, refetch, handleSelectSlideIndex } = useGetTrendingGames();
@@ -56,7 +56,16 @@ const HeroWidget: React.FC = () => {
                     gameId: games[selectedSlide].id,
                   }}
                 />
-                <Button className="border-white text-xl" variant="blur" text="Add to Wishlist" />
+                <ToggleProductStatusWishlist
+                  type="textButton"
+                  product={{
+                    title: games[selectedSlide].name,
+                    poster: games[selectedSlide]?.cover || '',
+                    summary: games[selectedSlide]?.summary,
+                    price: 50.99,
+                    gameId: games[selectedSlide].id,
+                  }}
+                />
               </div>
             </div>
           </li>

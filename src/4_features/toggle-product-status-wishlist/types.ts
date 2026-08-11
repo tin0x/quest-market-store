@@ -12,6 +12,7 @@ export type AddItemToWishlistArgs = {
 };
 
 export type ToggleProductStatusWishlistProps = {
+  type: 'iconButton' | 'textButton';
   product: Product;
 };
 

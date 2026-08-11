@@ -38,6 +38,7 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
                   alt={slide.name}
                   favoriteSlot={
                     <ToggleProductStatusWishlist
+                      type="iconButton"
                       product={{
                         title: slide.name,
                         poster: slide.cover || '',
