@@ -1,7 +1,8 @@
 export type Product = {
+  id: number;
   title: string;
-  price: number;
-  poster: string;
+  price: string;
+  poster: string | null;
   summary?: string;
   gameId: number;
 };

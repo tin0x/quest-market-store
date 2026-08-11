@@ -32,33 +32,9 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
               {slideGroup.map((slide) => (
                 <SlideItem
                   key={slide.id}
-                  id={slide.id}
-                  name={slide.name}
-                  image={slide.cover}
-                  alt={slide.name}
-                  favoriteSlot={
-                    <ToggleProductStatusWishlist
-                      type="iconButton"
-                      product={{
-                        title: slide.name,
-                        poster: slide.cover || '',
-                        price: 50.99,
-                        gameId: slide.id,
-                        summary: slide.summary,
-                      }}
-                    />
-                  }
-                  purchaseSlot={
-                    <ToggleCartItemForCard
-                      product={{
-                        title: slide.name,
-                        poster: slide.cover || '',
-                        price: 50.99,
-                        gameId: slide.id,
-                        summary: slide.summary,
-                      }}
-                    />
-                  }
+                  product={slide}
+                  favoriteSlot={<ToggleProductStatusWishlist type="iconButton" product={slide} />}
+                  purchaseSlot={<ToggleCartItemForCard product={slide} />}
                 />
               ))}
             </li>

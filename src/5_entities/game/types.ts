@@ -2,9 +2,11 @@ import React from 'react';
 
 export type GameSlide = {
   id: number;
-  name: string;
-  cover: string | null;
+  title: string;
+  poster: string | null;
+  price: string;
   summary?: string;
+  gameId: number;
 };
 
 export type GamesSlides = {
@@ -17,11 +19,7 @@ export type GamesSlidesArgs = {
 };
 
 export type SlideItemProps = {
-  id: number;
-  image: string | null;
-  alt: string;
-  name: string;
-  summary?: string;
+  product: GameSlide;
   purchaseSlot: React.ReactNode;
   favoriteSlot: React.ReactNode;
 };

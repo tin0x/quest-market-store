@@ -11,10 +11,7 @@ export type ApiError = {
 };
 
 export type CartItemProps = {
-  title: string;
-  gameId: number;
-  cover: string;
-  price: number;
+  product: CartResponse;
   actionSlot: React.ReactNode;
 };
 
@@ -22,8 +19,8 @@ export type CartResponse = {
   id: number;
   userId: string;
   title: string;
-  price: number;
-  poster: string;
+  price: string;
+  poster: string | null;
   createdAt: string;
   gameId: number;
 };

@@ -15,7 +15,7 @@ export const useGetTrendingGames = () => {
       data?.results.forEach((game) => {
         const img = new Image();
 
-        if (game.cover) img.src = game.cover;
+        if (game.poster) img.src = game.poster;
       });
     }
   }, [data?.results]);

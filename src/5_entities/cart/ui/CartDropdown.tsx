@@ -22,13 +22,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ orders, isOpen, closeDropdo
           <ul className="flex max-h-137.5 flex-col gap-2 overflow-y-scroll">
             {orders.map((order) => (
               <li key={order.id}>
-                <CartItem
-                  title={order.title}
-                  gameId={order.gameId}
-                  cover={order.poster}
-                  price={order.price}
-                  actionSlot={renderAction(order)}
-                />
+                <CartItem product={order} actionSlot={renderAction(order)} />
               </li>
             ))}
           </ul>
