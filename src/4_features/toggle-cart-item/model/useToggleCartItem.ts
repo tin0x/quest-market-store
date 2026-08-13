@@ -1,5 +1,4 @@
 import type { ApiError } from '@shared/api/error/types.ts';
-import type { Product } from '@features/toggle-cart-item/types.ts';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
@@ -9,8 +8,9 @@ import { useAppSelector } from '@shared/hooks/redux/useAppSelector.ts';
 import { getCartItems } from '@features/toggle-cart-item/model/selectors.ts';
 import { useEffect, useState } from 'react';
 import { appErrorMessages } from '@shared/api/error/constants.ts';
+import type { Game } from '@entities/game';
 
-export const useToggleCartItem = (product: Product) => {
+export const useToggleCartItem = (game: Game) => {
   const { session } = useAuth();
   const { data } = useAppSelector(getCartItems);
   const navigate = useNavigate();
@@ -21,12 +21,12 @@ export const useToggleCartItem = (product: Product) => {
   const [removeFromCart, { isLoading: isLoadingRemoving }] = useRemoveFromCartMutation();
 
   useEffect(() => {
-    const isExists = data?.some((current) => current.gameId === product?.gameId) ?? false;
+    const isExists = data?.some((current) => current.gameId === game?.gameId) ?? false;
 
     setTimeout(() => {
       setIsExist(isExists);
     }, 0);
-  }, [data, product.gameId]);
+  }, [data, game.gameId]);
 
   const handleToggleCartItem = async () => {
     if (!session) {
@@ -43,10 +43,10 @@ export const useToggleCartItem = (product: Product) => {
 
     try {
       if (isExists) {
-        await removeFromCart({ productId: product.gameId, userId: session.user.id }).unwrap();
+        await removeFromCart({ gameId: game.gameId, userId: session.user.id }).unwrap();
         return;
       }
-      await addToCart({ ...product, userId: session.user.id }).unwrap();
+      await addToCart({ game, userId: session.user.id }).unwrap();
     } catch (error) {
       const apiError = error as ApiError;
       dispatch(

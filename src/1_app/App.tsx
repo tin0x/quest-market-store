@@ -9,6 +9,9 @@ import { HomePage } from '@pages/home-page';
 import { InvalidPathPage } from '@pages/invalid-path-page';
 import { RegisterPage } from '@pages/register-page';
 import { LoginPage } from '@pages/login-page';
+import { MyAccountWidget } from '@widgets/my-account-widget';
+import { ProfilePage } from '@pages/profile-page';
+import WishlistWidget from '@widgets/wishlist-widget/ui/WishlistWidget.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -28,10 +31,20 @@ const App = () => {
         {
           element: <ProtectedRoute />,
           children: [
-            // {
-            //   path: 'article',
-            //   element: <NewsPage />,
-            // },
+            {
+              path: 'profile',
+              element: <ProfilePage />,
+              children: [
+                {
+                  path: 'my-account',
+                  element: <MyAccountWidget />,
+                },
+                {
+                  path: 'wishlist',
+                  element: <WishlistWidget />,
+                },
+              ],
+            },
           ],
         },
       ],

@@ -1,7 +1,7 @@
-import type { CartResponse } from '@entities/cart/types.ts';
+import type { Cart } from '@entities/cart/types.ts';
 
-const calculateTotalCost = (products: CartResponse[]) => {
-  return products.reduce((total, product) => total + parseInt(product.price), 0);
+const calculateTotalCost = (cartList: Cart[]) => {
+  return cartList.reduce((total, cartItem) => total + cartItem.price, 0);
 };
 
 export default calculateTotalCost;

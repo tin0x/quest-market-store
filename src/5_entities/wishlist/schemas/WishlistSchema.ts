@@ -13,4 +13,4 @@ const WishlistSchema = z.object({
 
 export const WishlistResponseSchema = z.array(WishlistSchema);
 
-export type WishlistDTOType = z.infer<typeof WishlistSchema>;
+export type WishlistDTO = z.infer<typeof WishlistSchema>;

@@ -2,21 +2,21 @@ import React, { useCallback } from 'react';
 import { useFetchUserInfo } from '@widgets/user-menu-widget/model/useFetchUserInfo.ts';
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import { useFetchProductCart } from '@widgets/user-menu-widget/model/useFetchProductCart.ts';
-import type { Product } from '@widgets/user-menu-widget/types.ts';
+import { useFetchGameCart } from '@widgets/user-menu-widget/model/useFetchGameCart.ts';
 import UserMenuSkeleton from '@shared/ui/skeletons/user-menu-skeleton/UserMenuSkeleton.tsx';
 import { UserProfile } from '@entities/user';
 import { UserCart } from '@entities/cart';
 import { ToggleCartItemForItem } from '@features/toggle-cart-item';
 import { RedirectToForm } from '@features/redirect-to-form';
 import { Logout } from '@features/logout';
+import type { Game } from '@entities/game';
 
 const UserMenuWidget: React.FC = () => {
   const { session } = useAuth();
   const { user, isLoading, refetch } = useFetchUserInfo(session);
-  const { products } = useFetchProductCart(session);
+  const { games } = useFetchGameCart(session);
 
-  const renderRemoveButton = useCallback((product: Product) => <ToggleCartItemForItem product={product} />, []);
+  const renderRemoveButton = useCallback((game: Game) => <ToggleCartItemForItem game={game} />, []);
 
   const renderContent = () => {
     if (!session) return <RedirectToForm />;
@@ -25,7 +25,7 @@ const UserMenuWidget: React.FC = () => {
 
     return (
       <>
-        <UserCart orders={products} renderAction={renderRemoveButton} />
+        <UserCart cartList={games} renderAction={renderRemoveButton} />
         <UserProfile email={user.email} name={user.fullName} actions={<Logout />} />
       </>
     );

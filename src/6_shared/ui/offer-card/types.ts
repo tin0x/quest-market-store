@@ -1,5 +1,5 @@
 export type OfferCardProps = {
-  image: string | null;
+  image?: string;
   title: string;
   text: string;
   pathTo: string;

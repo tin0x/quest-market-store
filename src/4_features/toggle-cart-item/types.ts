@@ -1,21 +1,17 @@
+import type { Game } from '@entities/game';
+
 export type AddToCartArgs = {
-  title: string;
-  price: string;
-  poster: string | null;
-  summary?: string;
-  gameId: number;
+  game: Game;
   userId: string;
 };
 
 export type RemoveFromCartArgs = {
-  productId: number;
+  gameId: number;
   userId: string;
 };
 
-export type Product = Omit<AddToCartArgs, 'userId'>;
-
-export type ToggleCartItemForCardProps = {
-  product: Product;
+export type ToggleCartItemForCartProps = {
+  game: Game;
 };
 
-export type ToggleCartItemForItemProps = ToggleCartItemForCardProps;
+export type ToggleCartItemForItemProps = ToggleCartItemForCartProps;

@@ -1,7 +1,7 @@
-import type { WishlistDTOType } from '@entities/wishlist/schemas/WishlistSchema.ts';
+import type { WishlistDTO } from '@entities/wishlist/schemas/WishlistSchema.ts';
 import type { Wishlist } from '@entities/wishlist/types.ts';
 
-const mapWishlist = (dto: WishlistDTOType): Wishlist => ({
+const mapWishlist = (dto: WishlistDTO): Wishlist => ({
   id: dto.id,
   title: dto.title,
   price: dto.price,

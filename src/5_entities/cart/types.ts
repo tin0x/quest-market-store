@@ -10,29 +10,29 @@ export type ApiError = {
   };
 };
 
-export type CartItemProps = {
-  product: CartResponse;
-  actionSlot: React.ReactNode;
-};
-
-export type CartResponse = {
+export type Cart = {
   id: number;
   userId: string;
   title: string;
-  price: string;
-  poster: string | null;
+  price: number;
+  poster?: string;
   createdAt: string;
   gameId: number;
 };
 
+export type CartItemProps = {
+  cartItem: Cart;
+  actionSlot: React.ReactNode;
+};
+
 export type CartDropdownProps = {
-  orders: CartResponse[];
+  cartList: Cart[];
   closeDropdown: () => void;
   isOpen: boolean;
-  renderAction: (product: CartResponse) => ReactNode;
+  renderAction: (cartItem: Cart) => ReactNode;
 };
 
 export type UserCartProps = {
-  orders: CartResponse[];
-  renderAction: (product: CartResponse) => ReactNode;
+  cartList: Cart[];
+  renderAction: (cartItem: Cart) => ReactNode;
 };

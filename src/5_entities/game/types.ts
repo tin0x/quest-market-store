@@ -1,13 +1,15 @@
 import React from 'react';
 
-export type GameSlide = {
+export type Game = {
   id: number;
   title: string;
-  poster: string | null;
-  price: string;
+  poster?: string;
+  price: number;
   summary?: string;
   gameId: number;
 };
+
+export type GameSlide = Game;
 
 export type GamesSlides = {
   results: GameSlide[];
@@ -19,7 +21,7 @@ export type GamesSlidesArgs = {
 };
 
 export type SlideItemProps = {
-  product: GameSlide;
+  gameSlide: GameSlide;
   purchaseSlot: React.ReactNode;
   favoriteSlot: React.ReactNode;
 };

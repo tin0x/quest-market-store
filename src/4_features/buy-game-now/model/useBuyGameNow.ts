@@ -1,6 +1,5 @@
 import { useAppSelector } from '@shared/hooks/redux/useAppSelector.ts';
 import { getCartItems } from '@features/toggle-cart-item/model/selectors.ts';
-import type { Product } from '@features/buy-item-now/types.ts';
 import { useNavigate } from 'react-router-dom';
 import { useAddToCartMutation } from '@features/toggle-cart-item/api/cartApi.ts';
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
@@ -8,15 +7,16 @@ import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
 import type { ApiError } from '@shared/api/error/types.ts';
 import { appErrorMessages } from '@shared/api/error/constants.ts';
+import type { Game } from '@entities/game';
 
-const useBuyItemNow = (product: Product) => {
+const useBuyGameNow = (game: Game) => {
   const [addToCart, { isLoading }] = useAddToCartMutation();
   const { data } = useAppSelector(getCartItems);
   const navigate = useNavigate();
   const { session } = useAuth();
   const dispatch = useAppDispatch();
 
-  const exists = data?.some((current) => current.gameId === product.gameId);
+  const exists = data?.some((current) => current.gameId === game.gameId);
 
   const handleBuyItemNow = async () => {
     if (!session) {
@@ -37,7 +37,7 @@ const useBuyItemNow = (product: Product) => {
     }
 
     try {
-      await addToCart({ ...product, userId: session.user.id });
+      await addToCart({ game, userId: session.user.id });
       navigate('/cart');
     } catch (error) {
       const ApiError = error as ApiError;
@@ -48,4 +48,4 @@ const useBuyItemNow = (product: Product) => {
   return { isLoading, handleBuyItemNow };
 };
 
-export default useBuyItemNow;
+export default useBuyGameNow;

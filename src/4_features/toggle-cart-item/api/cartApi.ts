@@ -6,14 +6,14 @@ import mapCartError from '@features/toggle-cart-item/mappers/mapCartError.ts';
 const cartApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
     addToCart: builder.mutation<void, AddToCartArgs>({
-      async queryFn({ title, price, poster, gameId, userId, summary }) {
+      async queryFn({ game, userId }) {
         const { error } = await supabase.from('cart').insert({
-          title,
-          price,
-          poster,
-          summary,
+          title: game.title,
+          price: game.price,
+          poster: game.poster,
+          summary: game.summary,
+          game_id: game.gameId,
           user_id: userId,
-          game_id: gameId,
         });
 
         if (error) {
@@ -34,8 +34,8 @@ const cartApi = supabaseApi.injectEndpoints({
       ],
     }),
     removeFromCart: builder.mutation<void, RemoveFromCartArgs>({
-      async queryFn({ productId, userId }) {
-        const { error } = await supabase.from('cart').delete().eq('game_id', productId).eq('user_id', userId);
+      async queryFn({ gameId, userId }) {
+        const { error } = await supabase.from('cart').delete().eq('game_id', gameId).eq('user_id', userId);
 
         if (error) {
           return {

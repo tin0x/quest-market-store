@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '@shared/api/supabase/supabase.ts';
 import type { Session } from '@supabase/supabase-js';
-import Loader from '@shared/ui/loader/Loader.tsx';
 import AuthContext from './AuthContext';
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
@@ -9,17 +8,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (isLoading) {
-        return <Loader />;
-      }
-    }, 150);
-
     const initAuth = async () => {
       const { data } = await supabase.auth.getSession();
       setSession(data.session);
       setIsLoading(false);
-      clearInterval(timer);
     };
 
     void initAuth();
@@ -30,9 +22,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     return () => {
       listener.subscription.unsubscribe();
-      clearTimeout(timer);
     };
-  }, [isLoading]);
+  }, []);
 
   return (
     <AuthContext.Provider
@@ -40,6 +31,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         session,
         user: session?.user ?? null,
         isAuth: !!session,
+        isLoading,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-export type Product = {
+export type Game = {
   id: number;
   userId: string;
   title: string;

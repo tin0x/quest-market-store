@@ -1,10 +1,10 @@
 export const userLinks = [
   {
     name: 'Profile',
-    path: '/profile',
+    path: '/profile/my-account',
   },
   {
     name: 'Wishlist',
-    path: '/wishlist',
+    path: '/profile/wishlist',
   },
 ];

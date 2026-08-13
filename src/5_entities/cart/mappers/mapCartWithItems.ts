@@ -1,7 +1,7 @@
 import type { CartDTO } from '@entities/cart/schemas/CartSchemas.ts';
-import type { CartResponse } from '@entities/cart/types.ts';
+import type { Cart } from '@entities/cart/types.ts';
 
-const mapCartWithItems = (dto: CartDTO[0]): CartResponse => ({
+const mapCartWithItems = (dto: CartDTO): Cart => ({
   id: dto.id,
   userId: dto.user_id,
   title: dto.title,

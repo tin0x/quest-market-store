@@ -1,12 +1,12 @@
 import React from 'react';
 import Button from '@shared/ui/button/Button.tsx';
 import HeartIcon from '@shared/assets/icons/heart.svg?react';
-import type { ToggleProductStatusWishlistProps } from '@features/toggle-product-status-wishlist/types.ts';
-import useToggleProductStatusWishlist from '@features/toggle-product-status-wishlist/model/useToggleProductStatusWishlist.ts';
+import useToggleGameStatusWishlist from '@features/toggle-game-status-wishlist/model/useToggleGameStatusWishlist.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
+import type { ToggleGameStatusWishlistProps } from '@features/toggle-game-status-wishlist/types.ts';
 
-const ToggleProductStatusWishlist: React.FC<ToggleProductStatusWishlistProps> = ({ type, product }) => {
-  const { isExists, isLoading, handleToggleProductStatusWishlist } = useToggleProductStatusWishlist(product);
+const ToggleGameStatusWishlist: React.FC<ToggleGameStatusWishlistProps> = ({ type, wishlistGame }) => {
+  const { isExists, isLoading, handleToggleProductStatusWishlist } = useToggleGameStatusWishlist(wishlistGame);
 
   const currentStatusText = isExists ? 'Remove from Wishlist' : 'Add to Wishlist';
 
@@ -29,4 +29,4 @@ const ToggleProductStatusWishlist: React.FC<ToggleProductStatusWishlistProps> = 
   );
 };
 
-export default ToggleProductStatusWishlist;
+export default ToggleGameStatusWishlist;

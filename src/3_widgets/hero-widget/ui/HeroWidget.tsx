@@ -7,8 +7,8 @@ import Autoplay from 'embla-carousel-autoplay';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import { Link } from 'react-router-dom';
 import Image from '@shared/ui/image/Image.tsx';
-import { BuyItemNow } from '@features/buy-item-now';
-import { ToggleProductStatusWishlist } from '@features/toggle-product-status-wishlist';
+import { BuyItemNow } from '@features/buy-game-now';
+import { ToggleGameStatusWishlist } from '@features/toggle-game-status-wishlist';
 
 const HeroWidget: React.FC = () => {
   const { games, isLoading, isError, isEmpty, selectedSlide, refetch, handleSelectSlideIndex } = useGetTrendingGames();
@@ -47,8 +47,8 @@ const HeroWidget: React.FC = () => {
               </div>
               <div className="flex flex-col gap-2">
                 <span className="text-end text-[25px] font-bold">{`$${game.price}`}</span>
-                <BuyItemNow product={game} />
-                <ToggleProductStatusWishlist type="textButton" product={game} />
+                <BuyItemNow game={game} />
+                <ToggleGameStatusWishlist type="textButton" wishlistGame={game} />
               </div>
             </div>
           </li>

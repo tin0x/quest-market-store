@@ -1,5 +1,5 @@
 import couponImage from '@shared/assets/images/coupon.webp';
-import giftBox from '@shared/assets/images/gift-box.webp';
+import giftBoxImage from '@shared/assets/images/gift-box.webp';
 
 export const gameOffers = [
   {
@@ -10,7 +10,7 @@ export const gameOffers = [
     pathTo: '/browse',
   },
   {
-    image: giftBox,
+    image: giftBoxImage,
     title: 'Free Games',
     text: 'Explore free and free-to-play games from our collection.',
     buttonText: 'Browse',

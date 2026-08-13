@@ -5,6 +5,7 @@ type AuthContextType = {
   user: User | null;
   session: Session | null;
   isAuth: boolean;
+  isLoading: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | null>(null);

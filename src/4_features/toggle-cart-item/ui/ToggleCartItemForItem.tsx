@@ -6,8 +6,8 @@ import type { ToggleCartItemForItemProps } from '@features/toggle-cart-item/type
 import { useToggleCartItem } from '@features/toggle-cart-item/model/useToggleCartItem.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
 
-const ToggleCartItemForItem: React.FC<ToggleCartItemForItemProps> = ({ product }) => {
-  const { isLoading, handleToggleCartItem } = useToggleCartItem(product);
+const ToggleCartItemForItem: React.FC<ToggleCartItemForItemProps> = ({ game }) => {
+  const { isLoading, handleToggleCartItem } = useToggleCartItem(game);
 
   return (
     <Button

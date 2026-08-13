@@ -3,12 +3,12 @@ import { supabase } from '@shared/api/supabase/supabase.ts';
 import mapCartError from '@features/toggle-cart-item/mappers/mapCartError.ts';
 import { parseResponse } from '@shared/lib/utils/parseResponse.ts';
 import { CartListSchema } from '@entities/cart/schemas/CartSchemas.ts';
-import type { CartResponse } from '@entities/cart/types.ts';
 import mapCartWithItems from '@entities/cart/mappers/mapCartWithItems.ts';
+import type { Cart } from '@entities/cart/types.ts';
 
 export const cartApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getItemsFromCart: builder.query<CartResponse[], void>({
+    getItemsFromCart: builder.query<Cart[], void>({
       async queryFn() {
         const { data, error } = await supabase.from('cart').select('*');
 

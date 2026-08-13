@@ -1,5 +1,5 @@
 export type GameOfferItemProps = {
-  image: string | null;
+  image?: string;
   title: string;
   text: string;
   pathTo: string;

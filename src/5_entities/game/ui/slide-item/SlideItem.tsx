@@ -3,14 +3,14 @@ import Image from '@shared/ui/image/Image.tsx';
 import type { SlideItemProps } from '@entities/game/types.ts';
 import { Link } from 'react-router-dom';
 
-const SlideItem: React.FC<SlideItemProps> = ({ product, purchaseSlot, favoriteSlot }) => {
+const SlideItem: React.FC<SlideItemProps> = ({ gameSlide, purchaseSlot, favoriteSlot }) => {
   return (
     <div className="bg-gradient-card relative flex min-w-0 flex-1 flex-col justify-between rounded-lg p-6">
-      <Link to={`game/${product.gameId}`} className="aspect-video w-full overflow-hidden rounded-md">
+      <Link to={`game/${gameSlide.gameId}`} className="aspect-video w-full overflow-hidden rounded-md">
         <Image
           className="object-top transition-transform duration-250 hover:scale-110"
-          source={product.poster}
-          alt={product.title}
+          source={gameSlide.poster}
+          alt={gameSlide.title}
           type="game"
         />
       </Link>
@@ -19,11 +19,11 @@ const SlideItem: React.FC<SlideItemProps> = ({ product, purchaseSlot, favoriteSl
         <div className="min-w-0">
           <Link
             className="block truncate text-[22px] font-bold transition-transform duration-400 hover:scale-105"
-            to={`/game/${product.gameId}`}
+            to={`/game/${gameSlide.gameId}`}
           >
-            {product.title}
+            {gameSlide.title}
           </Link>
-          <span className="mt-2 block text-[18px]">{`$${product.price}`}</span>
+          <span className="mt-2 block text-[18px]">{`$${gameSlide.price}`}</span>
         </div>
         <div className="flex shrink-0 justify-center self-end">{purchaseSlot}</div>
       </div>

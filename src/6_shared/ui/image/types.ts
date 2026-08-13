@@ -3,6 +3,6 @@ import React from 'react';
 export type ImageProps = {
   className?: string;
   type: 'game' | 'article';
-  source: string | null;
+  source?: string;
   alt: string;
 } & React.ImgHTMLAttributes<HTMLImageElement>;

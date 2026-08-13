@@ -6,9 +6,9 @@ import SliderSkeleton from '@shared/ui/skeletons/slider-skeleton/SliderSkeleton.
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import Title from '@shared/ui/title/Title';
 import Slider from '@shared/ui/slider/Slider';
-import { ToggleProductStatusWishlist } from '@features/toggle-product-status-wishlist/';
-import { ToggleCartItemForCard } from '@features/toggle-cart-item';
 import { SlideItem } from '@entities/game';
+import { ToggleGameStatusWishlist } from '@features/toggle-game-status-wishlist';
+import { ToggleCartItemForCart } from '@features/toggle-cart-item';
 
 const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
   const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides(ordering);
@@ -32,9 +32,9 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
               {slideGroup.map((slide) => (
                 <SlideItem
                   key={slide.id}
-                  product={slide}
-                  favoriteSlot={<ToggleProductStatusWishlist type="iconButton" product={slide} />}
-                  purchaseSlot={<ToggleCartItemForCard product={slide} />}
+                  gameSlide={slide}
+                  favoriteSlot={<ToggleGameStatusWishlist type="iconButton" wishlistGame={slide} />}
+                  purchaseSlot={<ToggleCartItemForCart game={slide} />}
                 />
               ))}
             </li>
