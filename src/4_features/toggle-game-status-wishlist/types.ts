@@ -6,6 +6,7 @@ export type AddGameToWishlistArgs = {
 };
 
 export type ToggleGameStatusWishlistProps = {
+  className?: string;
   type: 'iconButton' | 'textButton';
   wishlistGame: Game;
 };

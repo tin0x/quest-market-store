@@ -22,6 +22,6 @@ export const placeholders: Record<PlaceholderKeys, PlaceholderValues> = {
   },
   emptyData: {
     Icon: EmptyDataIcon,
-    text: 'Data not available!',
+    text: "It's empty here for now!",
   },
 };

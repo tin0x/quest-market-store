@@ -10,26 +10,25 @@ import type { Game } from '@entities/game';
 const WishlistWidget: React.FC = () => {
   const { wishlist, isEmpty, isLoading, isError, refetch } = useFetchWishlist();
 
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-
-  if (isEmpty) {
-    return <QueryPlaceholder type="emptyData" />;
-  }
-
-  if (isError) {
-    return <QueryPlaceholder type="error" onClick={refetch} />;
-  }
-
   const actions = {
     renderRemove: (wishlistGame: Wishlist) => (
-      <ToggleGameStatusWishlist wishlistGame={wishlistGame} type="textButton" />
+      <ToggleGameStatusWishlist className="min-w-57.5 text-[18px]" wishlistGame={wishlistGame} type="textButton" />
     ),
-    renderAdd: (game: Game) => <ToggleCartItemForCart game={game} />,
+    renderAdd: (game: Game) => <ToggleCartItemForCart className="min-w-57.5 text-[18px]" game={game} />,
   };
 
-  return <WishlistList wishlist={wishlist} actions={actions} />;
+  const renderContent = () => {
+    if (isLoading) return null;
+    if (isEmpty)
+      return (
+        <QueryPlaceholder type="emptyData" customMessage="Your wishlist is currently empty, add your first game." />
+      );
+    if (isError) return <QueryPlaceholder type="error" onClick={refetch} />;
+
+    return <WishlistList wishlist={wishlist} actions={actions} />;
+  };
+
+  return <div className="w-full">{renderContent()}</div>;
 };
 
 export default WishlistWidget;

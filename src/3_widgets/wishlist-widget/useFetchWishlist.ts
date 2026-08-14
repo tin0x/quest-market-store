@@ -4,11 +4,9 @@ import { skipToken } from '@reduxjs/toolkit/query';
 
 const useFetchWishlist = () => {
   const { session } = useAuth();
-  const { data, isLoading, isFetching, isError, refetch } = useGetWishlistQuery(
-    session ? { userId: session.user.id } : skipToken,
-  );
+  const { data, isLoading, isError, refetch } = useGetWishlistQuery(session ? { userId: session.user.id } : skipToken);
 
-  return { wishlist: data || [], isEmpty: data?.length === 0, isLoading: isLoading || isFetching, isError, refetch };
+  return { wishlist: data || [], isEmpty: data?.length === 0, isLoading, isError, refetch };
 };
 
 export default useFetchWishlist;

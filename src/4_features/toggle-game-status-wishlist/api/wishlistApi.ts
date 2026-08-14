@@ -14,7 +14,7 @@ const wishlistApi = supabaseApi.injectEndpoints({
             poster: game.poster,
             game_id: game.gameId,
             summary: game.summary,
-            price: 50.99,
+            price: game.price,
             user_id: userId,
           })
           .eq('user_id', userId);

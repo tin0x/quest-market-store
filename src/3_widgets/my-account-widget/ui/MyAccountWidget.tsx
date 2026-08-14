@@ -2,7 +2,6 @@ import React from 'react';
 import useFetchProfileInfo from '@widgets/my-account-widget/model/useFetchProfileInfo.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import MyAccountSkeleton from '@shared/ui/skeletons/my-account-skeleton/MyAccountSkeleton.tsx';
-import Card from '@shared/ui/card/Card.tsx';
 import formatDate from '@shared/lib/utils/formatDate.ts';
 
 const MyAccountWidget: React.FC = () => {
@@ -17,7 +16,7 @@ const MyAccountWidget: React.FC = () => {
   }
 
   return (
-    <Card className="flex w-full flex-col gap-2 p-9 text-[18px]">
+    <div className="flex flex-col gap-2 text-[18px]">
       <p className="text-text-secondary font-bold">
         Full Name: <span className="text-text-primary font-normal">{user?.fullName}</span>
       </p>
@@ -30,7 +29,7 @@ const MyAccountWidget: React.FC = () => {
           {user?.createdAt ? formatDate(user.createdAt) : 'unknown'}
         </span>
       </p>
-    </Card>
+    </div>
   );
 };
 

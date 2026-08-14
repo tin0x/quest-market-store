@@ -8,6 +8,7 @@ export type PlaceholderValues = {
 };
 
 export type QueryPlaceholderProps = {
+  customMessage?: string;
   type: PlaceholderKeys;
   onClick?: () => void;
 };

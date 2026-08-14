@@ -11,6 +11,7 @@ export type RemoveFromCartArgs = {
 };
 
 export type ToggleCartItemForCartProps = {
+  className?: string;
   game: Game;
 };
 
