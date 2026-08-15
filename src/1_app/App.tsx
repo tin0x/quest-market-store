@@ -11,7 +11,8 @@ import { RegisterPage } from '@pages/register-page';
 import { LoginPage } from '@pages/login-page';
 import { MyAccountWidget } from '@widgets/my-account-widget';
 import { ProfilePage } from '@pages/profile-page';
-import WishlistWidget from '@widgets/wishlist-widget/ui/WishlistWidget.tsx';
+import { WishlistWidget } from '@widgets/wishlist-widget';
+import PersonalInformationWidget from '@widgets/personal-information-widget/ui/PersonalInformationWidget.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -42,6 +43,10 @@ const App = () => {
                 {
                   path: 'wishlist',
                   element: <WishlistWidget />,
+                },
+                {
+                  path: 'personal-information',
+                  element: <PersonalInformationWidget />,
                 },
               ],
             },

@@ -1,11 +1,11 @@
 import React from 'react';
-import { WishlistList } from '@entities/wishlist';
-import { ToggleGameStatusWishlist } from '@features/toggle-game-status-wishlist';
-import { ToggleCartItemForCart } from '@features/toggle-cart-item';
 import useFetchWishlist from '@widgets/wishlist-widget/useFetchWishlist.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import type { Wishlist } from '@entities/wishlist/types.ts';
+import WishlistSkeleton from '@shared/ui/skeletons/wishlist-skeleton/WishlistSkeleton.tsx';
+import { ToggleCartItemForCart } from '@features/toggle-cart-item';
+import { ToggleGameStatusWishlist } from '@features/toggle-game-status-wishlist';
 import type { Game } from '@entities/game';
+import { type Wishlist, WishlistList } from '@entities/wishlist';
 
 const WishlistWidget: React.FC = () => {
   const { wishlist, isEmpty, isLoading, isError, refetch } = useFetchWishlist();
@@ -18,7 +18,7 @@ const WishlistWidget: React.FC = () => {
   };
 
   const renderContent = () => {
-    if (isLoading) return null;
+    if (isLoading) return <WishlistSkeleton />;
     if (isEmpty)
       return (
         <QueryPlaceholder type="emptyData" customMessage="Your wishlist is currently empty, add your first game." />

@@ -30,6 +30,12 @@ const userApi = supabaseApi.injectEndpoints({
           data: mapUser(result.data),
         };
       },
+      providesTags: [
+        {
+          type: 'User',
+          id: 'ID',
+        },
+      ],
     }),
   }),
 });
