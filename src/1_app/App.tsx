@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '@app/layouts/Layout.tsx';
 import AuthLayout from '@app/layouts/AuthLayout.tsx';
 import AuthProvider from '@app/providers/auth-provider/AuthProvider.tsx';
-import { ProtectedRoute } from '@features/auth';
 import { ToastWidget } from '@widgets/toast-widget';
 import { ErrorBoundaryPage } from '@pages/error-boundary-page';
 import { HomePage } from '@pages/home-page';
@@ -12,7 +11,8 @@ import { LoginPage } from '@pages/login-page';
 import { MyAccountWidget } from '@widgets/my-account-widget';
 import { ProfilePage } from '@pages/profile-page';
 import { WishlistWidget } from '@widgets/wishlist-widget';
-import PersonalInformationWidget from '@widgets/personal-information-widget/ui/PersonalInformationWidget.tsx';
+import { PersonalInformationWidget } from '@widgets/personal-information-widget';
+import ProtectedRoute from '@app/router/ProtectedRoute.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([

@@ -29,13 +29,15 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
 
   return (
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-      <fieldset className="flex h-full flex-col gap-8">
+      <fieldset className="flex h-full flex-col gap-4">
         <div className="flex min-h-33.75 flex-col gap-2">
           <label className="text-xl font-bold" htmlFor="fullName">
             Your Name
           </label>
           <Input
-            className="text-[18px] placeholder:text-[18px]"
+            className={cn('text-[18px] placeholder:text-[18px]', {
+              'outline-red-600': errors.fullName,
+            })}
             variant="secondary"
             id="fullName"
             placeholder={profileInfo?.fullName}
@@ -54,7 +56,9 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
             Email Address
           </label>
           <Input
-            className="text-[18px] placeholder:text-[18px]"
+            className={cn('text-[18px] placeholder:text-[18px]', {
+              'outline-red-600': errors.email,
+            })}
             variant="secondary"
             id="email"
             placeholder={profileInfo?.email}
@@ -68,6 +72,13 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
             {errors.email?.message}
           </small>
         </div>
+        <small
+          className={cn('min-h-6 text-base text-red-600 opacity-0 transition-all duration-200', {
+            'opacity-100': errors.root?.server?.message,
+          })}
+        >
+          {errors.root?.server.message}
+        </small>
         <Button className="mt-auto" type="submit" text="Save" disabled={isSubmitDisabled} />
       </fieldset>
     </form>
@@ -75,3 +86,5 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
 };
 
 export default UpdatePersonalInformation;
+
+// дописати глобальну помилку зверху від сервера!

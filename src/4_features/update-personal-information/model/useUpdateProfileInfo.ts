@@ -6,25 +6,37 @@ import { appErrorMessages } from '@shared/api/error/constants.ts';
 import type { ApiError } from '@shared/api/error/types.ts';
 import type { UseFormSetError } from 'react-hook-form';
 import type { SaveProfileInfoForm } from '@features/update-personal-information/schemas/SaveProfileInfoSchema.ts';
+import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
+import { userSuccessMessages } from '@entities/user';
 
 const useUpdateProfileInfo = (setError: UseFormSetError<SaveProfileInfoForm>) => {
   const { session } = useAuth();
   const [updateProfileInfo, { isLoading: isLoadingProfileInfo }] = useUpdateProfileMutation();
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const onSubmit = async (data: SaveProfileInfoForm) => {
     if (!session) {
-      showToast({
-        type: 'failed',
-        title: 'Failed',
-        message: appErrorMessages.UNAUTHORIZED,
-      });
+      dispatch(
+        showToast({
+          type: 'failed',
+          title: 'Failed',
+          message: appErrorMessages.UNAUTHORIZED,
+        }),
+      );
       navigate('/login');
       return;
     }
 
     try {
       await updateProfileInfo({ patch: data, email: data.email, userId: session.user.id }).unwrap();
+      dispatch(
+        showToast({
+          type: 'success',
+          title: 'Success',
+          message: userSuccessMessages.DATA_UPDATED,
+        }),
+      );
     } catch (error) {
       const apiError = error as ApiError;
       setError('root.server', {

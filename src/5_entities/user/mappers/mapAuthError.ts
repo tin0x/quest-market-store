@@ -1,6 +1,7 @@
 import type { AuthError } from '@supabase/supabase-js';
 import type { ApiError } from '@shared/api/error/types.ts';
 import { appErrorMessages } from '@shared/api/error/constants.ts';
+import { userErrorMessages } from '@entities/user';
 
 const mapAuthError = (error: AuthError): ApiError => {
   switch (error.code) {
@@ -10,6 +11,24 @@ const mapAuthError = (error: AuthError): ApiError => {
         data: {
           code: 'INVALID_CREDENTIALS',
           message: appErrorMessages.INVALID_CREDENTIALS,
+        },
+      };
+
+    case 'over_email_send_rate_limit':
+      return {
+        status: 429,
+        data: {
+          code: 'OVER_EMAIL_SENT_RATE_LIMIT',
+          message: userErrorMessages.OVER_EMAIL_SENT_RATE_LIMIT,
+        },
+      };
+
+    case 'email_address_invalid':
+      return {
+        status: 400,
+        data: {
+          code: 'EMAIL_ADDRESS_INVALID',
+          message: userErrorMessages.EMAIL_ADDRESS_INVALID,
         },
       };
 

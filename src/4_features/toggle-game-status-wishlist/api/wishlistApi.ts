@@ -1,7 +1,7 @@
 import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
 import type { AddGameToWishlistArgs, RemoveGameFromWishlistArgs } from '@features/toggle-game-status-wishlist/types.ts';
 import { supabase } from '@shared/api/supabase/supabase.ts';
-import mapWishlistError from '@entities/wishlist/mappers/mapWishlistError.ts';
+import { mapWishlistError } from '@entities/wishlist';
 
 const wishlistApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({

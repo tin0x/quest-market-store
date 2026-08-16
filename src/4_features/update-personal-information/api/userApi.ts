@@ -1,8 +1,7 @@
 import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
 import { supabase } from '@shared/api/supabase/supabase.ts';
-import mapProfileError from '@features/auth/mappers/mapProfileError.ts';
-import mapAuthError from '@features/auth/mappers/mapAuthError.ts';
 import type { UpdateProfileArgs } from '@features/update-personal-information/types.ts';
+import { mapAuthError, mapProfileError } from '@entities/user';
 
 const userApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({

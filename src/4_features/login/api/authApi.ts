@@ -1,7 +1,7 @@
 import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
 import type { LoginArgs, LoginResponse } from '@features/login/types.ts';
 import { supabase } from '@shared/api/supabase/supabase.ts';
-import mapAuthError from '@features/auth/mappers/mapAuthError.ts';
+import { mapAuthError } from '@entities/user';
 
 export const authApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({

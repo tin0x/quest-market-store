@@ -1,6 +1,6 @@
 import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
 import { supabase } from '@shared/api/supabase/supabase.ts';
-import mapCartError from '@features/toggle-cart-item/mappers/mapCartError.ts';
+import mapCartError from '@entities/cart/mappers/mapCartError.ts';
 import { parseResponse } from '@shared/lib/utils/parseResponse.ts';
 import { CartListSchema } from '@entities/cart/schemas/CartSchemas.ts';
 import mapCartWithItems from '@entities/cart/mappers/mapCartWithItems.ts';

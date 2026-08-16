@@ -9,7 +9,7 @@ const mapProfileError = (error: PostgrestError): ApiError => {
         status: 409,
         data: {
           code: 'USER_ALREADY_EXISTS',
-          message: 'Profile already exists',
+          message: appErrorMessages.USER_ALREADY_EXISTS,
         },
       };
 

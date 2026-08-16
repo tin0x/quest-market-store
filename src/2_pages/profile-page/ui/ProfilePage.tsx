@@ -11,8 +11,8 @@ const ProfilePage: React.FC = () => {
   return (
     <section className="flex h-full items-center">
       <Container className="flex h-auto justify-between gap-11">
-        <AccountNavigationWidget className={'sticky top-5'} />
-        <Card className="flex w-full flex-1 p-9" variant="primary">
+        <AccountNavigationWidget className="sticky top-5 w-79.25 min-w-0" />
+        <Card className="flex flex-1 p-9" variant="primary">
           <Outlet />
         </Card>
       </Container>

@@ -1,7 +1,7 @@
 import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
 import { supabase } from '@shared/api/supabase/supabase.ts';
 import type { AddToCartArgs, RemoveFromCartArgs } from '@features/toggle-cart-item/types.ts';
-import mapCartError from '@features/toggle-cart-item/mappers/mapCartError.ts';
+import { mapCartError } from '@entities/cart';
 
 const cartApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
