@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useGetUserQuery } from '@entities/user';
-import { UpdatePersonalInformation } from '@features/update-personal-information';
 import { Navigate } from 'react-router-dom';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
 import { appErrorMessages } from '@shared/api/error/constants.ts';
 import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
+import PersonalInformationSkeleton from '@shared/ui/skeletons/personal-information-skeleton/PersonalInformationSkeleton.tsx';
+import { UpdatePersonalInformation } from '@features/update-personal-information';
 
 const PersonalInformationWidget: React.FC = () => {
   const { data, isLoading, isError } = useGetUserQuery();
@@ -23,7 +24,7 @@ const PersonalInformationWidget: React.FC = () => {
   }, [data, isError, isLoading, dispatch]);
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <PersonalInformationSkeleton />;
   }
 
   if (!data || isError) {
