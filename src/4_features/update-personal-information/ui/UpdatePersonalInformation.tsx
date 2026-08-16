@@ -11,7 +11,7 @@ import type { UpdatePersonalInformationProps } from '@features/update-personal-i
 const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ profileInfo }) => {
   const {
     register,
-    formState: { isDirty, isValid, errors },
+    formState: { isDirty, isValid, errors, dirtyFields },
     handleSubmit,
     setError,
   } = useForm({
@@ -23,7 +23,7 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
     },
   });
 
-  const { isLoadingButton, onSubmit } = useUpdateProfileInfo(setError);
+  const { isLoadingButton, onSubmit } = useUpdateProfileInfo(setError, dirtyFields);
 
   const isSubmitDisabled = !isDirty || !isValid || isLoadingButton;
 

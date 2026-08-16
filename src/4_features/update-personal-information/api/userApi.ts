@@ -1,42 +1,38 @@
 import { supabaseApi } from '@shared/api/supabase/supabaseApi.ts';
 import { supabase } from '@shared/api/supabase/supabase.ts';
-import type { UpdateProfileArgs } from '@features/update-personal-information/types.ts';
+import type { UpdateEmailArgs, UpdateProfileInfoArgs } from '@features/update-personal-information/types.ts';
 import { mapAuthError, mapProfileError } from '@entities/user';
 
 const userApi = supabaseApi.injectEndpoints({
   endpoints: (builder) => ({
-    updateProfile: builder.mutation<void, UpdateProfileArgs>({
-      async queryFn({ patch, email, userId }) {
-        if (email) {
-          const { error: authError } = await supabase.auth.updateUser({
-            email,
-          });
+    updateEmail: builder.mutation<void, UpdateEmailArgs>({
+      async queryFn({ email }) {
+        const { error: authError } = await supabase.auth.updateUser({
+          email,
+        });
 
-          if (authError) {
-            return {
-              error: mapAuthError(authError),
-            };
-          }
+        if (authError) {
+          return {
+            error: mapAuthError(authError),
+          };
         }
 
-        const profileUpdate = {
-          ...(patch?.fullName !== undefined && {
-            full_name: patch.fullName,
-          }),
-
-          ...(patch?.email !== undefined && {
-            email: patch.email,
-          }),
+        return {
+          data: undefined,
         };
+      },
+    }),
+    updateProfileInfo: builder.mutation<void, UpdateProfileInfoArgs>({
+      async queryFn({ fullName, userId }) {
+        const { error: profileError } = await supabase
+          .from('profiles')
+          .update({ full_name: fullName })
+          .eq('id', userId);
 
-        if (profileUpdate && Object.keys(profileUpdate).length > 0) {
-          const { error: profileError } = await supabase.from('profiles').update(profileUpdate).eq('id', userId);
-
-          if (profileError) {
-            return {
-              error: mapProfileError(profileError),
-            };
-          }
+        if (profileError) {
+          return {
+            error: mapProfileError(profileError),
+          };
         }
 
         return {
@@ -53,4 +49,4 @@ const userApi = supabaseApi.injectEndpoints({
   }),
 });
 
-export const { useUpdateProfileMutation } = userApi;
+export const { useUpdateEmailMutation, useUpdateProfileInfoMutation } = userApi;

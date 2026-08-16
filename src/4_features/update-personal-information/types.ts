@@ -4,8 +4,11 @@ export type UpdatePersonalInformationProps = {
   profileInfo: User;
 };
 
-export type UpdateProfileArgs = {
-  patch?: Omit<User, 'createdAt' | 'id'>;
-  email?: string;
+export type UpdateEmailArgs = {
+  email: string;
+};
+
+export type UpdateProfileInfoArgs = {
+  fullName: string;
   userId: string;
 };
