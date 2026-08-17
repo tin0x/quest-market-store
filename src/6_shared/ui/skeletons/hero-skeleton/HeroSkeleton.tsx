@@ -4,29 +4,23 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 const HeroSkeleton: React.FC = () => {
   return (
     <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
-      <div className="relative h-full w-full overflow-hidden">
-        <ul className="flex h-full">
-          {Array.from({ length: 1 }).map((_, i) => (
-            <li key={i} className="flex h-full w-full shrink-0 items-start justify-between p-20">
-              <div className="mb-10 w-2/5">
-                <Skeleton className="mb-2" height={40} count={2.5} width="100%" borderRadius={9999} />
+      <div className="relative flex h-full w-full gap-10 overflow-hidden py-8">
+        <div className="flex-1">
+          <Skeleton width="100%" height="100%" />
+        </div>
+        <div className="flex flex-1 flex-col justify-between">
+          <Skeleton width="50%" height={40} />
+          <Skeleton count={4.5} height={40} />
+          <div className="flex flex-col gap-1">
+            <div className="flex justify-end">
+              <div className="w-1/5">
+                <Skeleton height={40} />
               </div>
-              <div className="flex w-1/4 flex-col gap-3 self-end">
-                <div className="self-end">
-                  <Skeleton height={40} width="60px" />
-                </div>
-                <div className="w-full">
-                  <Skeleton height={45} borderRadius={9999} />
-                </div>
-                <div className="w-full">
-                  <Skeleton height={45} borderRadius={9999} />
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <Skeleton className="absolute top-1/2 left-5 h-16 w-16 -translate-y-1/2 rounded-full" circle={true} />
-        <Skeleton className="absolute top-1/2 right-5 h-16 w-16 -translate-y-1/2 rounded-full" circle={true} />
+            </div>
+            <Skeleton width="100%" height={50} />
+            <Skeleton width="100%" height={50} />
+          </div>
+        </div>
       </div>
     </SkeletonTheme>
   );
