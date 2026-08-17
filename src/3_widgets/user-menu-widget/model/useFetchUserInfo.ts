@@ -1,9 +1,7 @@
 import { useGetUserQuery } from '@entities/user';
-import { skipToken } from '@reduxjs/toolkit/query';
-import type { Session } from '@supabase/supabase-js';
 
-export const useFetchUserInfo = (session: Session | null) => {
-  const { data, isLoading, isFetching, refetch } = useGetUserQuery(session ? undefined : skipToken);
+export const useFetchUserInfo = () => {
+  const { data, isLoading, isFetching, refetch } = useGetUserQuery();
 
   return {
     user: data,

@@ -1,4 +1,5 @@
 import React, { type ReactNode } from 'react';
+import type { Game } from '@entities/game';
 
 type CartErrorCode = 'CART_ITEM_EXISTS' | 'CART_ITEM_NOT_FOUND' | 'UNKNOWN_ERROR';
 
@@ -10,7 +11,7 @@ export type ApiError = {
   };
 };
 
-export type Cart = {
+export type CartItem = {
   id: number;
   userId: string;
   title: string;
@@ -21,18 +22,32 @@ export type Cart = {
 };
 
 export type CartItemProps = {
-  cartItem: Cart;
+  cartItem: CartItem;
   actionSlot: React.ReactNode;
 };
 
 export type CartDropdownProps = {
-  cartList: Cart[];
+  cartList: CartItem[];
   closeDropdown: () => void;
   isOpen: boolean;
-  renderAction: (cartItem: Cart) => ReactNode;
+  renderAction: (cartItem: CartItem) => ReactNode;
 };
 
 export type UserCartProps = {
-  cartList: Cart[];
-  renderAction: (cartItem: Cart) => ReactNode;
+  cartList: CartItem[];
+  renderAction: (cartItem: CartItem) => ReactNode;
+};
+
+export type ShoppingCartItemProps = {
+  cartItem: CartItem;
+  actionSlot: React.ReactNode;
+};
+
+export type ShoppingCartListProps = {
+  cartList: CartItem[];
+  renderAction: (game: Game) => ReactNode;
+};
+
+export type OrderFromCartProps = {
+  cartList: CartItem[];
 };

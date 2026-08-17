@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from '@shared/ui/dropdown/Dropdown.tsx';
-import CartItem from '@entities/cart/ui/CartItem.tsx';
+import CartItem from '@entities/cart/ui/user-cart/CartItem.tsx';
 import type { CartDropdownProps } from '@entities/cart/types.ts';
 import CartStub from '@shared/assets/icons/cart-stub.svg?react';
 import Button from '@shared/ui/button/Button.tsx';

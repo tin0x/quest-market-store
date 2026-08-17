@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import Button from '@shared/ui/button/Button.tsx';
 import CartIcon from '@shared/assets/icons/cart.svg?react';
 import type { UserCartProps } from '@entities/cart/types.ts';
-import CartDropdown from '@entities/cart/ui/CartDropdown.tsx';
+import CartDropdown from '@entities/cart/ui/user-cart/CartDropdown.tsx';
 import { useClickOutside } from '@shared/hooks/ui/useClickOutside.ts';
 
 const UserCart: React.FC<UserCartProps> = ({ cartList, renderAction }) => {
@@ -15,7 +15,7 @@ const UserCart: React.FC<UserCartProps> = ({ cartList, renderAction }) => {
   return (
     <div className="relative" ref={dropdownRef}>
       {isOrders && (
-        <div className="rounded-circle bg-surface pointer-events-none absolute -top-6 -right-5 z-10 border-2 px-3 py-1">
+        <div className="rounded-circle bg-surface pointer-events-none absolute -top-6 -right-5 z-10 h-7 min-w-7 border-2 px-1 text-center">
           <span className="text-text-primary font-bold select-none">{cartList.length}</span>
         </div>
       )}

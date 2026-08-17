@@ -6,6 +6,7 @@ const Card: React.FC<CardProps> = ({ variant = 'primary', className, children })
   const styles = {
     primary: 'bg-surface',
     secondary: 'bg-secondary',
+    surface: 'bg-card',
   };
 
   return <div className={cn('rounded-md', styles[variant], className)}>{children}</div>;

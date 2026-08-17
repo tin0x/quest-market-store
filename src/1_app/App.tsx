@@ -13,6 +13,7 @@ import { ProfilePage } from '@pages/profile-page';
 import { WishlistWidget } from '@widgets/wishlist-widget';
 import { PersonalInformationWidget } from '@widgets/personal-information-widget';
 import ProtectedRoute from '@app/router/ProtectedRoute.tsx';
+import CartPage from '@pages/cart-page/ui/CartPage.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -49,6 +50,10 @@ const App = () => {
                   element: <PersonalInformationWidget />,
                 },
               ],
+            },
+            {
+              path: 'cart',
+              element: <CartPage />,
             },
           ],
         },

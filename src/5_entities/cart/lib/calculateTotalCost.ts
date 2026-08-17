@@ -1,6 +1,6 @@
-import type { Cart } from '@entities/cart/types.ts';
+import type { CartItem } from '@entities/cart/types.ts';
 
-const calculateTotalCost = (cartList: Cart[]) => {
+const calculateTotalCost = (cartList: CartItem[]) => {
   return cartList.reduce((total, cartItem) => total + cartItem.price, 0);
 };
 
