@@ -8,7 +8,7 @@ const SlideItem: React.FC<SlideItemProps> = ({ gameSlide, purchaseSlot, favorite
     <div className="bg-gradient-card relative flex min-w-0 flex-1 flex-col justify-between rounded-lg p-6">
       <Link to={`game/${gameSlide.gameId}`} className="aspect-video w-full overflow-hidden rounded-md">
         <Image
-          className="object-top transition-transform duration-250 hover:scale-110"
+          className="object-top transition-transform duration-300 hover:scale-110"
           source={gameSlide.poster}
           alt={gameSlide.title}
           type="game"
@@ -17,10 +17,7 @@ const SlideItem: React.FC<SlideItemProps> = ({ gameSlide, purchaseSlot, favorite
       <div className="absolute top-8 left-8 z-10">{favoriteSlot}</div>
       <div className="flex justify-between gap-2">
         <div className="min-w-0">
-          <Link
-            className="block truncate text-[22px] font-bold transition-transform duration-400 hover:scale-105"
-            to={`/game/${gameSlide.gameId}`}
-          >
+          <Link className="block truncate text-[22px] font-bold" to={`/game/${gameSlide.gameId}`}>
             {gameSlide.title}
           </Link>
           <span className="mt-2 block text-[18px]">{`$${gameSlide.price}`}</span>
