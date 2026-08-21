@@ -5,5 +5,5 @@ export const supabaseApi = createApi({
   reducerPath: 'supabaseApi',
   baseQuery: fakeBaseQuery(),
   endpoints: () => ({}),
-  tagTypes: ['Cart', 'Product', 'Wishlist', 'User'],
+  tagTypes: ['Cart', 'Product', 'Wishlist', 'User', 'Order'],
 });

@@ -2,11 +2,13 @@ import React from 'react';
 import Button from '@shared/ui/button/Button.tsx';
 import type { OrderFromCartProps } from '@entities/cart/types.ts';
 import calculateTotalCost from '@entities/cart/lib/calculateTotalCost.ts';
+import Card from '@shared/ui/card/Card.tsx';
+import { cn } from '@shared/lib/utils/cn.ts';
 
-const OrderFromCart: React.FC<OrderFromCartProps> = ({ cartList }) => {
+const OrderFromCart: React.FC<OrderFromCartProps> = ({ className, cartList, actionSlot, isContinueShopping }) => {
   return (
-    <div className="flex flex-col gap-6">
-      <h3 className="text-center text-[22px] font-bold">Order Summary</h3>
+    <Card className={cn('sticky top-5 flex flex-col gap-6 p-5', className)} variant="surface">
+      <h3 className="text-[26px] font-bold">Order Summary</h3>
       <div className="flex flex-col gap-6">
         <div className="flex justify-between gap-2 text-xl">
           <span className="text-text-secondary">Subtotal</span>
@@ -17,17 +19,19 @@ const OrderFromCart: React.FC<OrderFromCartProps> = ({ cartList }) => {
           <span>$00.00</span>
         </div>
         <div className="border-t">
-          <div className="flex justify-between gap-2 py-6 text-xl">
+          <div className="flex justify-between gap-2 py-6 text-[26px]">
             <span>Total</span>
             <span>{`$${calculateTotalCost(cartList).toFixed(2)}`}</span>
           </div>
         </div>
       </div>
       <div className="flex flex-col justify-between gap-4 text-[18px]">
-        <Button asLink pathTo="/checkout" text="Procced to Checkout" variant="dark" />
-        <Button className="border-white" asLink pathTo="/browse" text="Continue Shopping" variant="transparent" />
+        {actionSlot || <Button asLink pathTo="/checkout" text="Procced to Checkout" variant="dark" />}
+        {isContinueShopping && (
+          <Button className="border-white" asLink pathTo="/browse" text="Continue Shopping" variant="transparent" />
+        )}
       </div>
-    </div>
+    </Card>
   );
 };
 

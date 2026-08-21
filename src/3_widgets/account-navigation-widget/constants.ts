@@ -12,7 +12,7 @@ export const accountNavigationVariant = [
   {
     title: 'My Orders',
     description: 'View Your Previous Orders',
-    pathTo: '/profile/my-orders',
+    pathTo: '/profile/my-order',
   },
   {
     title: 'Wishlist',

@@ -6,6 +6,7 @@ import type { Game } from '@entities/game';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import type { ShoppingCartWidgetProps } from '@widgets/shopping-cart-widget/types.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
+import OrderFromCart from '@entities/cart/ui/order-from-cart/OrderFromCart.tsx';
 
 const ShoppingCartWidget: React.FC<ShoppingCartWidgetProps> = ({ className }) => {
   const { games, isEmpty, isLoading, isError, refetch } = useFetchGameCart();
@@ -23,12 +24,15 @@ const ShoppingCartWidget: React.FC<ShoppingCartWidgetProps> = ({ className }) =>
           <h1 className="text-[42px] font-bold">Shopping Cart</h1>
           <p className="text-text-secondary text-[22px]">{`You have ${games.length} items in your cart`}</p>
         </div>
-        <ShoppingCartList cartList={games} renderAction={renderAction} />
+        <div className="flex justify-between gap-12">
+          <ShoppingCartList className="flex-2" cartList={games} renderAction={renderAction} />
+          <OrderFromCart className="flex-1 self-start" cartList={games} isContinueShopping />
+        </div>
       </>
     );
   };
 
-  return <section className={cn(className)}>{renderContent()}</section>;
+  return <section className={cn(className, 'w-full')}>{renderContent()}</section>;
 };
 
 export default ShoppingCartWidget;

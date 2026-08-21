@@ -8,7 +8,7 @@ export const helpLinks = [
       },
       {
         name: 'My Orders',
-        path: '/orders',
+        path: '/order',
       },
     ],
   },

@@ -14,6 +14,8 @@ import { WishlistWidget } from '@widgets/wishlist-widget';
 import { PersonalInformationWidget } from '@widgets/personal-information-widget';
 import ProtectedRoute from '@app/router/ProtectedRoute.tsx';
 import CartPage from '@pages/cart-page/ui/CartPage.tsx';
+import { CheckoutPage } from '@pages/checkout-page';
+import OrderConfirmationPage from '@pages/order-confirmation-page/ui/OrderConfirmationPage.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -54,6 +56,14 @@ const App = () => {
             {
               path: 'cart',
               element: <CartPage />,
+            },
+            {
+              path: 'checkout',
+              element: <CheckoutPage />,
+            },
+            {
+              path: 'order-confirmation/:id',
+              element: <OrderConfirmationPage />,
             },
           ],
         },

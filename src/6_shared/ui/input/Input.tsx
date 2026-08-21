@@ -16,6 +16,7 @@ const handleClearValue = (e: React.KeyboardEvent<HTMLInputElement>) => {
 
 const Input: React.FC<InputProps> = ({
   clearOnEscape,
+  layoutStyle,
   className,
   variant = 'primary',
   Icon,
@@ -28,7 +29,7 @@ const Input: React.FC<InputProps> = ({
   const inputType = isPassword ? (showPassword ? 'text' : 'password') : type;
 
   return (
-    <div className="relative">
+    <div className={cn('relative', layoutStyle)}>
       {Icon && (
         <Icon className="text-text-primary pointer-events-none absolute top-1/2 left-5 h-6 w-6 -translate-y-1/2" />
       )}

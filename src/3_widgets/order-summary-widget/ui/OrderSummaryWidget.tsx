@@ -1,28 +1,30 @@
 import React from 'react';
-import { useFetchGameCart } from '@entities/cart';
+import { OrderList } from '@entities/order';
+import useFetchOrderById from '@widgets/order-summary-widget/model/useFetchOrderById.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
-import OrderFromCart from '@entities/cart/ui/order-from-cart/OrderFromCart.tsx';
-import Card from '@shared/ui/card/Card.tsx';
-import type { OrderSummaryWidgetProps } from '@widgets/order-summary-widget/types.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
+import type { OrderSummaryWidgetProps } from '@widgets/order-summary-widget/types.ts';
 
 const OrderSummaryWidget: React.FC<OrderSummaryWidgetProps> = ({ className }) => {
-  const { games, isEmpty, isLoading, isError, refetch } = useFetchGameCart();
+  const { data, isLoading, isError } = useFetchOrderById();
 
-  const renderContent = () => {
-    if (isLoading) return <p>Loading...</p>;
-    if (isEmpty) return <QueryPlaceholder type="emptyData" />;
-    if (isError) return <QueryPlaceholder type="error" onClick={refetch} />;
+  if (isLoading) {
+    return <span>Loading...</span>;
+  }
 
-    return <OrderFromCart cartList={games} />;
-  };
+  if (!data || isError) {
+    return <QueryPlaceholder type="error" />;
+  }
+
+  if (!data.orderItems.length) {
+    return <QueryPlaceholder type="emptyData" />;
+  }
 
   return (
-    <section className={cn(className)}>
-      <Card className="sticky top-5 p-5" variant="surface">
-        {renderContent()}
-      </Card>
-    </section>
+    <div className={cn('flex flex-col gap-4', className)}>
+      <h3 className="text-[30px] font-bold">Order Summary</h3>
+      <OrderList orderItemsList={data.orderItems} />
+    </div>
   );
 };
 

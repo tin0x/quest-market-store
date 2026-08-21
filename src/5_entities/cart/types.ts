@@ -44,10 +44,14 @@ export type ShoppingCartItemProps = {
 };
 
 export type ShoppingCartListProps = {
+  className?: string;
   cartList: CartItem[];
   renderAction: (game: Game) => ReactNode;
 };
 
 export type OrderFromCartProps = {
+  className?: string;
   cartList: CartItem[];
+  actionSlot?: React.ReactNode;
+  isContinueShopping?: boolean;
 };
