@@ -1,12 +1,11 @@
 import React, { useCallback } from 'react';
-import ShoppingCartList from '@entities/cart/ui/shopping-cart/ShoppingCartList.tsx';
 import { ToggleCartItemForItem } from '@features/toggle-cart-item';
-import { useFetchGameCart } from '@entities/cart';
+import { OrderFromCart, ShoppingCartList, useFetchGameCart } from '@entities/cart';
 import type { Game } from '@entities/game';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import type { ShoppingCartWidgetProps } from '@widgets/shopping-cart-widget/types.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
-import OrderFromCart from '@entities/cart/ui/order-from-cart/OrderFromCart.tsx';
+import ShoppingCartSkeleton from '@shared/ui/skeletons/shopping-cart-skeleton/ShoppingCartSkeleton.tsx';
 
 const ShoppingCartWidget: React.FC<ShoppingCartWidgetProps> = ({ className }) => {
   const { games, isEmpty, isLoading, isError, refetch } = useFetchGameCart();
@@ -14,7 +13,7 @@ const ShoppingCartWidget: React.FC<ShoppingCartWidgetProps> = ({ className }) =>
   const renderAction = useCallback((game: Game) => <ToggleCartItemForItem game={game} />, []);
 
   const renderContent = () => {
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <ShoppingCartSkeleton />;
     if (isEmpty) return <QueryPlaceholder type="emptyData" />;
     if (isError) return <QueryPlaceholder type="error" onClick={refetch} />;
 

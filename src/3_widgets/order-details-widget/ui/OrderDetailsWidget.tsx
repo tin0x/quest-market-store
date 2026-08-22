@@ -2,12 +2,13 @@ import React from 'react';
 import { OrderDetailsList } from '@entities/order';
 import useFetchOrderDetailsList from '@widgets/order-details-widget/model/useFetchOrderDetailsList.ts';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
+import OrderDetailsSkeleton from '@shared/ui/skeletons/order-details-skeleton/OrderDetailsSkeleton.tsx';
 
 const OrderDetailsWidget: React.FC = () => {
   const { orderDetailsList, isLoading, isError, isEmpty, refetch } = useFetchOrderDetailsList();
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <OrderDetailsSkeleton />;
   }
 
   if (isEmpty) {

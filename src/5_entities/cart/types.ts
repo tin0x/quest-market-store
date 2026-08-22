@@ -54,4 +54,10 @@ export type OrderFromCartProps = {
   cartList: CartItem[];
   actionSlot?: React.ReactNode;
   isContinueShopping?: boolean;
+  orderStates?: {
+    isLoading: boolean;
+    isEmpty: boolean;
+    isError: boolean;
+    refetch: () => void;
+  };
 };

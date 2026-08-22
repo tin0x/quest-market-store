@@ -1,8 +1,11 @@
 import React from 'react';
 import Container from '@shared/ui/container/Container.tsx';
 import { CheckoutWidget } from '@widgets/checkout-widget';
+import { useToggleTitle } from '@shared/hooks/router/useToggleTitle.ts';
 
 const CheckoutPage: React.FC = () => {
+  useToggleTitle('Checkout');
+
   return (
     <div className="h-full">
       <Container>

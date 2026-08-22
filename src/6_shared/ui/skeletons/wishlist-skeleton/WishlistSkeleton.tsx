@@ -5,7 +5,7 @@ const WishlistSkeleton: React.FC = () => {
   return (
     <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
       <ul className="flex flex-1 flex-col">
-        {Array.from({ length: 1 }, (_, i) => (
+        {Array.from({ length: 2 }, (_, i) => (
           <li key={i}>
             <div className="flex gap-4">
               <div className="aspect-square w-50 rounded-md">

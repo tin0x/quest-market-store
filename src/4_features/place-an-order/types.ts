@@ -4,6 +4,12 @@ import React from 'react';
 export type PlaceAnOrderProps = {
   className?: string;
   games: CartItem[];
+  orderStates: {
+    isLoading: boolean;
+    isEmpty: boolean;
+    isError: boolean;
+    refetch: () => void;
+  };
   renderAction: (isValid: boolean, isLoading: boolean) => React.ReactNode;
 };
 

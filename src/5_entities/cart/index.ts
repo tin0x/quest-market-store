@@ -6,3 +6,4 @@ export { default as OrderFromCart } from './ui/order-from-cart/OrderFromCart.tsx
 export type { CartItem } from './types.ts';
 export type { CartDTO } from './schemas/CartSchemas.ts';
 export { default as calculateTotalCost } from './lib/calculateTotalCost.ts';
+export { default as ShoppingCartList } from './ui/shopping-cart/ShoppingCartList.tsx';

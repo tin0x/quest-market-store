@@ -10,7 +10,7 @@ const mapAuthError = (error: AuthError): ApiError => {
         status: 401,
         data: {
           code: 'INVALID_CREDENTIALS',
-          message: appErrorMessages.INVALID_CREDENTIALS,
+          message: userErrorMessages.INVALID_CREDENTIALS,
         },
       };
 

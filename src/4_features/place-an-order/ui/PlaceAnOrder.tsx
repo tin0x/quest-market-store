@@ -18,7 +18,7 @@ import { OrderFromCart } from '@entities/cart';
 const styleInput =
   'text-text-primary bg-input-secondary h-full w-full rounded-sm border border-none px-5 py-4 text-[18px] outline-white placeholder:font-bold hover:cursor-pointer focus:outline-2';
 
-const PlaceAnOrder: React.FC<PlaceAnOrderProps> = ({ className, games, renderAction }) => {
+const PlaceAnOrder: React.FC<PlaceAnOrderProps> = ({ className, games, orderStates, renderAction }) => {
   const {
     register,
     setValue,
@@ -146,7 +146,12 @@ const PlaceAnOrder: React.FC<PlaceAnOrderProps> = ({ className, games, renderAct
           </div>
         </fieldset>
       </Card>
-      <OrderFromCart className="flex-1 self-start" cartList={games} actionSlot={renderAction(isValid, isLoading)} />
+      <OrderFromCart
+        className="flex-1 self-start"
+        cartList={games}
+        orderStates={orderStates}
+        actionSlot={renderAction(isValid, isLoading)}
+      />
     </form>
   );
 };
