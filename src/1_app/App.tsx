@@ -13,9 +13,10 @@ import { ProfilePage } from '@pages/profile-page';
 import { WishlistWidget } from '@widgets/wishlist-widget';
 import { PersonalInformationWidget } from '@widgets/personal-information-widget';
 import ProtectedRoute from '@app/router/ProtectedRoute.tsx';
-import CartPage from '@pages/cart-page/ui/CartPage.tsx';
 import { CheckoutPage } from '@pages/checkout-page';
-import OrderConfirmationPage from '@pages/order-confirmation-page/ui/OrderConfirmationPage.tsx';
+import { CartPage } from '@pages/cart-page';
+import { OrderConfirmationPage } from '@pages/order-confirmation-page';
+import { OrderDetailsWidget } from '@widgets/order-details-widget';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -44,12 +45,16 @@ const App = () => {
                   element: <MyAccountWidget />,
                 },
                 {
-                  path: 'wishlist',
-                  element: <WishlistWidget />,
-                },
-                {
                   path: 'personal-information',
                   element: <PersonalInformationWidget />,
+                },
+                {
+                  path: 'my-orders',
+                  element: <OrderDetailsWidget />,
+                },
+                {
+                  path: 'wishlist',
+                  element: <WishlistWidget />,
                 },
               ],
             },

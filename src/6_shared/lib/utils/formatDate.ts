@@ -1,12 +1,12 @@
-const formatDate = (date: string) => {
+const formatDate = (date: string, isHour?: boolean, isMinute?: boolean) => {
   const currentDate = new Date(date);
 
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
+    hour: isHour ? 'numeric' : undefined,
+    minute: isMinute ? 'numeric' : undefined,
   }).format(currentDate);
 };
 

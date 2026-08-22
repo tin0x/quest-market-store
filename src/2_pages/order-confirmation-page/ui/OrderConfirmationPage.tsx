@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from '@shared/ui/container/Container.tsx';
-import OrderSummaryWidget from '@widgets/order-summary-widget/ui/OrderSummaryWidget.tsx';
 import InformationStatusOperation from '@shared/ui/information-status-operation/InformationStatusOperation.tsx';
+import { OrderSummaryWidget } from '@widgets/order-summary-widget';
 
 const OrderConfirmationPage: React.FC = () => {
   return (

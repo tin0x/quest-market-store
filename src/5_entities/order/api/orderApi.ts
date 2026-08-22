@@ -37,7 +37,7 @@ const orderApi = supabaseApi.injectEndpoints({
     }),
     getOrderList: builder.query<OrderList[], GetOrderListArgs>({
       async queryFn({ userId }) {
-        const { data, error } = await supabase.from('orders').select().eq('user_id', userId);
+        const { data, error } = await supabase.from('orders').select('*, order_items (*)').eq('user_id', userId);
 
         if (error) {
           return {

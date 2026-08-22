@@ -42,3 +42,13 @@ export type OrderListProps = {
     poster: string;
   }[];
 };
+
+export type OrderDetailsItemProps = {
+  orderId: string;
+  totalPrice: number;
+  date: string;
+};
+
+export type OrderDetailsListProps = {
+  orderDetailsList: OrderListOfGame[];
+};

@@ -6,7 +6,7 @@ const mapOrderList = (dto: OrderListDTO): OrderList => ({
   userId: dto.user_id,
   totalPrice: dto.total_price,
   createdAt: dto.created_at,
-  orderItems: dto.order_items.map((item) => ({
+  orderItems: dto.order_items?.map((item) => ({
     gameId: item.game_id,
     price: item.price,
     title: item.title,
