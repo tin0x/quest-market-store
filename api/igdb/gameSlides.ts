@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import getIGBDToken from './lib/getIGDBToken';
+import getIGBDToken from './lib/getIGDBToken.ts';
 import { configDotenv } from 'dotenv';
 import * as path from 'node:path';
-import { orderingType } from './constants';
+import { orderingType } from './constants.ts';
 
 configDotenv({ path: path.resolve(process.cwd(), '.env.local') });
 

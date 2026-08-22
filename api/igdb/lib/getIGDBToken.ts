@@ -1,6 +1,12 @@
 let cachedToken: string | null = null;
 let tokenExpiredAt = 0;
 
+type TwitchTokenResponse = {
+  access_token: string;
+  expires_in: number;
+  token_type?: string;
+};
+
 const getIGBDToken = async () => {
   const now = Date.now();
 
@@ -26,7 +32,8 @@ const getIGBDToken = async () => {
     throw new Error(`Token error: ${response.statusText}`);
   }
 
-  const { access_token, expires_in } = await response.json();
+  const token = (await response.json()) as TwitchTokenResponse;
+  const { access_token, expires_in } = token;
 
   cachedToken = access_token;
   tokenExpiredAt = now + (expires_in - 300) * 1000;
