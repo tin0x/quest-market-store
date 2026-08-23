@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const GameSlideSchema = z.object({
+export const GameSchema = z.object({
   id: z.number(),
   cover: z.object({
     url: z.string().nullish(),
@@ -9,6 +9,6 @@ export const GameSlideSchema = z.object({
   summary: z.string().nullish(),
 });
 
-export const GameSlidesSchema = z.array(GameSlideSchema);
+export const GameListSchema = z.array(GameSchema);
 
-export type GameSlideDTO = z.infer<typeof GameSlideSchema>;
+export type GameDTO = z.infer<typeof GameSchema>;

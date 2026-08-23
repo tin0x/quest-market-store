@@ -1,8 +1,8 @@
-import { useGetGamesSlidesQuery } from '@entities/game/api/gameSlidesApi.ts';
 import { useEffect, useState } from 'react';
+import { useGetGameListQuery } from '@entities/game';
 
 export const useGetTrendingGames = () => {
-  const { data, isLoading, isFetching, isError, refetch } = useGetGamesSlidesQuery({ ordering: 'topRated' });
+  const { data, isLoading, isFetching, isError, refetch } = useGetGameListQuery({ ordering: 'topRated' });
 
   const [selectedSlide, setSelectedSlide] = useState(0);
 

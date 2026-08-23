@@ -1,9 +1,9 @@
-import type { GameSlide } from '@entities/game/types.ts';
-import type { GameSlideDTO } from '@entities/game/schemas/GameSlidesSchema.ts';
+import type { Game } from '@entities/game/types.ts';
+import type { GameDTO } from '@entities/game/schemas/GameSchema.ts';
 import getIGDBImageUrl from '@entities/game/lib/getIGDBImageUrl.ts';
 import generateRandomPrice from '@entities/game/lib/generateRandomPrice.ts';
 
-export const mapGameSlides = (dto: GameSlideDTO): GameSlide => ({
+export const mapGame = (dto: GameDTO): Game => ({
   id: dto.id,
   title: dto.name,
   poster: getIGDBImageUrl(dto.cover.url || null),

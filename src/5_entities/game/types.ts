@@ -9,19 +9,17 @@ export type Game = {
   gameId: number;
 };
 
-export type GameSlide = Game;
-
-export type GamesSlides = {
-  results: GameSlide[];
+export type GameList = {
+  results: Game[];
 };
 
-export type GamesSlidesArgs = {
+export type GamesListArgs = {
   ordering: 'topRated' | 'popular' | 'mostReviewed' | 'newest' | 'anticipated' | 'trending' | 'classics';
   limit?: number;
 };
 
 export type SlideItemProps = {
-  gameSlide: GameSlide;
+  gameSlide: Game;
   purchaseSlot: React.ReactNode;
   favoriteSlot: React.ReactNode;
 };
