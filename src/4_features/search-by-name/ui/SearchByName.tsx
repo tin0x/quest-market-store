@@ -12,7 +12,7 @@ const SearchByName: React.FC = () => {
   const { searchResult, isLoading, isError, isEmpty, isOpen, name, handleChangeInput, handleClear } = useSearchByName();
 
   const renderContent = () => {
-    if (isLoading) return <Loader />;
+    if (isLoading) return <Loader className="relative top-0 left-0 mx-auto translate-0" />;
     if (isEmpty) return <QueryPlaceholder type="emptyData" />;
     if (isError) return <QueryPlaceholder type="error" />;
 
@@ -36,7 +36,6 @@ const SearchByName: React.FC = () => {
   return (
     <div>
       <Input
-        clearOnEscape
         className="text-[18px]"
         Icon={SearchIcon}
         value={name}
@@ -44,7 +43,7 @@ const SearchByName: React.FC = () => {
         onChange={handleChangeInput}
       />
       <Dropdown
-        className={cn('top-100% left-0 flex min-h-105.5 max-w-full flex-col justify-center overflow-hidden p-10')}
+        className={cn('top-100% left-0 flex max-w-full flex-col justify-center overflow-hidden p-10')}
         isOpen={isOpen}
       >
         {renderContent()}

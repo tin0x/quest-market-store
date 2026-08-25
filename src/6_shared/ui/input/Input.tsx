@@ -11,7 +11,9 @@ const inputStyles = {
 } as const;
 
 const handleClearValue = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  if (e.key === 'Escape') e.currentTarget.value = '';
+  if (e.key === 'Escape') {
+    e.currentTarget.value = '';
+  }
 };
 
 const Input: React.FC<InputProps> = ({

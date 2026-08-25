@@ -1,0 +1,53 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { configDotenv } from 'dotenv';
+import * as path from 'node:path';
+import getIGBDToken from './lib/getIGDBToken.ts';
+
+configDotenv({ path: path.resolve(process.cwd(), '.env.local') });
+
+const gameWithPagination = async (req: VercelRequest, res: VercelResponse) => {
+  const userId = process.env.TWITCH_CLIENT_ID;
+
+  const limit = Number(req.query.limit ?? 30);
+  const offset = Number(req.query.offset ?? 0);
+
+  try {
+    if (!userId) {
+      throw new Error('userId is missing');
+    }
+
+    const token = await getIGBDToken();
+
+    const response = await fetch('https://api.igdb.com/v4/games', {
+      method: 'POST',
+      headers: {
+        'Client-ID': userId,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: `
+        fields name, cover.url, rating, summary;
+        where cover != null & rating_count > 500;
+        sort rating desc;
+        limit ${limit};
+        offset ${offset};
+      `,
+    });
+
+    if (!response.ok) {
+      console.error(response.statusText);
+      throw new Error('Failed to fetch IGDB response');
+    }
+
+    const parsedResponse = await response.json();
+    res.status(200).json(parsedResponse);
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : error;
+    res.status(500).json({
+      error: 'Internal Server Error',
+      message: errorMessage,
+    });
+  }
+};
+
+export default gameWithPagination;

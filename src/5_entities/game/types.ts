@@ -30,3 +30,19 @@ export type GameCategoryCardProps = {
   genre: string;
   pathTo: string;
 };
+
+export type GameProductCardProps = {
+  pathTo: string;
+  poster: string;
+  title: string;
+  price: number;
+};
+
+export type GameProductListProps = {
+  gameList: Game[];
+};
+
+export type GameListWithPaginationArgs = {
+  limit: number;
+  offset: number;
+};

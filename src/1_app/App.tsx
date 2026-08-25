@@ -17,6 +17,7 @@ import { CheckoutPage } from '@pages/checkout-page';
 import { CartPage } from '@pages/cart-page';
 import { OrderConfirmationPage } from '@pages/order-confirmation-page';
 import { OrderDetailsWidget } from '@widgets/order-details-widget';
+import BrowsePage from '@pages/browse-page/ui/BrowsePage.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -71,6 +72,10 @@ const App = () => {
               element: <OrderConfirmationPage />,
             },
           ],
+        },
+        {
+          path: 'browse',
+          element: <BrowsePage />,
         },
       ],
     },
