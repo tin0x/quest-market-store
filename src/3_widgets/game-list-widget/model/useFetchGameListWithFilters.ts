@@ -1,7 +1,14 @@
 import { useGetGameListWithPaginationQuery } from '@entities/game/api/gameApi.ts';
+import { useSearchParams } from 'react-router-dom';
 
 const useFetchGameListWithFilters = (limit: number, offset: number) => {
-  const { data, isLoading, isFetching, isError } = useGetGameListWithPaginationQuery({ limit, offset });
+  const [searchParams] = useSearchParams();
+
+  const { data, isLoading, isFetching, isError } = useGetGameListWithPaginationQuery({
+    limit,
+    offset,
+    searchParams: searchParams.toString(),
+  });
 
   return {
     gameList: data?.results,

@@ -45,4 +45,5 @@ export type GameProductListProps = {
 export type GameListWithPaginationArgs = {
   limit: number;
   offset: number;
+  searchParams: string;
 };

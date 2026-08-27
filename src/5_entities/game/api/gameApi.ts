@@ -20,8 +20,8 @@ export const gameApi = igdbApi.injectEndpoints({
       },
     }),
     getGameListWithPagination: build.query<GameList, GameListWithPaginationArgs>({
-      query: ({ limit, offset }) => ({
-        url: '/gameWithPagination',
+      query: ({ limit, offset, searchParams }) => ({
+        url: `/gameWithPagination?${searchParams}`,
         params: {
           limit,
           offset,
@@ -37,11 +37,13 @@ export const gameApi = igdbApi.injectEndpoints({
 
         currentCache.results.push(...newItems.results);
       },
-      serializeQueryArgs: ({ endpointName }) => {
-        return endpointName;
+      serializeQueryArgs: ({ endpointName, queryArgs }) => {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { offset, limit, ...filters } = queryArgs;
+        return `${endpointName}-${JSON.stringify(filters)}`;
       },
       forceRefetch: ({ currentArg, previousArg }) => {
-        return currentArg?.offset !== previousArg?.offset;
+        return currentArg?.offset !== previousArg?.offset || JSON.stringify(currentArg) !== JSON.stringify(previousArg);
       },
     }),
   }),

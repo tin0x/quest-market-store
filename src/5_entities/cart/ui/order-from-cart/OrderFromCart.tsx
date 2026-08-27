@@ -41,7 +41,13 @@ const OrderFromCart: React.FC<OrderFromCartProps> = ({
         <div className="flex flex-col justify-between gap-4 text-[18px]">
           {actionSlot || <Button asLink pathTo="/checkout" text="Procced to Checkout" variant="dark" />}
           {isContinueShopping && (
-            <Button className="border-white" asLink pathTo="/browse" text="Continue Shopping" variant="transparent" />
+            <Button
+              className="border-white"
+              asLink
+              pathTo="/browse?sort=rating+desc"
+              text="Continue Shopping"
+              variant="transparent"
+            />
           )}
         </div>
       </>

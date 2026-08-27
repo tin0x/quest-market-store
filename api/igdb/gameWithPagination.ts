@@ -10,6 +10,26 @@ const gameWithPagination = async (req: VercelRequest, res: VercelResponse) => {
 
   const limit = Number(req.query.limit ?? 30);
   const offset = Number(req.query.offset ?? 0);
+  const sort = req.query.sort ?? 'rating desc';
+
+  const search = req.query.search ? `search "${req.query.search}"` : '';
+  const genres = req.query.genres ? (Array.isArray(req.query.genres) ? req.query.genres : [req.query.genres]) : [];
+  const platforms = req.query.platforms
+    ? Array.isArray(req.query.platforms)
+      ? req.query.platforms
+      : [req.query.platforms]
+    : [];
+
+  const searchOrSortQuery = search ? search : `sort ${sort}`;
+  let whereClause = 'cover != null & rating_count > 500';
+
+  if (genres.length > 0) {
+    whereClause += `& genres = (${genres.join(',')})`;
+  }
+
+  if (platforms.length > 0) {
+    whereClause += `& platforms = (${platforms.join(',')})`;
+  }
 
   try {
     if (!userId) {
@@ -27,8 +47,8 @@ const gameWithPagination = async (req: VercelRequest, res: VercelResponse) => {
       },
       body: `
         fields name, cover.url, rating, summary;
-        where cover != null & rating_count > 500;
-        sort rating desc;
+        where ${whereClause};
+        ${searchOrSortQuery};
         limit ${limit};
         offset ${offset};
       `,

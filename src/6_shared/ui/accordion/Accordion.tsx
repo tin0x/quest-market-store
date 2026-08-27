@@ -3,12 +3,12 @@ import type { AccordionProps } from '@shared/ui/accordion/types.ts';
 import { cn } from '@shared/lib/utils/cn.ts';
 import ArrowDown from '@shared/assets/icons/arrow-down.svg?react';
 
-const Accordion: React.FC<AccordionProps> = ({ topSlot, innerSlot }) => {
+const Accordion: React.FC<AccordionProps> = ({ className, topSlot, innerSlot }) => {
   const [showAccordion, setShowAccordion] = useState(false);
 
   return (
     <div
-      className="bg-card-secondary cursor-pointer rounded-md p-8.5"
+      className={cn('bg-card-secondary cursor-pointer rounded-md p-8.5', className)}
       onClick={() => setShowAccordion((prev) => !prev)}
     >
       <div

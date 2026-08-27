@@ -5,7 +5,7 @@ export const navigationlinks = [
   },
   {
     title: 'Browse',
-    path: '/browse',
+    path: '/browse?sort=rating+desc',
   },
   {
     title: 'News',

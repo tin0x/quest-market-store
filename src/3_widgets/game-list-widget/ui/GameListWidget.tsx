@@ -4,10 +4,21 @@ import useFetchGameListWithFilters from '@widgets/game-list-widget/model/useFetc
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import Loader from '@shared/ui/loader/Loader.tsx';
 import GameListSkeleton from '@shared/ui/skeletons/game-list-skeleton/GameListSkeleton.tsx';
+import { cn } from '@shared/lib/utils/cn.ts';
+import type { GameListWidgetProps } from '@widgets/game-list-widget/types.ts';
+import { useSearchParams } from 'react-router-dom';
 
-const GameListWidget: React.FC = () => {
+const GameListWidget: React.FC<GameListWidgetProps> = ({ className }) => {
+  const [searchParams] = useSearchParams();
+  const searchParamsString = searchParams.toString();
+  const [prevSearchParamsString, setPrevSearchParamsString] = useState(searchParamsString);
   const [offset, setOffset] = useState(0);
   const limit = 30;
+
+  if (prevSearchParamsString !== searchParamsString) {
+    setPrevSearchParamsString(searchParamsString);
+    setOffset(0);
+  }
 
   const { gameList, isLoading, isFetching, isError } = useFetchGameListWithFilters(limit, offset);
 
@@ -22,11 +33,14 @@ const GameListWidget: React.FC = () => {
     const loader = loaderRef.current;
     if (!loader) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      if (!entries[0].isIntersecting) return;
-      if (isFetchingRef.current) return;
-      setOffset((prev) => prev + limit);
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting) return;
+        if (isFetchingRef.current) return;
+        setOffset((prev) => prev + limit);
+      },
+      { rootMargin: '0px 0px 800px 0px' },
+    );
 
     observer.observe(loader);
 
@@ -48,7 +62,7 @@ const GameListWidget: React.FC = () => {
     );
   };
 
-  return <section className="flex flex-col gap-2">{renderContent()}</section>;
+  return <section className={cn('flex flex-col gap-2', className)}>{renderContent()}</section>;
 };
 
 export default GameListWidget;

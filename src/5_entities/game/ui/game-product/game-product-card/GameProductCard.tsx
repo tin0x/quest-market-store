@@ -7,7 +7,7 @@ import type { GameProductCardProps } from '@entities/game/types.ts';
 const GameProductCard: React.FC<GameProductCardProps> = ({ pathTo, poster, title, price }) => {
   return (
     <Link className="group h-full" to={pathTo}>
-      <Card className="h-full" variant="surface">
+      <Card className="h-full overflow-hidden" variant="surface">
         <div className="w-full overflow-hidden">
           <Image
             className="rounded-none rounded-t-md duration-300 ease-in-out group-hover:scale-110"
