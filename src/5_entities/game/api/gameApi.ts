@@ -27,15 +27,13 @@ export const gameApi = igdbApi.injectEndpoints({
           offset,
         },
       }),
-      transformResponse: (response: unknown): GameList => {
+      transformResponse: (response: unknown, _, arg): GameList => {
         const dto = GameListSchema.parse(response);
         const gameList = dto.map(mapGame);
-        return { results: gameList };
-      },
-      merge: (currentCache, newItems, { arg }) => {
-        if (arg.offset === 0) return newItems;
-
-        currentCache.results.push(...newItems.results);
+        return {
+          results: gameList,
+          hasMore: gameList.length === arg.limit,
+        };
       },
       serializeQueryArgs: ({ endpointName, queryArgs }) => {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -44,6 +42,12 @@ export const gameApi = igdbApi.injectEndpoints({
       },
       forceRefetch: ({ currentArg, previousArg }) => {
         return currentArg?.offset !== previousArg?.offset || JSON.stringify(currentArg) !== JSON.stringify(previousArg);
+      },
+      merge: (currentCache, newItems, { arg }) => {
+        if (arg.offset === 0) return newItems;
+
+        currentCache.results.push(...newItems.results);
+        currentCache.hasMore = newItems.hasMore;
       },
     }),
   }),

@@ -55,7 +55,6 @@ const gameWithPagination = async (req: VercelRequest, res: VercelResponse) => {
     });
 
     if (!response.ok) {
-      console.error(response.statusText);
       throw new Error('Failed to fetch IGDB response');
     }
 

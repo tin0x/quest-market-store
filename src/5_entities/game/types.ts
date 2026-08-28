@@ -11,6 +11,7 @@ export type Game = {
 
 export type GameList = {
   results: Game[];
+  hasMore?: boolean;
 };
 
 export type GamesListArgs = {

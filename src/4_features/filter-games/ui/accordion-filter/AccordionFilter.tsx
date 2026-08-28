@@ -17,23 +17,27 @@ const AccordionFilter: React.FC<AccordionFilterProps> = ({
     <ul className="flex flex-col gap-4">
       {filterFields.map((filter) =>
         filterType === 'checkbox' ? (
-          <CheckboxButton
-            value={filter.value}
-            name={filter.name}
-            group={group}
-            filterType={filterType}
-            selectedValues={selectedValues}
-            onChange={onChange}
-          />
+          <li key={filter.value}>
+            <CheckboxButton
+              value={filter.value}
+              name={filter.name}
+              group={group}
+              filterType={filterType}
+              selectedValues={selectedValues}
+              onChange={onChange}
+            />
+          </li>
         ) : (
-          <RadioButton
-            value={filter.value}
-            name={filter.name}
-            group={group}
-            filterType={filterType}
-            currentParam={selectedValues[0]}
-            onChange={onChange}
-          />
+          <li key={filter.value}>
+            <RadioButton
+              value={filter.value}
+              name={filter.name}
+              group={group}
+              filterType={filterType}
+              currentParam={selectedValues[0]}
+              onChange={onChange}
+            />
+          </li>
         ),
       )}
     </ul>

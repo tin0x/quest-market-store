@@ -11,16 +11,17 @@ import { useSearchParams } from 'react-router-dom';
 const GameListWidget: React.FC<GameListWidgetProps> = ({ className }) => {
   const [searchParams] = useSearchParams();
   const searchParamsString = searchParams.toString();
-  const [prevSearchParamsString, setPrevSearchParamsString] = useState(searchParamsString);
   const [offset, setOffset] = useState(0);
   const limit = 30;
+
+  const [prevSearchParamsString, setPrevSearchParamsString] = useState(searchParamsString);
 
   if (prevSearchParamsString !== searchParamsString) {
     setPrevSearchParamsString(searchParamsString);
     setOffset(0);
   }
 
-  const { gameList, isLoading, isFetching, isError } = useFetchGameListWithFilters(limit, offset);
+  const { gameList, hasMore, isLoading, isFetching, isError } = useFetchGameListWithFilters(limit, offset);
 
   const loaderRef = useRef<HTMLDivElement | null>(null);
   const isFetchingRef = useRef(isFetching);
@@ -37,6 +38,7 @@ const GameListWidget: React.FC<GameListWidgetProps> = ({ className }) => {
       (entries) => {
         if (!entries[0].isIntersecting) return;
         if (isFetchingRef.current) return;
+        if (!hasMore) return;
         setOffset((prev) => prev + limit);
       },
       { rootMargin: '0px 0px 800px 0px' },
@@ -45,13 +47,12 @@ const GameListWidget: React.FC<GameListWidgetProps> = ({ className }) => {
     observer.observe(loader);
 
     return () => observer.unobserve(loader);
-  }, [isLoading]);
+  }, [isLoading, isFetching, hasMore]);
 
   const renderContent = () => {
-    if (isLoading) return <GameListSkeleton />;
+    if (isLoading || (isFetching && offset === 0)) return <GameListSkeleton />;
     if (!gameList?.length) return <QueryPlaceholder type="emptyData" />;
     if (isError) return <QueryPlaceholder type="error" />;
-
     return (
       <>
         <GameProductList gameList={gameList} />

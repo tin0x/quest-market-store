@@ -12,6 +12,7 @@ const useFetchGameListWithFilters = (limit: number, offset: number) => {
 
   return {
     gameList: data?.results,
+    hasMore: data?.hasMore,
     isLoading,
     isFetching,
     isError,

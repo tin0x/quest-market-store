@@ -6,7 +6,7 @@ const GameProductList: React.FC<GameProductListProps> = ({ gameList }) => {
   return (
     <ul className="grid grid-cols-3 items-stretch gap-x-7 gap-y-10">
       {gameList.map((game) => (
-        <li key={game.id}>
+        <li key={game.gameId}>
           <GameProductCard
             title={game.title}
             poster={game.poster || ''}

@@ -10,58 +10,56 @@ import fightingHero from '@shared/assets/images/fighting-hero.webp';
 import fightingCover from '@shared/assets/images/fighting-cover.webp';
 import rpgHero from '@shared/assets/images/rpg-hero.webp';
 import rpgCover from '@shared/assets/images/rpg-cover.webp';
-import singleHero from '@shared/assets/images/single-hero.webp';
-import singleCover from '@shared/assets/images/single-cover.webp';
-import vrHero from '@shared/assets/images/vr-hero.webp';
-import vrCover from '@shared/assets/images/vr-cover.webp';
+// import vrHero from '@shared/assets/images/vr-hero.webp';
+// import vrCover from '@shared/assets/images/vr-cover.webp';
 
 export const gamesCategories = [
   {
     heroImage: actionHero,
     cover: actionCover,
     genre: 'Action',
-    pathTo: '/browse',
+    pathTo: '/browse?sort=rating+desc&genres=12&genres=5',
   },
   {
     heroImage: adventureHero,
     cover: adventureCover,
     genre: 'Adventure',
-    pathTo: '/browse',
+    pathTo: '/browse?sort=rating+desc&genres=9&genres=12',
   },
   {
     heroImage: arcadeHero,
     cover: arcadeCover,
     genre: 'Arcade',
-    pathTo: '/browse',
+    pathTo: '/browse?sort=rating+desc&genres=8',
   },
   {
     heroImage: fpsHero,
     cover: fpsCover,
     genre: 'FPS',
-    pathTo: '/browse',
+    pathTo: '/browse?sort=rating+desc&genres=5',
   },
   {
     heroImage: fightingHero,
     cover: fightingCover,
     genre: 'Fighting',
-    pathTo: '/browse',
+    pathTo: '/browse?sort=rating+desc&genres=4',
   },
   {
     heroImage: rpgHero,
     cover: rpgCover,
     genre: 'RPG',
-    pathTo: '/browse',
+    pathTo: '/browse?sort=rating+desc&genres=12',
   },
-  {
-    heroImage: singleHero,
-    cover: singleCover,
-    genre: 'Single-Player',
-    pathTo: '/browse',
-  },
-  {
-    heroImage: vrHero,
-    cover: vrCover,
-    genre: 'VR',
-    pathTo: '/browse',
-  },
+  // {
+  //   heroImage: singleHero,
+  //   cover: singleCover,
+  //   genre: 'Single-Player',
+  //   pathTo: '/browse',
+  // },
+  // {
+  //   heroImage: vrHero,
+  //   cover: vrCover,
+  //   genre: 'VR',
+  //   pathTo: '/browse',
+  // },
 ];
