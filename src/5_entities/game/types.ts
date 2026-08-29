@@ -48,3 +48,25 @@ export type GameListWithPaginationArgs = {
   offset: number;
   searchParams: string;
 };
+
+export type GameByIdArgs = {
+  gameId: number;
+};
+
+export type GameById = {
+  id: number;
+  name: string;
+  storyline: string;
+  summary: string;
+  totalRating: number;
+  ageRatings: {
+    organization: string;
+    ratingCategory: string;
+  };
+  cover: string;
+  firstRelease: number;
+  genres: string[];
+  playerPerspectives: string;
+  screenshots: string[];
+  videos: string;
+};

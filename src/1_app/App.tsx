@@ -17,7 +17,8 @@ import { CheckoutPage } from '@pages/checkout-page';
 import { CartPage } from '@pages/cart-page';
 import { OrderConfirmationPage } from '@pages/order-confirmation-page';
 import { OrderDetailsWidget } from '@widgets/order-details-widget';
-import BrowsePage from '@pages/browse-page/ui/BrowsePage.tsx';
+import { BrowsePage } from '@pages/browse-page';
+import ProductDetailsPage from '@pages/product-details-page/ui/ProductDetailsPage.tsx';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -76,6 +77,10 @@ const App = () => {
         {
           path: 'browse',
           element: <BrowsePage />,
+        },
+        {
+          path: 'game/:id',
+          element: <ProductDetailsPage />,
         },
       ],
     },

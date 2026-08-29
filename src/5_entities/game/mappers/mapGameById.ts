@@ -1,0 +1,23 @@
+import type { GameByIdDTO } from '@entities/game/schemas/GameByIdSchema.ts';
+import type { GameById } from '@entities/game/types.ts';
+
+const mapGameById = (dto: GameByIdDTO): GameById => ({
+  id: dto.id,
+  name: dto.name,
+  storyline: dto.storyline,
+  summary: dto.summary,
+  totalRating: dto.total_rating,
+  ageRatings: (() => {
+    const exists = dto.age_ratings.find((rating) => rating.organization.name === 'PEGI');
+    if (!exists) return { organization: 'PEGI', ratingCategory: '18' };
+    return { organization: exists.organization.name, ratingCategory: exists.rating_category.rating };
+  })(),
+  cover: dto.cover?.url ?? '',
+  firstRelease: dto.first_release_date,
+  genres: dto.genres.map((genre) => genre.name),
+  playerPerspectives: dto.player_perspectives?.map((perspectives) => perspectives?.name)?.[0] ?? 'unknown',
+  screenshots: dto.screenshots?.map((screenshot) => screenshot?.url).filter((url): url is string => Boolean(url)) ?? [],
+  videos: dto.videos?.[dto.videos?.length - 1]?.video_id ?? '',
+});
+
+export default mapGameById;

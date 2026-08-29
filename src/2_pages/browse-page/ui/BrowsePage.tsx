@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '@shared/ui/container/Container.tsx';
 import { GameListWidget } from '@widgets/game-list-widget';
 import { useToggleTitle } from '@shared/hooks/router/useToggleTitle.ts';
-import GameFilteringWidget from '@widgets/game-filtering-widget/ui/GameFilteringWidget.tsx';
+import { GameFilteringWidget } from '@widgets/game-filtering-widget';
 
 const BrowsePage: React.FC = () => {
   useToggleTitle('Browse');
