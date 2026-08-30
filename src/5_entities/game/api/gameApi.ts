@@ -29,7 +29,10 @@ export const gameApi = igdbApi.injectEndpoints({
     }),
     getGameById: build.query<GameById, GameByIdArgs>({
       query: ({ gameId }) => ({
-        url: `/gameById?id=${gameId}`,
+        url: `/gameById`,
+        params: {
+          id: gameId,
+        },
       }),
       transformResponse: (response: unknown) => {
         const dto = GameByIdResponseSchema.parse(response);

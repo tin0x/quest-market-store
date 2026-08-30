@@ -18,7 +18,7 @@ import { CartPage } from '@pages/cart-page';
 import { OrderConfirmationPage } from '@pages/order-confirmation-page';
 import { OrderDetailsWidget } from '@widgets/order-details-widget';
 import { BrowsePage } from '@pages/browse-page';
-import ProductDetailsPage from '@pages/product-details-page/ui/ProductDetailsPage.tsx';
+import { ProductDetailsPage } from '@pages/product-details-page';
 
 const App = () => {
   const routes = createBrowserRouter([
