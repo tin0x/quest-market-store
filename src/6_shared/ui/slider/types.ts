@@ -8,4 +8,5 @@ export type SlideProps = {
   onSelectSlide?: (slideIndex: number) => void;
   options?: EmblaOptionsType;
   plugins?: AutoplayType[];
+  hasNavigation?: boolean;
 };

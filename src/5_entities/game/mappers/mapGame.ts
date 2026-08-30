@@ -7,7 +7,7 @@ export const mapGame = (dto: GameDTO): Game => ({
   id: dto.id,
   title: dto.name,
   poster: getIGDBImageUrl(dto.cover.url || null),
-  price: generateRandomPrice(80, 30),
+  price: generateRandomPrice(30, 80),
   summary: dto.summary ?? '',
   gameId: dto.id,
 });

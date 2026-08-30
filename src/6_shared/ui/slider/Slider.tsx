@@ -7,7 +7,14 @@ import useEmblaCarousel from 'embla-carousel-react';
 import type { EmblaCarouselType } from 'embla-carousel';
 import { cn } from '@shared/lib/utils/cn.ts';
 
-const Slider: React.FC<SlideProps> = ({ className, children, onSelectSlide, options, plugins }) => {
+const Slider: React.FC<SlideProps> = ({
+  className,
+  children,
+  onSelectSlide,
+  options,
+  plugins,
+  hasNavigation = true,
+}) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options, plugins);
   const [isDisabledPrev, setIsDisabledPrev] = useState(true);
   const [isDisabledNext, setIsDisabledNext] = useState(false);
@@ -43,22 +50,26 @@ const Slider: React.FC<SlideProps> = ({ className, children, onSelectSlide, opti
       <div className="h-full w-full overflow-hidden" ref={emblaRef}>
         <ul className="flex h-full touch-pan-y touch-pinch-zoom">{children}</ul>
       </div>
-      <Button
-        className="absolute top-1/2 left-0 h-50 w-15 -translate-y-1/2 disabled:hidden"
-        iconStyles="h-10 w-10"
-        disabled={isDisabledPrev}
-        onClick={() => emblaApi?.scrollPrev()}
-        variant="blur"
-        Icon={IconArrowLeft}
-      />
-      <Button
-        className="absolute top-1/2 right-0 h-50 w-16.25 -translate-y-1/2 disabled:hidden"
-        iconStyles="h-10 w-10"
-        disabled={isDisabledNext}
-        onClick={() => emblaApi?.scrollNext()}
-        variant="blur"
-        Icon={IconArrowRight}
-      />
+      {hasNavigation && (
+        <>
+          <Button
+            className="absolute top-1/2 left-0 h-50 w-15 -translate-y-1/2 disabled:hidden"
+            iconStyles="h-10 w-10"
+            disabled={isDisabledPrev}
+            onClick={() => emblaApi?.scrollPrev()}
+            variant="blur"
+            Icon={IconArrowLeft}
+          />
+          <Button
+            className="absolute top-1/2 right-0 h-50 w-16.25 -translate-y-1/2 disabled:hidden"
+            iconStyles="h-10 w-10"
+            disabled={isDisabledNext}
+            onClick={() => emblaApi?.scrollNext()}
+            variant="blur"
+            Icon={IconArrowRight}
+          />
+        </>
+      )}
     </div>
   );
 };

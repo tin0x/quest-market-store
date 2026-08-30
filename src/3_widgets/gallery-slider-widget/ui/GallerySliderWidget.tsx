@@ -17,18 +17,18 @@ const GallerySliderWidget: React.FC<GallerySliderWidgetProps> = ({ cover, videoI
 
   return (
     <div className="flex flex-col gap-7">
-      <div className="aspect-video w-full overflow-hidden rounded-md">
+      <div className="h-full w-full overflow-hidden rounded-md">
         {activeSlide.type === 'image' ? (
           <GallerySlideItem src={activeSlide.src} activeSlide />
         ) : (
           <VideoPlayer videoId={activeSlide.src} cover={cover} />
         )}
       </div>
-      <Slider options={{ dragFree: true }}>
+      <Slider hasNavigation={false} options={{ dragFree: true }}>
         {gallery.map((slide, index) => (
           <li
             key={slide.src}
-            className="ml-10 min-w-0 flex-[0_0_calc(25%-0.75rem)] cursor-grab first:ml-0 active:cursor-grabbing"
+            className="ml-5 min-w-0 flex-[0_0_calc(25%-0.75rem)] cursor-grab first:ml-0 active:cursor-grabbing"
           >
             <button className="w-full" onClick={() => setCurrentIndex(index)}>
               <GallerySlideItem

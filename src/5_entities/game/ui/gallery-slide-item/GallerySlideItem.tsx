@@ -8,7 +8,7 @@ const GallerySlideItem: React.FC<GallerySlideItemProps> = ({ className, src, act
   return (
     <div
       className={cn(
-        'relative cursor-pointer rounded-md opacity-50 transition-opacity hover:opacity-100',
+        'relative aspect-video cursor-pointer rounded-md opacity-50 transition-opacity hover:opacity-100',
         {
           ['opacity-100']: activeSlide,
         },
@@ -18,7 +18,7 @@ const GallerySlideItem: React.FC<GallerySlideItemProps> = ({ className, src, act
       <Image source={src} alt="slide-item" type="game" />
       {isVideo && (
         <div className="rounded-circle absolute top-1/2 left-1/2 -translate-1/2 bg-black/50">
-          <PlayIcon className="text-text-primary h-20 w-20 p-4" />
+          <PlayIcon className="text-text-primary h-15 w-15 p-4" />
         </div>
       )}
     </div>
