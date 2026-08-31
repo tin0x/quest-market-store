@@ -2,5 +2,8 @@ import type { Game } from '@entities/game';
 
 export type GameHeaderWidgetProps = {
   className?: string;
-  game: Game;
+  isLoading: boolean;
+  isError: boolean;
+  refetch: () => void;
+  game: Game | null;
 };
