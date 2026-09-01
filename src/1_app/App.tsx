@@ -19,6 +19,7 @@ import { OrderConfirmationPage } from '@pages/order-confirmation-page';
 import { OrderDetailsWidget } from '@widgets/order-details-widget';
 import { BrowsePage } from '@pages/browse-page';
 import { ProductDetailsPage } from '@pages/product-details-page';
+import { AboutPage } from '@pages/about-page';
 
 const App = () => {
   const routes = createBrowserRouter([
@@ -77,6 +78,10 @@ const App = () => {
         {
           path: 'browse',
           element: <BrowsePage />,
+        },
+        {
+          path: 'about',
+          element: <AboutPage />,
         },
         {
           path: 'game/:id',

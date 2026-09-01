@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const WishlistItem: React.FC<WishlistItemProps> = ({ wishlistItem, actionSlots }) => {
   return (
     <div className="flex gap-4">
-      <Link className="aspect-square w-50 overflow-hidden rounded-md" to={`game/${wishlistItem.gameId}`}>
+      <Link className="aspect-square w-50 overflow-hidden rounded-md" to={`/game/${wishlistItem.gameId}`}>
         <Image
           className="transition-transform duration-300 hover:scale-110"
           source={wishlistItem.poster}

@@ -8,10 +8,6 @@ export const navigationlinks = [
     path: '/browse?sort=rating+desc',
   },
   {
-    title: 'News',
-    path: '/news',
-  },
-  {
     title: 'About',
     path: '/about',
   },
