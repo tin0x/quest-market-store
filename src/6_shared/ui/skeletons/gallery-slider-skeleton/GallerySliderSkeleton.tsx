@@ -5,8 +5,8 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 const GallerySliderSkeleton: React.FC = () => {
   return (
     <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
-      <div className="h-full w-full rounded-md">
-        <Skeleton className="aspect-ratio h-full" />
+      <div className="aspect-video w-full rounded-md">
+        <Skeleton className="h-full w-full" />
       </div>
       <Slider hasNavigation={false} options={{ dragFree: true }}>
         {Array.from({ length: 4 }).map((_, index) => (

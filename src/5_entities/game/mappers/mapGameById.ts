@@ -1,6 +1,7 @@
 import type { GameByIdDTO } from '@entities/game/schemas/GameByIdSchema.ts';
 import type { GameById } from '@entities/game/types.ts';
 import getIGDBImageUrl from '@entities/game/lib/getIGDBImageUrl.ts';
+import formatDate from '@shared/lib/utils/formatDate.ts';
 
 const mapGameById = (dto: GameByIdDTO): GameById => ({
   id: dto.id,
@@ -14,7 +15,7 @@ const mapGameById = (dto: GameByIdDTO): GameById => ({
     return { organization: exists.organization.name, ratingCategory: exists.rating_category.rating };
   })(),
   cover: dto.cover?.url ? getIGDBImageUrl(dto.cover.url) : '',
-  firstRelease: dto.first_release_date,
+  firstRelease: formatDate(dto.first_release_date * 1000),
   genres: dto.genres.map((genre) => genre.name),
   playerPerspective: dto.player_perspectives?.map((perspectives) => perspectives?.name)?.[0] ?? 'unknown',
   screenshots:

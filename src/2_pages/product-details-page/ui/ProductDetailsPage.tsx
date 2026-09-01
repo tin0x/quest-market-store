@@ -5,9 +5,11 @@ import { useParams } from 'react-router-dom';
 import { useGetGameByIdQuery } from '@entities/game/api/gameApi.ts';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { GallerySliderWidget } from '@widgets/gallery-slider-widget';
-import GameHeaderWidget from '@widgets/game-header-widget/ui/GameHeaderWidget.tsx';
 import { generateRandomPrice } from '@entities/game';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { GameHeaderWidget } from '@widgets/game-header-widget';
+import { FeatureShowcaseWidget } from '@widgets/feature-showcase-widget';
+import { GameMetadataWidget } from '@widgets/game-metadata-widget';
 
 const ProductDetailsPage: React.FC = () => {
   const { id } = useParams();
@@ -26,6 +28,16 @@ const ProductDetailsPage: React.FC = () => {
       }
     : null;
 
+  const storyline = data ? [{ text: data.storyline }] : [];
+  const gameMetadata = data
+    ? [
+        { subtitle: 'Age-Rating', value: `${data.ageRatings.ratingCategory}+` },
+        { subtitle: 'Player-Perspective', value: data.playerPerspective },
+        { subtitle: 'Genre', value: data.genres.join(', ') },
+        { subtitle: 'Release Date', value: data.firstRelease },
+      ]
+    : [];
+
   return (
     <div className="h-full">
       <Container>
@@ -42,15 +54,21 @@ const ProductDetailsPage: React.FC = () => {
           </div>
         )}
         <div className="grid grid-cols-[2fr_1fr] gap-10">
-          <GallerySliderWidget
-            videoId={data?.videoId ?? null}
-            screenshots={data?.screenshots ?? []}
-            cover={data?.cover}
-            isLoading={isLoading}
-            isError={isError}
-            refetch={refetch}
-          />
-          <GameHeaderWidget game={game} isLoading={isLoading} isError={isError} refetch={refetch} />
+          <div className="flex flex-col gap-15">
+            <GallerySliderWidget
+              videoId={data?.videoId ?? null}
+              screenshots={data?.screenshots ?? []}
+              cover={data?.cover}
+              isLoading={isLoading}
+              isError={isError}
+              refetch={refetch}
+            />
+            <FeatureShowcaseWidget storyline={storyline} isLoading={isLoading} isError={isError} refetch={refetch} />
+          </div>
+          <div className="flex flex-col gap-15">
+            <GameHeaderWidget game={game} isLoading={isLoading} isError={isError} refetch={refetch} />
+            <GameMetadataWidget gameMetadata={gameMetadata} isLoading={isLoading} isError={isError} refetch={refetch} />
+          </div>
         </div>
       </Container>
     </div>

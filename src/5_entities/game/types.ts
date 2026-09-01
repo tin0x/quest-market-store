@@ -64,9 +64,20 @@ export type GameById = {
     ratingCategory: string;
   };
   cover: string;
-  firstRelease: number;
+  firstRelease: string;
   genres: string[];
   playerPerspective: string;
   screenshots: string[];
   videoId: string;
+};
+
+export type ShowCaseItemProps = {
+  subtitle?: string;
+  src?: string;
+  text: string;
+};
+
+export type MetadataItemProps = {
+  subtitle: string;
+  value: string;
 };

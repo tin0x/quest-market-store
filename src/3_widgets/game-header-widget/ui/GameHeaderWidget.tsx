@@ -21,7 +21,7 @@ const GameHeaderWidget: React.FC<GameHeaderWidgetProps> = ({ className, isLoadin
         <div className="text-text-primary line-clamp-6 text-justify text-[20px]">
           <p>{game.summary}</p>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-3">
           <ByGameNow game={game} />
           <ToggleCartItemForCart className="text-xl" game={game} />
           <ToggleGameStatusWishlist wishlistGame={game} type="textButton" />
@@ -30,7 +30,7 @@ const GameHeaderWidget: React.FC<GameHeaderWidgetProps> = ({ className, isLoadin
     );
   };
 
-  return <div className={cn('flex flex-col justify-between gap-5', className)}>{renderContent()}</div>;
+  return <section className={cn('flex flex-col justify-between gap-5', className)}>{renderContent()}</section>;
 };
 
 export default GameHeaderWidget;

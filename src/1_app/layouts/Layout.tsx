@@ -24,7 +24,7 @@ const Layout: React.FC = () => {
       <FooterWidget>
         <div className="flex gap-3">
           <ApplicationDescription className="flex-1 border-r-2 pr-5" logoSlot={<Logo pathTo="/">Quest Market</Logo>}>
-            Quest Market — Level up your gaming experience. We bring you the hottest PC games without breaking the bank.
+            Quest Market — Level up your gaming experience. We bring you the hottest games without breaking the bank.
             Instant activation, reliable support, and constant deals waiting for you. Get the game you want, pay less,
             and start playing today!
           </ApplicationDescription>

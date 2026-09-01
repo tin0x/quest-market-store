@@ -1,4 +1,4 @@
-const formatDate = (date: string, isHour?: boolean, isMinute?: boolean) => {
+const formatDate = (date: string | number, isHour?: boolean, isMinute?: boolean) => {
   const currentDate = new Date(date);
 
   return new Intl.DateTimeFormat('en-US', {

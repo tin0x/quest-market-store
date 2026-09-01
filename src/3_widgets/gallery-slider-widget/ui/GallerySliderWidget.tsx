@@ -56,7 +56,7 @@ const GallerySliderWidget: React.FC<GallerySliderWidgetProps> = ({
     );
   };
 
-  return <div className="flex flex-col gap-7">{renderContent()}</div>;
+  return <section className="flex flex-col gap-7">{renderContent()}</section>;
 };
 
 export default GallerySliderWidget;
