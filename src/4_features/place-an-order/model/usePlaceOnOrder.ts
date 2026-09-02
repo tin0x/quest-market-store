@@ -4,9 +4,9 @@ import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import { calculateTotalCost, useGetItemsFromCartQuery } from '@entities/cart';
 import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
-import { appErrorMessages } from '@shared/api/error/constants.ts';
 import { useNavigate } from 'react-router-dom';
 import type { ApiError } from '@entities/order';
+import { userErrorMessages } from '@entities/user';
 
 const usePlaceOnOrder = () => {
   const [createOrder, { isLoading }] = useCreateOrderMutation();
@@ -21,7 +21,7 @@ const usePlaceOnOrder = () => {
         showToast({
           type: 'failed',
           title: 'Failed',
-          message: appErrorMessages.UNAUTHORIZED,
+          message: userErrorMessages.UNAUTHORIZED,
         }),
       );
       navigate('/login', { replace: true });

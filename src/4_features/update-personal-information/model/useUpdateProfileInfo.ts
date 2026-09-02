@@ -1,7 +1,6 @@
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import { useNavigate } from 'react-router-dom';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
-import { appErrorMessages } from '@shared/api/error/constants.ts';
 import type { ApiError } from '@shared/api/error/types.ts';
 import type { FieldNamesMarkedBoolean, UseFormSetError } from 'react-hook-form';
 import type { SaveProfileInfoForm } from '@features/update-personal-information/schemas/SaveProfileInfoSchema.ts';
@@ -10,7 +9,7 @@ import {
   useUpdateEmailMutation,
   useUpdateProfileInfoMutation,
 } from '@features/update-personal-information/api/userApi.ts';
-import { userSuccessMessages } from '@entities/user';
+import { userErrorMessages, userSuccessMessages } from '@entities/user';
 
 const useUpdateProfileInfo = (
   setError: UseFormSetError<SaveProfileInfoForm>,
@@ -28,7 +27,7 @@ const useUpdateProfileInfo = (
         showToast({
           type: 'failed',
           title: 'Failed',
-          message: appErrorMessages.UNAUTHORIZED,
+          message: userErrorMessages.UNAUTHORIZED,
         }),
       );
       navigate('/login');

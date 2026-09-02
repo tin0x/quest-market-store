@@ -27,6 +27,7 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
       body: `
       fields name, game;
       search "${searchParam}";
+      where game != null;
       limit 5;
       `,
     });

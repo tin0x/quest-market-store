@@ -21,7 +21,7 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
       },
       body: `
         fields name, cover.url, age_ratings.organization.name, age_ratings.rating_category.rating, summary, videos.video_id, genres.name, storyline, first_release_date, screenshots.url, player_perspectives.name, total_rating;
-        where cover != null & rating_count > 500 & id = ${gameId};
+        where id = ${gameId};
       `,
     });
 

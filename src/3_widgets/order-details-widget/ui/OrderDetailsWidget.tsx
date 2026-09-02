@@ -12,7 +12,7 @@ const OrderDetailsWidget: React.FC = () => {
   }
 
   if (isEmpty) {
-    return <QueryPlaceholder type="emptyData" />;
+    return <QueryPlaceholder customMessage="Place your first order." type="emptyData" />;
   }
 
   if (isError) {

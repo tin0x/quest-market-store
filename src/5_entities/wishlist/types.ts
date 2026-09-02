@@ -14,11 +14,12 @@ export type Wishlist = {
   id: number;
   userId: string;
   title: string;
-  price: number;
+  price: number | null;
   poster?: string;
   createdAt: string;
   gameId: number;
   summary: string;
+  firstRelease: string | null;
 };
 
 export type GetWishlistArgs = {

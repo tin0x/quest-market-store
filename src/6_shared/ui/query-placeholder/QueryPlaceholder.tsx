@@ -10,7 +10,7 @@ const QueryPlaceholder: React.FC<QueryPlaceholderProps> = ({ customMessage, type
   const buttonText = placeholder?.buttonText;
 
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-6">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6">
       <placeholder.Icon className="h-40 w-40" />
       <p className="text-center text-[20px] font-bold">{text}</p>
       {shouldShowButton && <Button className="text-[18px]" onClick={onClick} variant="dark" text={buttonText} />}

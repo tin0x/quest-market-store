@@ -18,7 +18,7 @@ const GallerySliderWidget: React.FC<GallerySliderWidgetProps> = ({
 
   const renderContent = () => {
     if (isLoading) return <GallerySliderSkeleton />;
-    if (!videoId || isError) return <QueryPlaceholder type="error" onClick={refetch} />;
+    if (isError) return <QueryPlaceholder type="error" onClick={refetch} />;
 
     const gallery = [
       ...(videoId ? [{ type: 'video', src: videoId }] : []),
@@ -31,7 +31,7 @@ const GallerySliderWidget: React.FC<GallerySliderWidgetProps> = ({
       <>
         <div className="h-full w-full rounded-md">
           {activeSlide.type === 'image' ? (
-            <GallerySlideItem src={activeSlide.src} activeSlide />
+            <GallerySlideItem className="cursor-auto" src={activeSlide.src} activeSlide />
           ) : (
             <VideoPlayer videoId={activeSlide.src} cover={cover} />
           )}

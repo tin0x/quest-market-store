@@ -5,9 +5,9 @@ import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
 import type { ApiError } from '@shared/api/error/types.ts';
-import { appErrorMessages } from '@shared/api/error/constants.ts';
 import type { Game } from '@entities/game';
 import { useAddToCartMutation } from '@features/toggle-cart-item';
+import { userErrorMessages } from '@entities/user';
 
 const useBuyGameNow = (game: Game) => {
   const [addToCart, { isLoading }] = useAddToCartMutation();
@@ -24,7 +24,7 @@ const useBuyGameNow = (game: Game) => {
         showToast({
           type: 'failed',
           title: 'Failed',
-          message: appErrorMessages.UNAUTHORIZED,
+          message: userErrorMessages.UNAUTHORIZED,
         }),
       );
       navigate('/login');

@@ -4,7 +4,17 @@ import { skipToken } from '@reduxjs/toolkit/query';
 
 const useFetchOrderDetailsList = () => {
   const { session } = useAuth();
-  const { data, isLoading, isError, refetch } = useGetOrderListQuery(session ? { userId: session.user.id } : skipToken);
+  const { data, isLoading, isError, refetch } = useGetOrderListQuery(
+    session ? { userId: session.user.id } : skipToken,
+    {
+      selectFromResult: (result) => ({
+        ...result,
+        data: result.data
+          ? result.data.toSorted((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+          : [],
+      }),
+    },
+  );
 
   return {
     orderDetailsList: data || [],

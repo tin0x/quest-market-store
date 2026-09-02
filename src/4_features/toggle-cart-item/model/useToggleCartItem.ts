@@ -7,8 +7,8 @@ import { useAddToCartMutation, useRemoveFromCartMutation } from '@features/toggl
 import { useAppSelector } from '@shared/hooks/redux/useAppSelector.ts';
 import { getCartItems } from '@features/toggle-cart-item/model/selectors.ts';
 import { useEffect, useState } from 'react';
-import { appErrorMessages } from '@shared/api/error/constants.ts';
 import type { Game } from '@entities/game';
+import { userErrorMessages } from '@entities/user';
 
 export const useToggleCartItem = (game: Game) => {
   const { session } = useAuth();
@@ -33,7 +33,7 @@ export const useToggleCartItem = (game: Game) => {
       dispatch(
         showToast({
           title: 'Failed',
-          message: appErrorMessages.UNAUTHORIZED,
+          message: userErrorMessages.UNAUTHORIZED,
           type: 'failed',
         }),
       );

@@ -20,7 +20,7 @@ const SlideItem: React.FC<SlideItemProps> = ({ gameSlide, purchaseSlot, favorite
           <Link className="block truncate text-[22px] font-bold" to={`/game/${gameSlide.gameId}`}>
             {gameSlide.title}
           </Link>
-          <span className="mt-2 block text-[18px]">{`$${gameSlide.price}`}</span>
+          <span className="mt-2 block text-[18px]">{gameSlide?.price ? `$${gameSlide.price}` : 'Soon'}</span>
         </div>
         <div className="flex shrink-0 justify-center self-end">{purchaseSlot}</div>
       </div>

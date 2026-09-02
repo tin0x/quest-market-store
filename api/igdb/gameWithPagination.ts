@@ -46,7 +46,7 @@ const gameWithPagination = async (req: VercelRequest, res: VercelResponse) => {
         Authorization: `Bearer ${token}`,
       },
       body: `
-        fields name, cover.url, rating, summary;
+        fields name, cover.url, rating, summary, first_release_date;
         where ${whereClause};
         ${searchOrSortQuery};
         limit ${limit};

@@ -86,5 +86,3 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
 };
 
 export default UpdatePersonalInformation;
-
-// дописати глобальну помилку зверху від сервера!

@@ -4,6 +4,7 @@ export type GameHeaderWidgetProps = {
   className?: string;
   isLoading: boolean;
   isError: boolean;
+  isReleased: boolean;
   refetch: () => void;
   game: Game | null;
 };

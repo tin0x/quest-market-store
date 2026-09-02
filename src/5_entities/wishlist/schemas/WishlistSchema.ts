@@ -4,7 +4,7 @@ const WishlistSchema = z.object({
   id: z.number(),
   user_id: z.string(),
   title: z.string(),
-  price: z.number(),
+  price: z.number().nullish(),
   poster: z.string().nullish(),
   created_at: z.string(),
   game_id: z.number(),

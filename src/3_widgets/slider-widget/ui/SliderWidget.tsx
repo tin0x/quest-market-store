@@ -9,6 +9,7 @@ import Slider from '@shared/ui/slider/Slider';
 import { SlideItem } from '@entities/game';
 import { ToggleGameStatusWishlist } from '@features/toggle-game-status-wishlist';
 import { ToggleCartItemForCart } from '@features/toggle-cart-item';
+import checkGameReleased from '@entities/game/lib/checkGameReleased.ts';
 
 const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
   const { slides, isLoading, isEmpty, isError, refetch } = useFetchGamesSlides(ordering);
@@ -29,14 +30,18 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
               className="ml-10 flex h-90 min-w-0 flex-[0_0_100%] cursor-grab gap-10 first:ml-0 active:cursor-grabbing"
               key={i}
             >
-              {slideGroup.map((slide) => (
-                <SlideItem
-                  key={slide.id}
-                  gameSlide={slide}
-                  favoriteSlot={<ToggleGameStatusWishlist type="iconButton" wishlistGame={slide} />}
-                  purchaseSlot={<ToggleCartItemForCart game={slide} />}
-                />
-              ))}
+              {slideGroup.map((slide) => {
+                const isReleased = checkGameReleased(slide.firstRelease ?? null);
+
+                return (
+                  <SlideItem
+                    key={slide.id}
+                    gameSlide={slide}
+                    favoriteSlot={<ToggleGameStatusWishlist type="iconButton" wishlistGame={slide} />}
+                    purchaseSlot={isReleased ? <ToggleCartItemForCart game={slide} /> : undefined}
+                  />
+                );
+              })}
             </li>
           ))}
         </Slider>

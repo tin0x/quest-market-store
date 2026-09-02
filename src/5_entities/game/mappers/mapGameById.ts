@@ -6,16 +6,16 @@ import formatDate from '@shared/lib/utils/formatDate.ts';
 const mapGameById = (dto: GameByIdDTO): GameById => ({
   id: dto.id,
   name: dto.name,
-  storyline: dto.storyline,
+  storyline: dto?.storyline ?? 'Unknown',
   summary: dto.summary,
-  totalRating: dto.total_rating,
+  totalRating: dto.total_rating ?? 'unknown',
   ageRatings: (() => {
-    const exists = dto.age_ratings.find((rating) => rating.organization.name === 'PEGI');
+    const exists = dto.age_ratings?.find((rating) => rating.organization.name === 'PEGI');
     if (!exists) return { organization: 'PEGI', ratingCategory: '18' };
     return { organization: exists.organization.name, ratingCategory: exists.rating_category.rating };
   })(),
   cover: dto.cover?.url ? getIGDBImageUrl(dto.cover.url) : '',
-  firstRelease: formatDate(dto.first_release_date * 1000),
+  firstRelease: dto?.first_release_date ? formatDate(dto.first_release_date * 1000) : null,
   genres: dto.genres.map((genre) => genre.name),
   playerPerspective: dto.player_perspectives?.map((perspectives) => perspectives?.name)?.[0] ?? 'unknown',
   screenshots:

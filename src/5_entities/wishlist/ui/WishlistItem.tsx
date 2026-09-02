@@ -17,11 +17,11 @@ const WishlistItem: React.FC<WishlistItemProps> = ({ wishlistItem, actionSlots }
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex items-center justify-between text-[22px] font-bold">
           <Link to={`/game/${wishlistItem.gameId}`}>{wishlistItem.title}</Link>
-          <span>${wishlistItem.price}</span>
+          {wishlistItem.price && <span>{`$${wishlistItem.price}`}</span>}
         </div>
         <div className="flex justify-end gap-2">
           {actionSlots.renderRemove}
-          {actionSlots.renderAdd}
+          {wishlistItem.price && actionSlots.renderAdd}
         </div>
       </div>
     </div>

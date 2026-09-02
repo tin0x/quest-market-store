@@ -8,7 +8,14 @@ import { ToggleGameStatusWishlist } from '@features/toggle-game-status-wishlist'
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import GameHeaderSkeleton from '@shared/ui/skeletons/game-header-skeleton/GameHeaderSkeleton.tsx';
 
-const GameHeaderWidget: React.FC<GameHeaderWidgetProps> = ({ className, isLoading, isError, game, refetch }) => {
+const GameHeaderWidget: React.FC<GameHeaderWidgetProps> = ({
+  className,
+  isLoading,
+  isError,
+  isReleased,
+  game,
+  refetch,
+}) => {
   const renderContent = () => {
     if (isLoading) return <GameHeaderSkeleton />;
     if (!game || isError) return <QueryPlaceholder type="error" onClick={refetch} />;
@@ -22,8 +29,12 @@ const GameHeaderWidget: React.FC<GameHeaderWidgetProps> = ({ className, isLoadin
           <p>{game.summary}</p>
         </div>
         <div className="flex flex-col gap-3">
-          <ByGameNow game={game} />
-          <ToggleCartItemForCart className="text-xl" game={game} />
+          {isReleased && (
+            <>
+              <ByGameNow game={game} />
+              <ToggleCartItemForCart className="text-xl" game={game} />
+            </>
+          )}
           <ToggleGameStatusWishlist wishlistGame={game} type="textButton" />
         </div>
       </>

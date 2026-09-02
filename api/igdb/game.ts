@@ -30,7 +30,7 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
         'Content-Type': 'text/plain',
       },
       body: `
-        fields name, cover.url, rating, summary;
+        fields name, cover.url, rating, summary, first_release_date;
         where ${currentOrdering.where};
         sort ${currentOrdering.sort};
         limit ${limit};

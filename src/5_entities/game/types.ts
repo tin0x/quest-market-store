@@ -4,9 +4,10 @@ export type Game = {
   id: number;
   title: string;
   poster?: string;
-  price: number;
+  price: number | string | null;
   summary?: string;
   gameId: number;
+  firstRelease?: string | null;
 };
 
 export type GameList = {
@@ -21,7 +22,7 @@ export type GamesListArgs = {
 
 export type SlideItemProps = {
   gameSlide: Game;
-  purchaseSlot: React.ReactNode;
+  purchaseSlot?: React.ReactNode;
   favoriteSlot: React.ReactNode;
 };
 
@@ -36,7 +37,7 @@ export type GameProductCardProps = {
   pathTo: string;
   poster: string;
   title: string;
-  price: number;
+  price: number | string | null;
 };
 
 export type GameProductListProps = {
@@ -58,13 +59,13 @@ export type GameById = {
   name: string;
   storyline: string;
   summary: string;
-  totalRating: number;
+  totalRating: number | string;
   ageRatings: {
     organization: string;
     ratingCategory: string;
   };
   cover: string;
-  firstRelease: string;
+  firstRelease: string | null;
   genres: string[];
   playerPerspective: string;
   screenshots: string[];

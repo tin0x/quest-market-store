@@ -2,26 +2,28 @@ import { z } from 'zod';
 
 const GameByIdSchema = z.object({
   id: z.number(),
-  age_ratings: z.array(
-    z.object({
-      id: z.number(),
-      organization: z.object({
+  age_ratings: z
+    .array(
+      z.object({
         id: z.number(),
-        name: z.string(),
+        organization: z.object({
+          id: z.number(),
+          name: z.string(),
+        }),
+        rating_category: z.object({
+          id: z.number(),
+          rating: z.string(),
+        }),
       }),
-      rating_category: z.object({
-        id: z.number(),
-        rating: z.string(),
-      }),
-    }),
-  ),
+    )
+    .nullish(),
   cover: z
     .object({
       id: z.number(),
       url: z.string(),
     })
     .nullish(),
-  first_release_date: z.number(),
+  first_release_date: z.number().nullish(),
   genres: z.array(
     z.object({
       id: z.number(),
@@ -29,33 +31,35 @@ const GameByIdSchema = z.object({
     }),
   ),
   name: z.string(),
-  player_perspectives: z.array(
-    z
-      .object({
-        id: z.number(),
-        name: z.string(),
-      })
-      .nullish(),
-  ),
+  player_perspectives: z
+    .array(
+      z
+        .object({
+          id: z.number(),
+          name: z.string(),
+        })
+        .nullish(),
+    )
+    .nullish(),
   screenshots: z.array(
-    z
-      .object({
-        id: z.number(),
-        url: z.string(),
-      })
-      .nullish(),
+    z.object({
+      id: z.number(),
+      url: z.string(),
+    }),
   ),
-  storyline: z.string(),
+  storyline: z.string().nullish(),
   summary: z.string(),
-  total_rating: z.number(),
-  videos: z.array(
-    z
-      .object({
-        id: z.number(),
-        video_id: z.string(),
-      })
-      .nullish(),
-  ),
+  total_rating: z.number().nullish(),
+  videos: z
+    .array(
+      z
+        .object({
+          id: z.number(),
+          video_id: z.string(),
+        })
+        .nullish(),
+    )
+    .nullish(),
 });
 
 export const GameByIdResponseSchema = z.array(GameByIdSchema);

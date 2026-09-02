@@ -4,13 +4,13 @@ import { useAppDispatch } from '@shared/hooks/redux/useAppDispatch.ts';
 import { showToast } from '@shared/lib/slices/toast/toastSlice.ts';
 import { useGetWishlistQuery } from '@entities/wishlist/api/wishlistApi.ts';
 import { skipToken } from '@reduxjs/toolkit/query';
-import { appErrorMessages } from '@shared/api/error/constants.ts';
 import type { ApiError } from '@entities/wishlist/types.ts';
 import {
   useAddGameToWishlistMutation,
   useRemoveGameWithWishlistMutation,
 } from '@features/toggle-game-status-wishlist/api/wishlistApi.ts';
 import type { Game } from '@entities/game';
+import { userErrorMessages } from '@entities/user';
 
 const useToggleGameStatusWishlist = (game: Game) => {
   const { session } = useAuth();
@@ -30,7 +30,7 @@ const useToggleGameStatusWishlist = (game: Game) => {
         showToast({
           type: 'failed',
           title: 'Failed',
-          message: appErrorMessages.UNAUTHORIZED,
+          message: userErrorMessages.UNAUTHORIZED,
         }),
       );
       return;

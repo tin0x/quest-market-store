@@ -7,6 +7,7 @@ export const GameSchema = z.object({
   }),
   name: z.string(),
   summary: z.string().nullish(),
+  first_release_date: z.number().nullish(),
 });
 
 export const GameListSchema = z.array(GameSchema);

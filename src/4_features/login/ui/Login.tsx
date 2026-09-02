@@ -50,7 +50,7 @@ const Login: React.FC = () => {
           />
           {errors.password && <small className="text-red-600">{errors.password.message}</small>}
         </div>
-        <Button className="rounded-sm" variant="dark" type="submit" text="Submit" disabled={!isValid || isLoading} />
+        <Button className="rounded-sm" variant="dark" type="submit" text="Login" disabled={!isValid || isLoading} />
         <div className="flex gap-2 text-[18px]">
           <span>Don’t have an account?</span>
           <Link className="font-bold underline" to="/register">

@@ -18,7 +18,7 @@ const GameProductCard: React.FC<GameProductCardProps> = ({ pathTo, poster, title
         </div>
         <div className="px-4 py-6 text-[18px]">
           <p className="font-bold">{title}</p>
-          <span className="text-text-secondary">${price}</span>
+          <span className="text-text-secondary">{price ? `$${price}` : ''}</span>
         </div>
       </Card>
     </Link>

@@ -1,6 +1,7 @@
 import type { PostgrestError } from '@supabase/supabase-js';
 import type { ApiError } from '@shared/api/error/types.ts';
 import { appErrorMessages } from '@shared/api/error/constants.ts';
+import { userErrorMessages } from '@entities/user';
 
 const mapProfileError = (error: PostgrestError): ApiError => {
   switch (error.code) {
@@ -9,7 +10,7 @@ const mapProfileError = (error: PostgrestError): ApiError => {
         status: 409,
         data: {
           code: 'USER_ALREADY_EXISTS',
-          message: appErrorMessages.USER_ALREADY_EXISTS,
+          message: userErrorMessages.USER_ALREADY_EXISTS,
         },
       };
 

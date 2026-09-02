@@ -10,21 +10,29 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { GameHeaderWidget } from '@widgets/game-header-widget';
 import { FeatureShowcaseWidget } from '@widgets/feature-showcase-widget';
 import { GameMetadataWidget } from '@widgets/game-metadata-widget';
+import checkGameReleased from '@entities/game/lib/checkGameReleased.ts';
+import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 
 const ProductDetailsPage: React.FC = () => {
   const { id } = useParams();
-  const [price] = useState(() => generateRandomPrice(30, 80));
-  const { data, isLoading, isError, refetch } = useGetGameByIdQuery(id ? { gameId: Number(id) } : skipToken);
+  const { data, isLoading, isFetching, isError, refetch } = useGetGameByIdQuery(
+    id ? { gameId: Number(id) } : skipToken,
+  );
   useToggleTitle(data?.name ?? 'Game');
+
+  const [price] = useState(() => generateRandomPrice(Number(id), 30, 80));
+
+  const isReleased = checkGameReleased(data?.firstRelease ?? null);
 
   const game = data
     ? {
         id: data.id,
         title: data.name,
         poster: data.cover,
-        price,
+        price: isReleased ? price : null,
         summary: data.summary,
         gameId: data.id,
+        firstRelease: data.firstRelease,
       }
     : null;
 
@@ -34,14 +42,17 @@ const ProductDetailsPage: React.FC = () => {
         { subtitle: 'Age-Rating', value: `${data.ageRatings.ratingCategory}+` },
         { subtitle: 'Player-Perspective', value: data.playerPerspective },
         { subtitle: 'Genre', value: data.genres.join(', ') },
-        { subtitle: 'Release Date', value: data.firstRelease },
+        { subtitle: 'Release Date', value: data?.firstRelease ?? 'unknown' },
       ]
     : [];
+
+  if (isError)
+    return <QueryPlaceholder type="error" customMessage="The game page is unavailable. Please try again later." />;
 
   return (
     <div className="h-full">
       <Container>
-        {isLoading ? (
+        {isLoading || isFetching ? (
           <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
             <div className="mb-4 w-1/2">
               <Skeleton count={1.5} height={30} />
@@ -50,7 +61,7 @@ const ProductDetailsPage: React.FC = () => {
         ) : (
           <div className="mb-4">
             <h1 className="text-xl text-[40px] font-bold">{data?.name}</h1>
-            <span className="text-text-secondary text-[20px] font-bold">${price} USD</span>
+            {isReleased && <span className="text-text-secondary text-[20px] font-bold">${price} USD</span>}
           </div>
         )}
         <div className="grid grid-cols-[2fr_1fr] gap-10">
@@ -59,15 +70,26 @@ const ProductDetailsPage: React.FC = () => {
               videoId={data?.videoId ?? null}
               screenshots={data?.screenshots ?? []}
               cover={data?.cover}
-              isLoading={isLoading}
+              isLoading={isLoading || isFetching}
               isError={isError}
               refetch={refetch}
             />
             <FeatureShowcaseWidget storyline={storyline} isLoading={isLoading} isError={isError} refetch={refetch} />
           </div>
           <div className="flex flex-col gap-15">
-            <GameHeaderWidget game={game} isLoading={isLoading} isError={isError} refetch={refetch} />
-            <GameMetadataWidget gameMetadata={gameMetadata} isLoading={isLoading} isError={isError} refetch={refetch} />
+            <GameHeaderWidget
+              game={game}
+              isLoading={isLoading || isFetching}
+              isError={isError}
+              isReleased={isReleased}
+              refetch={refetch}
+            />
+            <GameMetadataWidget
+              gameMetadata={gameMetadata}
+              isLoading={isLoading || isFetching}
+              isError={isError}
+              refetch={refetch}
+            />
           </div>
         </div>
       </Container>
