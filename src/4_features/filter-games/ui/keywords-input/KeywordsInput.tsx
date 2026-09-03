@@ -6,7 +6,7 @@ import type { KeywordsInputProps } from '@features/filter-games/types.ts';
 const KeywordsInput: React.FC<KeywordsInputProps> = ({ value, onChange }) => {
   return (
     <Input
-      className="rounded-sm py-4 text-[18px]"
+      className="rounded-sm py-4 pr-6 pl-14 text-[18px]"
       Icon={SearchIcon}
       value={value}
       placeholder="Keywords"

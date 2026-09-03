@@ -7,8 +7,9 @@ import { cn } from '@shared/lib/utils/cn.ts';
 import Loader from '@shared/ui/loader/Loader.tsx';
 import QueryPlaceholder from '@shared/ui/query-placeholder/QueryPlaceholder.tsx';
 import { Link } from 'react-router-dom';
+import type { SearchByNameProps } from '@features/search-by-name/types.ts';
 
-const SearchByName: React.FC = () => {
+const SearchByName: React.FC<SearchByNameProps> = ({ className }) => {
   const { searchResult, isLoading, isError, isEmpty, isOpen, name, handleChangeInput, handleClear } = useSearchByName();
 
   const renderContent = () => {
@@ -21,7 +22,7 @@ const SearchByName: React.FC = () => {
         {searchResult.map((item) => (
           <li key={item.id}>
             <Link
-              className="block overflow-hidden px-2 py-5 text-xl font-bold text-ellipsis hover:bg-white hover:text-black"
+              className="block overflow-hidden px-2 py-5 text-[18px] font-bold text-ellipsis hover:bg-white hover:text-black"
               onClick={() => handleClear()}
               to={`/game/${item.gameId}`}
             >
@@ -34,16 +35,16 @@ const SearchByName: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={cn('relative', className)}>
       <Input
-        className="text-[18px]"
+        className="py-5 pr-6 pl-14"
         Icon={SearchIcon}
         value={name}
         placeholder="Search store"
         onChange={handleChangeInput}
       />
       <Dropdown
-        className={cn('top-100% left-0 flex max-w-full flex-col justify-center overflow-hidden p-10')}
+        className={cn('top-100% left-0 flex max-w-full flex-col justify-center overflow-hidden')}
         isOpen={isOpen}
       >
         {renderContent()}

@@ -3,7 +3,6 @@ import type { GameProductListProps } from '@entities/game/types.ts';
 import GameProductCard from '@entities/game/ui/game-product/game-product-card/GameProductCard.tsx';
 
 const GameProductList: React.FC<GameProductListProps> = ({ gameList }) => {
-  console.log(gameList);
   return (
     <ul className="grid grid-cols-3 items-stretch gap-x-7 gap-y-10">
       {gameList.map((game) => (

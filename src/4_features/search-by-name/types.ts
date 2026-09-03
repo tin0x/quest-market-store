@@ -8,3 +8,7 @@ export type SearchGameList = SearchGame[];
 export type SearchGameArgs = {
   str: string;
 };
+
+export type SearchByNameProps = {
+  className?: string;
+};

@@ -10,7 +10,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ cartList, isOpen, closeDrop
   const isEmpty = cartList.length === 0;
 
   return (
-    <Dropdown className="absolute top-full right-0 w-120 rounded-md p-3" isOpen={isOpen}>
+    <Dropdown className="absolute top-full right-0 w-110 rounded-md p-3" isOpen={isOpen}>
       {isEmpty ? (
         <div className="flex h-full min-h-90 flex-col items-center justify-center gap-4">
           <CartStub className="h-30 w-30" />

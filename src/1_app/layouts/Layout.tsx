@@ -1,24 +1,45 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useState } from 'react';
 import Logo from '@shared/ui/logo/Logo.tsx';
-import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
-import HelpList from '@shared/ui/help/HelpList.tsx';
 import { SearchByName } from '@features/search-by-name';
 import { UserMenuWidget } from '@widgets/user-menu-widget';
 import { NavigationWidget } from '@widgets/navigation-widget';
 import { HeaderWidget } from '@widgets/header-widget';
+import useScrollToTop from '@shared/hooks/ui/useScrollToTop.ts';
+import Burger from '@shared/ui/burger/Burger.tsx';
+import SideDrawer from '@shared/ui/side-drawer/SideDrawer.tsx';
+import { Outlet } from 'react-router-dom';
+import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
+import HelpList from '@shared/ui/help/HelpList.tsx';
 import { FooterWidget } from '@widgets/footer-widget';
 
 const Layout: React.FC = () => {
+  const [showDrawer, setShowDrawer] = useState(false);
+  useScrollToTop();
+
   return (
     <div className="grid flex-1 grid-cols-1 grid-rows-[auto_1fr_auto]">
       <HeaderWidget>
-        <Logo pathTo="/">Quest Market</Logo>
-        <SearchByName />
-        <NavigationWidget />
-        <UserMenuWidget />
+        <Logo textClass="hidden lg:block" pathTo="/">
+          Quest Market
+        </Logo>
+        <SearchByName className="hidden min-w-75 flex-1 sm:block" />
+        <div className="hidden items-center gap-10 lg:flex">
+          <NavigationWidget />
+          <UserMenuWidget />
+        </div>
+        <Burger className="lg:hidden" onClick={() => setShowDrawer((prev) => !prev)} />
+        <SideDrawer
+          drawerClass="w-full overflow-hidden md:w-1/2"
+          isOpen={showDrawer}
+          onClose={() => setShowDrawer(false)}
+        >
+          <div className="flex w-full flex-col gap-10 px-5 py-10">
+            <SearchByName className="sm:hidden" />
+            <NavigationWidget className="flex-col gap-10" showAdditionalLinks />
+          </div>
+        </SideDrawer>
       </HeaderWidget>
-      <main className="py-15">
+      <main className="py-8 lg:py-15">
         <Outlet />
       </main>
       <FooterWidget>

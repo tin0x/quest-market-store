@@ -39,7 +39,7 @@ const Input: React.FC<InputProps> = ({
         type={inputType}
         onKeyDown={clearOnEscape ? handleClearValue : undefined}
         className={cn(
-          'h-full w-full border border-none py-5 pr-6 pl-14 outline-white placeholder:font-bold hover:cursor-pointer focus:outline-2',
+          'h-full w-full border border-none outline-white placeholder:font-bold hover:cursor-pointer focus:outline-2',
           inputStyles[variant],
           className,
         )}

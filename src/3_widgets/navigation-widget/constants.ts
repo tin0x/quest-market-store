@@ -1,4 +1,4 @@
-export const navigationlinks = [
+export const navigationLinks = [
   {
     title: 'Home',
     path: '/',
@@ -10,5 +10,16 @@ export const navigationlinks = [
   {
     title: 'About',
     path: '/about',
+  },
+];
+
+export const additionalLinks = [
+  {
+    title: 'Profile',
+    path: '/profile/my-account',
+  },
+  {
+    title: 'Cart',
+    path: '/cart',
   },
 ];
