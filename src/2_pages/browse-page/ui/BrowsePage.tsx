@@ -11,7 +11,7 @@ const BrowsePage: React.FC = () => {
     <div className="h-full">
       <Container className="flex flex-col gap-6">
         <h1 className="text-[32px] font-bold">Browse Games</h1>
-        <div className="flex justify-between gap-6">
+        <div className="flex flex-col-reverse justify-between gap-6 lg:flex-row">
           <GameListWidget className="flex-3" />
           <GameFilteringWidget className="flex-1" />
         </div>

@@ -4,7 +4,7 @@ import GameProductCard from '@entities/game/ui/game-product/game-product-card/Ga
 
 const GameProductList: React.FC<GameProductListProps> = ({ gameList }) => {
   return (
-    <ul className="grid grid-cols-3 items-stretch gap-x-7 gap-y-10">
+    <ul className="grid grid-cols-1 items-stretch gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
       {gameList.map((game) => (
         <li key={game.gameId}>
           <GameProductCard

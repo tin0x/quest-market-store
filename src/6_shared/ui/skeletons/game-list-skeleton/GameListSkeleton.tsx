@@ -4,7 +4,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 const GameListSkeleton: React.FC = () => {
   return (
-    <ul className="grid grid-cols-3 items-stretch gap-x-7 gap-y-10">
+    <ul className="grid grid-cols-1 items-stretch gap-x-7 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
       <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
         {Array.from({ length: 6 }).map((_, i) => (
           <li key={i}>

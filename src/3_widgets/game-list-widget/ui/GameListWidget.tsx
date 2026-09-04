@@ -51,13 +51,13 @@ const GameListWidget: React.FC<GameListWidgetProps> = ({ className }) => {
 
   const renderContent = () => {
     if (isLoading || (isFetching && offset === 0)) return <GameListSkeleton />;
-    if (!gameList?.length) return <QueryPlaceholder type="emptyData" />;
+    if (!gameList?.length) return <QueryPlaceholder type="emptyData" customMessage="No such game was found." />;
     if (isError) return <QueryPlaceholder type="error" />;
     return (
       <>
         <GameProductList gameList={gameList} />
         <div className="flex justify-center" ref={loaderRef}>
-          {isFetching && <Loader className="relative top-0 left-0 h-60 w-60 translate-0" />}
+          {isFetching && <Loader className="relative top-0 left-0 h-50 w-50 translate-0 sm:h-60 sm:w-60" />}
         </div>
       </>
     );
