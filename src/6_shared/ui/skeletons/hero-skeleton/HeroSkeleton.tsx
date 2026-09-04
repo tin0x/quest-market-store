@@ -5,7 +5,7 @@ const HeroSkeleton: React.FC = () => {
   return (
     <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
       <div className="relative flex h-full w-full gap-10 overflow-hidden py-8">
-        <div className="flex-1">
+        <div className="hidden flex-1 lg:block">
           <Skeleton width="100%" height="100%" />
         </div>
         <div className="flex flex-1 flex-col justify-between">

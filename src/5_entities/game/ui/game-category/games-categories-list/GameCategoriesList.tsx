@@ -4,7 +4,7 @@ import GameCategoryCard from '@entities/game/ui/game-category/game-category-card
 
 const GameCategoriesList: React.FC = () => {
   return (
-    <ul className="grid grid-cols-2 gap-22.5">
+    <ul className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:gap-22.5">
       {gamesCategories.map((gameCategory) => (
         <li className="aspect-video" key={gameCategory.genre}>
           <GameCategoryCard

@@ -9,11 +9,11 @@ const GameCategoryCard: React.FC<GameCategoryCardProps> = ({ heroImage, cover, g
         className="flex h-full w-full flex-col items-center justify-center rounded-lg bg-cover bg-no-repeat group-hover:shadow-[0px_0px_30px_10px_#ffffff]"
         style={{ backgroundImage: `url(${cover})` }}
       >
-        <span className="ml-50 text-[30px] font-bold transition-transform duration-400 group-hover:scale-110">
+        <span className="text-[25px] font-bold transition-transform duration-400 group-hover:scale-110 sm:text-[30px] xl:ml-50">
           {genre}
         </span>
         <img
-          className="absolute bottom-0 -left-15 z-50 transition-all duration-400 group-hover:bottom-2 group-hover:-left-20"
+          className="absolute bottom-0 -left-15 z-50 hidden transition-all duration-400 group-hover:bottom-2 group-hover:-left-20 xl:block"
           src={heroImage}
           alt={genre}
         />

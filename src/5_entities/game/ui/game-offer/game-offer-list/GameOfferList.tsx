@@ -4,7 +4,7 @@ import GameOfferItem from '@entities/game/ui/game-offer/game-offer-item/GameOffe
 
 const GameOfferList: React.FC = () => {
   return (
-    <ul className="flex justify-between gap-17.5">
+    <ul className="flex flex-col justify-between gap-17.5 sm:flex-row">
       {gameOffers.map((offer, i) => (
         <li className="flex flex-1" key={i}>
           <GameOfferItem text={offer.text} title={offer.title} image={offer.image} pathTo={offer.pathTo} />

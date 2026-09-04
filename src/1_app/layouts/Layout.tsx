@@ -52,7 +52,7 @@ const Layout: React.FC = () => {
             Instant activation, reliable support, and constant deals waiting for you. Get the game you want, pay less,
             and start playing today!
           </ApplicationDescription>
-          <HelpList className="flex flex-1 flex-col items-center gap-10 md:flex-row md:gap-20 md:pl-5" />
+          <HelpList className="flex flex-1 flex-col items-center justify-center gap-10 md:flex-row md:justify-start md:gap-20 md:pl-5" />
         </div>
       </FooterWidget>
     </div>

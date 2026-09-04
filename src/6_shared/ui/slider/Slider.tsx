@@ -51,7 +51,7 @@ const Slider: React.FC<SlideProps> = ({
         <ul className="flex h-full touch-pan-y touch-pinch-zoom">{children}</ul>
       </div>
       {hasNavigation && (
-        <>
+        <div className="hidden lg:block">
           <Button
             className="absolute top-1/2 left-0 h-50 w-15 -translate-y-1/2 disabled:hidden"
             iconStyles="h-10 w-10"
@@ -68,7 +68,7 @@ const Slider: React.FC<SlideProps> = ({
             variant="blur"
             Icon={IconArrowRight}
           />
-        </>
+        </div>
       )}
     </div>
   );

@@ -27,10 +27,10 @@ const HeroWidget: React.FC = () => {
       >
         {games.map((game) => (
           <li
-            className="flex min-w-0 flex-[0_0_100%] cursor-grab justify-between gap-8 px-20 py-10 active:cursor-grabbing"
+            className="flex min-w-0 flex-[0_0_100%] cursor-grab flex-col justify-between gap-8 px-2 py-10 active:cursor-grabbing md:flex-row md:px-20"
             key={game.id}
           >
-            <Link to={`game/${game.id}`} className="flex-1 overflow-hidden rounded-md">
+            <Link to={`game/${game.id}`} className="hidden flex-1 overflow-hidden rounded-md lg:block">
               <Image
                 className="object-top transition-transform duration-400 hover:scale-110"
                 source={games[selectedSlide]?.poster}
@@ -39,7 +39,7 @@ const HeroWidget: React.FC = () => {
               />
             </Link>
             <div className="flex flex-1 flex-col justify-between">
-              <Link className="text-[40px] font-bold uppercase" to={`/game/${game.id}`}>
+              <Link className="line-clamp-2 text-[30px] font-bold uppercase md:text-[40px]" to={`/game/${game.id}`}>
                 {game.title}
               </Link>
               <div className="bg-grey-200/10 rounded-sm p-2 text-justify backdrop-blur-xl">

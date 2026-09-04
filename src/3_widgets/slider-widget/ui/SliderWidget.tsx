@@ -25,25 +25,22 @@ const SliderWidget: React.FC<SliderWidgetProps> = ({ ordering, subtitle }) => {
           {subtitle}
         </Title>
         <Slider options={{ dragFree: true }}>
-          {slides?.map((slideGroup, i) => (
-            <li
-              className="ml-10 flex h-90 min-w-0 flex-[0_0_100%] cursor-grab gap-10 first:ml-0 active:cursor-grabbing"
-              key={i}
-            >
-              {slideGroup.map((slide) => {
-                const isReleased = checkGameReleased(slide.firstRelease ?? null);
+          {slides?.map((slide) => {
+            const isReleased = checkGameReleased(slide.firstRelease ?? null);
 
-                return (
-                  <SlideItem
-                    key={slide.id}
-                    gameSlide={slide}
-                    favoriteSlot={<ToggleGameStatusWishlist type="iconButton" wishlistGame={slide} />}
-                    purchaseSlot={isReleased ? <ToggleCartItemForCart game={slide} /> : undefined}
-                  />
-                );
-              })}
-            </li>
-          ))}
+            return (
+              <li
+                key={slide.id}
+                className="ml-10 min-w-0 flex-[0_0_100%] cursor-grab first:ml-0 active:cursor-grabbing sm:flex-[0_0_calc((100%/2)-27px)] lg:flex-[0_0_calc((100%/3)-27px)]"
+              >
+                <SlideItem
+                  gameSlide={slide}
+                  favoriteSlot={<ToggleGameStatusWishlist type="iconButton" wishlistGame={slide} />}
+                  purchaseSlot={isReleased ? <ToggleCartItemForCart game={slide} /> : undefined}
+                />
+              </li>
+            );
+          })}
         </Slider>
       </div>
     );
