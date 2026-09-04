@@ -6,9 +6,9 @@ import { cn } from '@shared/lib/utils/cn.ts';
 
 const HelpList: React.FC<HelpListProps> = ({ className }) => {
   return (
-    <ul className={cn('flex items-center justify-center gap-20', className)}>
+    <ul className={cn(className)}>
       {helpLinks.map((link) => (
-        <li key={link.title}>
+        <li className="w-full md:w-auto" key={link.title}>
           <HelpItem title={link.title} links={link.links} />
         </li>
       ))}

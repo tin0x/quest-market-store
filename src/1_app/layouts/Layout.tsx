@@ -9,8 +9,8 @@ import Burger from '@shared/ui/burger/Burger.tsx';
 import SideDrawer from '@shared/ui/side-drawer/SideDrawer.tsx';
 import { Outlet } from 'react-router-dom';
 import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
-import HelpList from '@shared/ui/help/HelpList.tsx';
 import { FooterWidget } from '@widgets/footer-widget';
+import HelpList from '@shared/ui/help/HelpList.tsx';
 
 const Layout: React.FC = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -43,13 +43,16 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <FooterWidget>
-        <div className="flex gap-3">
-          <ApplicationDescription className="flex-1 border-r-2 pr-5" logoSlot={<Logo pathTo="/">Quest Market</Logo>}>
+        <div className="flex h-full flex-col gap-10 md:flex-row md:gap-3">
+          <ApplicationDescription
+            className="flex-1 items-center border-b-2 text-center md:items-start md:border-r-2 md:border-b-transparent md:pr-5 md:text-left"
+            logoSlot={<Logo pathTo="/">Quest Market</Logo>}
+          >
             Quest Market — Level up your gaming experience. We bring you the hottest games without breaking the bank.
             Instant activation, reliable support, and constant deals waiting for you. Get the game you want, pay less,
             and start playing today!
           </ApplicationDescription>
-          <HelpList className="flex-1 pl-5" />
+          <HelpList className="flex flex-1 flex-col items-center gap-10 md:flex-row md:gap-20 md:pl-5" />
         </div>
       </FooterWidget>
     </div>

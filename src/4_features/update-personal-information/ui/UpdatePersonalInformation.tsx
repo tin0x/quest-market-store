@@ -35,7 +35,7 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
             Your Name
           </label>
           <Input
-            className={cn('text-[18px] placeholder:text-[18px]', {
+            className={cn('p-4 text-[18px] placeholder:text-[18px]', {
               'outline-red-600': errors.fullName,
             })}
             variant="secondary"
@@ -56,7 +56,7 @@ const UpdatePersonalInformation: React.FC<UpdatePersonalInformationProps> = ({ p
             Email Address
           </label>
           <Input
-            className={cn('text-[18px] placeholder:text-[18px]', {
+            className={cn('p-4 text-[18px] placeholder:text-[18px]', {
               'outline-red-600': errors.email,
             })}
             variant="secondary"
