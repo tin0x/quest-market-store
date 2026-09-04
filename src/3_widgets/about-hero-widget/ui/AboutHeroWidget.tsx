@@ -8,11 +8,11 @@ const AboutHeroWidget: React.FC = () => {
     <section>
       <Container>
         <div
-          className="flex h-132.5 flex-col items-center gap-8 rounded-md bg-cover bg-no-repeat py-30"
+          className="flex h-auto flex-col items-center gap-8 rounded-md bg-cover bg-no-repeat py-30 lg:h-132.5"
           style={{ backgroundImage: `url(${heroWallpaper})` }}
         >
           <h1 className="text-[60px] font-bold">About Us</h1>
-          <div className="w-1/2 text-center text-[22px]">
+          <div className="w-full text-center text-[22px] md:w-1/2">
             <p>
               Quest Market is dedicated to bring you the best games from around the world. Our mission is to provide an
               unparallel gaming platform where your passion for play can thrive

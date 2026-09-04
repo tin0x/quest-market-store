@@ -5,7 +5,7 @@ import { StatInfoWidget } from '@widgets/stat-info-wiget';
 
 const AboutPage: React.FC = () => {
   return (
-    <div className="flex flex-col gap-30 py-10">
+    <div className="flex flex-col gap-10 py-10 md:gap-20 lg:gap-30">
       <AboutHeroWidget />
       <OffersWidget />
       <StatInfoWidget />
