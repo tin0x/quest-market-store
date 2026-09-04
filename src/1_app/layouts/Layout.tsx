@@ -39,7 +39,7 @@ const Layout: React.FC = () => {
           </div>
         </SideDrawer>
       </HeaderWidget>
-      <main className="py-8 lg:py-15">
+      <main className="py-5 lg:py-15">
         <Outlet />
       </main>
       <FooterWidget>

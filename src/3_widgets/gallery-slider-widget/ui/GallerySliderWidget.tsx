@@ -40,7 +40,7 @@ const GallerySliderWidget: React.FC<GallerySliderWidgetProps> = ({
           {gallery.map((slide, index) => (
             <li
               key={slide.src}
-              className="ml-5 min-w-0 flex-[0_0_calc(25%-0.75rem)] cursor-grab first:ml-0 active:cursor-grabbing"
+              className="ml-5 min-w-0 flex-[0_0_calc((100%/2)-0.75rem)] cursor-grab first:ml-0 active:cursor-grabbing sm:flex-[0_0_calc((100%/3)-0.75rem)] lg:flex-[0_0_calc((100%/4)-0.75rem)]"
             >
               <button className="w-full" onClick={() => setCurrentIndex(index)}>
                 <GallerySlideItem

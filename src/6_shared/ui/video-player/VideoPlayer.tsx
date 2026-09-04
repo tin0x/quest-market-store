@@ -18,7 +18,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ className, videoId, cover }) 
             type="button"
             onClick={() => setShowVideoPlayer(true)}
           >
-            <PlayIcon className="text-text-primary h-40 w-40 px-5 py-3" />
+            <PlayIcon className="text-text-primary h-20 w-20 px-5 py-3 sm:h-30 sm:w-30 lg:h-40 lg:w-40" />
           </button>
         </div>
       );

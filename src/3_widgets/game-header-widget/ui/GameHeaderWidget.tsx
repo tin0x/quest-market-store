@@ -22,10 +22,10 @@ const GameHeaderWidget: React.FC<GameHeaderWidgetProps> = ({
 
     return (
       <>
-        <div className="aspect-video w-full">
+        <div className="hidden aspect-video w-full lg:block">
           <Image source={game.poster} alt="game-logo" type="game" />
         </div>
-        <div className="text-text-primary line-clamp-6 text-justify text-[20px]">
+        <div className="text-text-primary line-clamp-6 hidden text-justify text-[20px] lg:block">
           <p>{game.summary}</p>
         </div>
         <div className="flex flex-col gap-3">

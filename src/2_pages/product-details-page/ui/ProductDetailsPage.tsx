@@ -60,11 +60,11 @@ const ProductDetailsPage: React.FC = () => {
           </SkeletonTheme>
         ) : (
           <div className="mb-4">
-            <h1 className="text-xl text-[40px] font-bold">{data?.name}</h1>
+            <h1 className="text-xl text-[30px] font-bold lg:text-[40px]">{data?.name}</h1>
             {isReleased && <span className="text-text-secondary text-[20px] font-bold">${price} USD</span>}
           </div>
         )}
-        <div className="grid grid-cols-[2fr_1fr] gap-10">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[2fr_1fr]">
           <div className="flex flex-col gap-15">
             <GallerySliderWidget
               videoId={data?.videoId ?? null}

@@ -27,7 +27,7 @@ const HeroWidget: React.FC = () => {
       >
         {games.map((game) => (
           <li
-            className="flex min-w-0 flex-[0_0_100%] cursor-grab flex-col justify-between gap-8 px-2 py-10 active:cursor-grabbing md:flex-row md:px-20"
+            className="flex min-w-0 flex-[0_0_100%] cursor-grab flex-col justify-between gap-8 px-2 py-5 active:cursor-grabbing md:flex-row md:px-20"
             key={game.id}
           >
             <Link to={`game/${game.id}`} className="hidden flex-1 overflow-hidden rounded-md lg:block">
