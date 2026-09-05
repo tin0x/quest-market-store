@@ -9,8 +9,10 @@ import { RedirectToForm } from '@features/redirect-to-form';
 import { Logout } from '@features/logout';
 import type { Game } from '@entities/game';
 import { useFetchGameCart, UserCart } from '@entities/cart';
+import { cn } from '@shared/lib/utils/cn.ts';
+import type { UserMenuWidgetProps } from '@widgets/user-menu-widget/types.ts';
 
-const UserMenuWidget: React.FC = () => {
+const UserMenuWidget: React.FC<UserMenuWidgetProps> = ({ className }) => {
   const { session } = useAuth();
   const { user, isLoading, refetch } = useFetchUserInfo();
   const { games } = useFetchGameCart();
@@ -30,7 +32,7 @@ const UserMenuWidget: React.FC = () => {
     );
   };
 
-  return <div className="flex items-center gap-7">{renderContent()}</div>;
+  return <div className={cn('flex items-center gap-7', className)}>{renderContent()}</div>;
 };
 
 export default UserMenuWidget;

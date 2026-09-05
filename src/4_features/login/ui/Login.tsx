@@ -28,7 +28,7 @@ const Login: React.FC = () => {
       <fieldset className="flex flex-col gap-6 text-[18px]">
         <div className="flex flex-col gap-2">
           <Input
-            className={cn({ 'text-red-300 outline-2 outline-red-600': errors.email })}
+            className={cn('px-4 py-2', { 'text-red-300 outline-2 outline-red-600': errors.email })}
             autoFocus
             variant="secondary"
             placeholder="Email Address"
@@ -40,7 +40,7 @@ const Login: React.FC = () => {
         </div>
         <div className="flex flex-col gap-2">
           <Input
-            className={cn({ 'text-red-300 outline-2 outline-red-600': errors.password })}
+            className={cn('px-4 py-2', { 'text-red-300 outline-2 outline-red-600': errors.password })}
             variant="secondary"
             isPassword
             placeholder="Password"
@@ -50,7 +50,7 @@ const Login: React.FC = () => {
           />
           {errors.password && <small className="text-red-600">{errors.password.message}</small>}
         </div>
-        <Button className="rounded-sm" variant="dark" type="submit" text="Login" disabled={!isValid || isLoading} />
+        <Button className="rounded-sm p-2" variant="dark" type="submit" text="Login" disabled={!isValid || isLoading} />
         <div className="flex gap-2 text-[18px]">
           <span>Don’t have an account?</span>
           <Link className="font-bold underline" to="/register">

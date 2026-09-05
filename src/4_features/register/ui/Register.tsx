@@ -29,7 +29,7 @@ const Register: React.FC = () => {
       <fieldset className="flex flex-col gap-6 text-[18px]">
         <div className="flex flex-col gap-2">
           <Input
-            className={cn({ 'text-red-300 outline-2 outline-red-600': errors.fullName })}
+            className={cn('px-4 py-2', { 'text-red-300 outline-2 outline-red-600': errors.fullName })}
             autoFocus
             variant="secondary"
             placeholder="Full Name"
@@ -41,7 +41,7 @@ const Register: React.FC = () => {
         </div>
         <div>
           <Input
-            className={cn({ 'text-red-300 outline-2 outline-red-600': errors.email })}
+            className={cn('px-4 py-2', { 'text-red-300 outline-2 outline-red-600': errors.email })}
             variant="secondary"
             placeholder="Email Address"
             onKeyDown={(e) => clearFormInputField<RegisterForm>(e, 'email', setValue)}
@@ -52,7 +52,7 @@ const Register: React.FC = () => {
         </div>
         <div>
           <Input
-            className={cn({ 'pr-15 text-red-300 outline-2 outline-red-600': errors.password })}
+            className={cn('px-4 py-2', { 'pr-15 text-red-300 outline-2 outline-red-600': errors.password })}
             variant="secondary"
             placeholder="Password"
             isPassword
@@ -63,7 +63,13 @@ const Register: React.FC = () => {
           {errors.password && <small className="text-red-600">{errors.password.message}</small>}
         </div>
         <Checkbox text="I agree with the Terms and Privacy policy" {...register('terms')} />
-        <Button className="rounded-sm" variant="dark" type="submit" text="Submit" disabled={!isValid || isLoading} />
+        <Button
+          className="rounded-sm p-2"
+          variant="dark"
+          type="submit"
+          text="Submit"
+          disabled={!isValid || isLoading}
+        />
         <div className="flex gap-2 text-[18px]">
           <span>Already have an account?</span>
           <Link className="font-bold underline" to="/login">

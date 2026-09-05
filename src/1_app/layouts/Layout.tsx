@@ -11,8 +11,11 @@ import { Outlet } from 'react-router-dom';
 import ApplicationDescription from '@shared/ui/application-description/ApplicationDescription.tsx';
 import { FooterWidget } from '@widgets/footer-widget';
 import HelpList from '@shared/ui/help/HelpList.tsx';
+import { Logout } from '@features/logout';
+import useAuth from '@app/providers/auth-provider/useAuth.ts';
 
 const Layout: React.FC = () => {
+  const { isAuth } = useAuth();
   const [showDrawer, setShowDrawer] = useState(false);
   useScrollToTop();
 
@@ -36,6 +39,7 @@ const Layout: React.FC = () => {
           <div className="flex w-full flex-col gap-10 px-5 py-10">
             <SearchByName className="sm:hidden" />
             <NavigationWidget className="flex-col gap-10" showAdditionalLinks />
+            {isAuth ? <Logout /> : <UserMenuWidget className="flex-col" />}
           </div>
         </SideDrawer>
       </HeaderWidget>

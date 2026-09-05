@@ -6,17 +6,19 @@ import type { CheckboxProps } from '@shared/ui/checkbox/types.ts';
 
 const Checkbox: React.FC<CheckboxProps> = ({ text, ...rest }) => {
   return (
-    <label className="group cursor-pointer">
+    <label className="group flex cursor-pointer">
       <Input className="sr-only" type="checkbox" {...rest} />
       <div className="flex items-center gap-3">
         <span
           className={cn(
-            'group-has-checked:bg-input-secondary block h-8 w-8 rounded-sm border group-has-focus:outline-2 peer-focus-visible:ring-2',
+            'group-has-checked:bg-input-secondary block h-8 w-8 shrink-0 rounded-sm border group-has-focus:outline-2 peer-focus-visible:ring-2',
           )}
         >
           <CheckmarkIcon className="hidden h-full w-full p-2 group-has-checked:block" />
         </span>
-        {text && <span className="font-semibold text-[18]">I agree with the Terms and Privacy policy</span>}
+        {text && (
+          <span className="font-semibold wrap-break-word text-[18]">I agree with the Terms and Privacy policy</span>
+        )}
       </div>
     </label>
   );

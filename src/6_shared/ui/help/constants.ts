@@ -4,11 +4,11 @@ export const helpLinks = [
     links: [
       {
         name: 'My Account',
-        path: '/account',
+        path: '/profile/my-account',
       },
       {
         name: 'My Orders',
-        path: '/order',
+        path: '/profile/my-orders',
       },
     ],
   },

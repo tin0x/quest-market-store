@@ -12,8 +12,8 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({ title, subtitle, children }) 
   return (
     <section className="h-full">
       <div className="flex h-full p-6">
-        <div className="relative flex flex-1 flex-col items-center justify-center px-21.25">
-          <Title className="mb-10 text-[48px]" type="primary">
+        <div className="relative flex flex-1 flex-col items-center justify-center px-2 sm:px-15 lg:px-21.25">
+          <Title className="mb-10 text-[35px] lg:text-[48px]" type="primary">
             {title}
           </Title>
           {subtitle && <p className="text-text-primary mb-10 text-center text-[20px]">{subtitle}</p>}
@@ -26,7 +26,7 @@ const AuthWrapper: React.FC<AuthWrapperProps> = ({ title, subtitle, children }) 
             text="<- Back"
           />
         </div>
-        <div className="h-full flex-1">
+        <div className="hidden h-full flex-1 lg:block">
           <Image source={formBackground} type="game" alt="form-backgorund" />
         </div>
       </div>
