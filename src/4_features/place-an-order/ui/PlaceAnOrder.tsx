@@ -8,7 +8,6 @@ import type { PlaceAnOrderProps } from '@features/place-an-order/types.ts';
 import { Controller, useForm, useWatch } from 'react-hook-form';
 import { IMask, IMaskInput } from 'react-imask';
 import Input from '@shared/ui/input/Input.tsx';
-import { clearFormInputField } from '@shared/lib/utils/clearFormInputField.ts';
 import getCardBrand from '@features/place-an-order/lib/getCardBrand.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { type PlaceAnOrderForm, PlaceAnOrderSchema } from '@features/place-an-order/schemas/PlaceAnOrderSchema.ts';
@@ -21,7 +20,6 @@ const styleInput =
 const PlaceAnOrder: React.FC<PlaceAnOrderProps> = ({ className, games, orderStates, renderAction }) => {
   const {
     register,
-    setValue,
     control,
     handleSubmit,
     formState: { errors, isValid },
@@ -66,7 +64,6 @@ const PlaceAnOrder: React.FC<PlaceAnOrderProps> = ({ className, games, orderStat
               className={cn(styleInput, { 'border-red-600 outline-red-600': errors.cardHolderName })}
               placeholder="Card Holder Name"
               {...register('cardHolderName')}
-              onKeyDown={(e) => clearFormInputField(e, 'cardHolderName', setValue)}
               autoComplete="name"
               autoFocus
             />

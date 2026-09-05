@@ -15,7 +15,7 @@ const OrderConfirmationPage: React.FC = () => {
           title="Thank you for your purchase!"
           message="An email will be sent to you with order details."
         />
-        <OrderSummaryWidget className="w-225" />
+        <OrderSummaryWidget className="w-full lg:w-225" />
       </Container>
     </div>
   );

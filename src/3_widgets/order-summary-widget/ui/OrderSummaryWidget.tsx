@@ -19,7 +19,7 @@ const OrderSummaryWidget: React.FC<OrderSummaryWidgetProps> = ({ className }) =>
     return (
       <>
         <h3 className="text-[30px] font-bold">Order Summary</h3>
-        <OrderList orderItemsList={data.orderItems} />
+        <OrderList className="px-5 sm:px-10" orderItemsList={data.orderItems} />
       </>
     );
   };
