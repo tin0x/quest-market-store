@@ -41,11 +41,11 @@ const PlaceAnOrder: React.FC<PlaceAnOrderProps> = ({ className, games, orderStat
   const activeBrand = getCardBrand(cardNumberValue);
 
   return (
-    <form className="flex flex-1 gap-12" onSubmit={handleSubmit(onSubmit)}>
-      <Card className={cn('flex-1 p-5', className)} variant="surface">
-        <div className="flex flex-col gap-5">
+    <form className="flex flex-1 flex-col gap-12 lg:flex-row" onSubmit={handleSubmit(onSubmit)}>
+      <Card className={cn('flex-1 p-5 py-1 sm:py-5', className)} variant="surface">
+        <div className="hidden flex-col gap-5 sm:flex">
           <h3 className="text-[22px] font-bold">Payment Method</h3>
-          <div className="flex gap-10">
+          <div className="hidden gap-10 sm:flex">
             <div
               className={cn('w-35 overflow-hidden rounded-sm opacity-50', { 'opacity-100': activeBrand === 'visa' })}
             >
@@ -147,7 +147,7 @@ const PlaceAnOrder: React.FC<PlaceAnOrderProps> = ({ className, games, orderStat
         </fieldset>
       </Card>
       <OrderFromCart
-        className="flex-1 self-start"
+        className="w-full flex-1 self-start lg:w-auto"
         cartList={games}
         orderStates={orderStates}
         actionSlot={renderAction(isValid, isLoading)}
