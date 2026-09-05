@@ -5,7 +5,7 @@ import Container from '@shared/ui/container/Container.tsx';
 const FooterWidget: React.FC<FooterWidgetProps> = ({ children }) => {
   return (
     <footer>
-      <Container className="flex flex-col gap-5">{children}</Container>
+      <Container className="flex h-auto flex-col gap-5">{children}</Container>
       <div className="text-text-secondary mt-5 border-t-2 border-white py-4 text-center">
         <span className="text-lg font-bold">
           {`@ ${new Date().getUTCFullYear()} Quest Market. Licensed under MIT.`}

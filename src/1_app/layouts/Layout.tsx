@@ -13,6 +13,7 @@ import { FooterWidget } from '@widgets/footer-widget';
 import HelpList from '@shared/ui/help/HelpList.tsx';
 import { Logout } from '@features/logout';
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
+import ArrowIcon from '@shared/assets/icons/arrow-left.svg?react';
 
 const Layout: React.FC = () => {
   const { isAuth } = useAuth();
@@ -36,7 +37,14 @@ const Layout: React.FC = () => {
           isOpen={showDrawer}
           onClose={() => setShowDrawer(false)}
         >
-          <div className="flex w-full flex-col gap-10 px-5 py-10">
+          <div className="flex w-full flex-col gap-9 px-5 py-10">
+            <button
+              className="flex w-max items-center gap-3 p-2 text-[22px] md:hidden"
+              onClick={() => setShowDrawer(false)}
+            >
+              <ArrowIcon className="h-5 w-5" />
+              <span className="font-bold">Close</span>
+            </button>
             <SearchByName className="sm:hidden" />
             <NavigationWidget className="flex-col gap-10" showAdditionalLinks />
             {isAuth ? <Logout /> : <UserMenuWidget className="flex-col" />}
@@ -47,16 +55,16 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <FooterWidget>
-        <div className="flex h-full flex-col gap-10 md:flex-row md:gap-3">
+        <div className="flex flex-col gap-10 md:flex-row md:gap-3">
           <ApplicationDescription
-            className="flex-1 items-center border-b-2 text-center md:items-start md:border-r-2 md:border-b-transparent md:pr-5 md:text-left"
+            className="flex-1 items-center border-b-2 border-b-transparent text-center md:items-start md:border-r-2 md:border-b-transparent md:pr-5 md:text-left"
             logoSlot={<Logo pathTo="/">Quest Market</Logo>}
           >
             Quest Market — Level up your gaming experience. We bring you the hottest games without breaking the bank.
             Instant activation, reliable support, and constant deals waiting for you. Get the game you want, pay less,
             and start playing today!
           </ApplicationDescription>
-          <HelpList className="flex flex-1 flex-col items-center justify-center gap-10 md:flex-row md:justify-start md:gap-20 md:pl-5" />
+          <HelpList className="hidden flex-1 flex-col items-center justify-center gap-10 md:flex md:flex-row md:justify-start md:gap-20 md:pl-5" />
         </div>
       </FooterWidget>
     </div>

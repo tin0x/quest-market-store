@@ -12,7 +12,7 @@ const Toast: React.FC<ToastProps> = ({ type, title, message, isActive }) => {
   return (
     <div
       className={cn(
-        'bg-gradient-card fixed right-20 bottom-10 z-100 w-90 translate-y-100 rounded-md px-6 py-4 opacity-0 transition-all duration-400',
+        'bg-gradient-card fixed top-4 right-4 left-4 z-100 translate-y-full rounded-md px-6 py-4 opacity-0 transition-all duration-400 sm:top-auto sm:right-5 sm:bottom-5 sm:left-auto sm:w-90 lg:right-20 lg:bottom-10',
         {
           'translate-y-0 opacity-100': isActive,
           'shadow-[inset_0_0_20px_rgba(239,68,68,0.5)]': type === 'failed',

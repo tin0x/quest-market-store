@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const SlideItem: React.FC<SlideItemProps> = ({ gameSlide, purchaseSlot, favoriteSlot }) => {
   return (
-    <div className="bg-gradient-card relative flex flex-1 flex-col justify-between gap-5 rounded-lg p-6">
+    <div className="bg-gradient-card relative flex flex-1 flex-col justify-between gap-5 rounded-lg p-3 lg:p-6">
       <Link to={`game/${gameSlide.gameId}`} className="aspect-video w-full overflow-hidden rounded-md">
         <Image
           className="object-top transition-transform duration-300 hover:scale-110"
