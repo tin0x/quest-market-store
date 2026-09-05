@@ -12,7 +12,7 @@ const ProfilePage: React.FC = () => {
     <section className="flex h-full items-center">
       <Container className="flex h-auto flex-col justify-between gap-11 xl:flex-row">
         <AccountNavigationWidget className="top-5 min-w-0 xl:sticky xl:w-79.25" />
-        <Card className="flex flex-1 px-4 py-8 xl:px-9 xl:py-9" variant="primary">
+        <Card className="flex flex-1 px-2 py-8 sm:px-4 xl:px-9 xl:py-9" variant="primary">
           <Outlet />
         </Card>
       </Container>

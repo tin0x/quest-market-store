@@ -21,7 +21,9 @@ const Accordion: React.FC<AccordionProps> = ({ className, topSlot, innerSlot }) 
       >
         {topSlot}
         <ArrowDown
-          className={cn('h-5 w-5 transition-transform duration-300 ease-in-out', { 'rotate-180': showAccordion })}
+          className={cn('hidden h-5 w-5 transition-transform duration-300 ease-in-out sm:block', {
+            'rotate-180': showAccordion,
+          })}
         />
       </div>
       <div
