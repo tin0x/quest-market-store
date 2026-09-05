@@ -23,9 +23,9 @@ const ShoppingCartWidget: React.FC<ShoppingCartWidgetProps> = ({ className }) =>
           <h1 className="text-[42px] font-bold">Shopping Cart</h1>
           <p className="text-text-secondary text-[22px]">{`You have ${games.length} items in your cart`}</p>
         </div>
-        <div className="flex justify-between gap-12">
-          <ShoppingCartList className="flex-2" cartList={games} renderAction={renderAction} />
-          <OrderFromCart className="flex-1 self-start" cartList={games} isContinueShopping />
+        <div className="flex flex-col justify-between gap-12 lg:flex-row">
+          <ShoppingCartList className="flex-2 px-5 lg:px-10" cartList={games} renderAction={renderAction} />
+          <OrderFromCart className="w-full flex-1 self-start lg:w-auto" cartList={games} isContinueShopping />
         </div>
       </>
     );
