@@ -5,8 +5,11 @@ import { Link } from 'react-router-dom';
 
 const WishlistItem: React.FC<WishlistItemProps> = ({ wishlistItem, actionSlots }) => {
   return (
-    <div className="flex gap-4">
-      <Link className="aspect-square w-50 overflow-hidden rounded-md" to={`/game/${wishlistItem.gameId}`}>
+    <div className="flex flex-col gap-4 md:flex-row">
+      <Link
+        className="aspect-video w-full overflow-hidden rounded-md md:aspect-square md:w-50"
+        to={`/game/${wishlistItem.gameId}`}
+      >
         <Image
           className="transition-transform duration-300 hover:scale-110"
           source={wishlistItem.poster}
@@ -14,12 +17,12 @@ const WishlistItem: React.FC<WishlistItemProps> = ({ wishlistItem, actionSlots }
           alt={wishlistItem.title}
         />
       </Link>
-      <div className="flex flex-1 flex-col justify-between">
+      <div className="flex flex-1 flex-col justify-between gap-2">
         <div className="flex items-center justify-between text-[22px] font-bold">
           <Link to={`/game/${wishlistItem.gameId}`}>{wishlistItem.title}</Link>
           {wishlistItem.price && <span>{`$${wishlistItem.price}`}</span>}
         </div>
-        <div className="flex justify-end gap-2">
+        <div className="flex flex-col justify-end gap-2 md:flex-row">
           {actionSlots.renderRemove}
           {wishlistItem.price && actionSlots.renderAdd}
         </div>

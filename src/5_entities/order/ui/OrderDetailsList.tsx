@@ -10,6 +10,7 @@ const OrderDetailsList: React.FC<OrderDetailsListProps> = ({ orderDetailsList })
       {orderDetailsList.map((order) => (
         <li key={order.id}>
           <Accordion
+            className="p-3 xl:p-8.5"
             topSlot={<OrderDetailsItem orderId={order.id} totalPrice={order.totalPrice} date={order.createdAt} />}
             innerSlot={<OrderList className="bg-card-secondary p-0" orderItemsList={order.orderItems} />}
           />

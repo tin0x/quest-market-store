@@ -7,11 +7,11 @@ const OrderDetailsItem: React.FC<OrderDetailsItemProps> = ({ orderId, totalPrice
     <div className="flex flex-1 flex-col gap-2.5 text-xl">
       <div className="text-text-secondary flex justify-between gap-2">
         <span>{formatDate(date)}</span>
-        <span>Total</span>
+        <span className="hidden sm:block">Total</span>
       </div>
       <div className="text-text-primary flex justify-between gap-2">
         <span>{`Order number : ${orderId}`}</span>
-        <span>${totalPrice}</span>
+        <span className="hidden sm:block">${totalPrice}</span>
       </div>
     </div>
   );

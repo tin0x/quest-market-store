@@ -5,8 +5,8 @@ import type { ProductItemCardProps } from '@shared/ui/product-item-card/types.ts
 
 const ProductItemCard: React.FC<ProductItemCardProps> = ({ item, actionSlot, showAmount }) => {
   return (
-    <div className="flex justify-between gap-6">
-      <Link className="aspect-video max-w-50 overflow-hidden rounded-sm" to={`/game/${item.gameId}`}>
+    <div className="flex flex-col justify-between gap-6 sm:flex-row">
+      <Link className="aspect-video overflow-hidden rounded-sm sm:max-w-50" to={`/game/${item.gameId}`}>
         <Image
           className="transition-transform duration-300 hover:scale-110"
           source={item.poster}
