@@ -13,8 +13,8 @@ const OrderSummarySkeleton: React.FC = () => {
           <ul className="flex flex-col gap-10">
             {Array.from({ length: 1 }).map((_, i) => (
               <li key={i}>
-                <div className="flex gap-4">
-                  <div className="aspect-video w-50 rounded-md">
+                <div className="flex flex-col gap-4 sm:flex-row">
+                  <div className="aspect-video w-full rounded-md sm:w-50">
                     <Skeleton className="h-full w-full" />
                   </div>
                   <div className="flex flex-1 flex-col justify-between py-2">

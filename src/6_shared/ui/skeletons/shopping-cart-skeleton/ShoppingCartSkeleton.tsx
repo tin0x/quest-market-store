@@ -9,13 +9,13 @@ const ShoppingCartSkeleton: React.FC = () => {
         <div className="w-1/2">
           <Skeleton height={30} count={1.5} />
         </div>
-        <div className="flex justify-between gap-12">
+        <div className="flex flex-col justify-between gap-12 lg:flex-row">
           <Card className="flex-2 px-10 py-7.5" variant="surface">
             <ul className="flex flex-col gap-10">
               {Array.from({ length: 2 }).map((_, i) => (
                 <li key={i}>
-                  <div className="flex gap-4">
-                    <div className="aspect-square w-50 rounded-md">
+                  <div className="flex flex-col gap-4 sm:flex-row">
+                    <div className="aspect-video w-full rounded-md sm:aspect-video sm:w-50">
                       <Skeleton className="h-full w-full" />
                     </div>
                     <div className="flex flex-1 flex-col justify-between py-2">
@@ -38,7 +38,7 @@ const ShoppingCartSkeleton: React.FC = () => {
               ))}
             </ul>
           </Card>
-          <Card className="sticky top-5 flex flex-1 flex-col gap-6 self-start p-5" variant="surface">
+          <Card className="sticky top-5 flex w-full flex-1 flex-col gap-6 self-start p-5 lg:w-auto" variant="surface">
             <Skeleton count={0.5} height={30} />
             <div className="flex flex-col gap-6">
               <div className="flex justify-between gap-2">

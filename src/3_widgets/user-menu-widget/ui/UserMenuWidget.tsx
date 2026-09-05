@@ -20,7 +20,7 @@ const UserMenuWidget: React.FC<UserMenuWidgetProps> = ({ className }) => {
   const renderRemoveButton = useCallback((game: Game) => <ToggleCartItemForItem game={game} />, []);
 
   const renderContent = () => {
-    if (!session) return <RedirectToForm />;
+    if (!session) return <RedirectToForm classLogin="hidden xl:block" />;
     if (isLoading) return <UserMenuSkeleton />;
     if (!user) return <QueryPlaceholder type="error" onClick={refetch} />;
 

@@ -7,7 +7,7 @@ const WishlistSkeleton: React.FC = () => {
       <ul className="flex flex-1 flex-col">
         {Array.from({ length: 2 }, (_, i) => (
           <li key={i}>
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-4 md:flex-row">
               <div className="aspect-square w-50 rounded-md">
                 <Skeleton className="h-full w-full" />
               </div>
@@ -20,7 +20,7 @@ const WishlistSkeleton: React.FC = () => {
                     <Skeleton className="h-full w-full" />
                   </div>
                 </div>
-                <div className="flex justify-end gap-2">
+                <div className="flex flex-col justify-end gap-2 md:flex-row">
                   <div className="min-w-57.5">
                     <Skeleton className="h-full w-full" />
                   </div>

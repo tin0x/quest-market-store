@@ -14,6 +14,7 @@ import HelpList from '@shared/ui/help/HelpList.tsx';
 import { Logout } from '@features/logout';
 import useAuth from '@app/providers/auth-provider/useAuth.ts';
 import ArrowIcon from '@shared/assets/icons/arrow-left.svg?react';
+import { RedirectToForm } from '@features/redirect-to-form';
 
 const Layout: React.FC = () => {
   const { isAuth } = useAuth();
@@ -47,7 +48,7 @@ const Layout: React.FC = () => {
             </button>
             <SearchByName className="sm:hidden" />
             <NavigationWidget className="flex-col gap-10" showAdditionalLinks />
-            {isAuth ? <Logout /> : <UserMenuWidget className="flex-col" />}
+            {isAuth ? <Logout /> : <RedirectToForm className="justify-center" />}
           </div>
         </SideDrawer>
       </HeaderWidget>
