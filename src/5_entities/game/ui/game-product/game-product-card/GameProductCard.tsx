@@ -8,7 +8,7 @@ const GameProductCard: React.FC<GameProductCardProps> = ({ pathTo, poster, title
   return (
     <Link className="group h-full" to={pathTo}>
       <Card className="h-full overflow-hidden" variant="surface">
-        <div className="w-full overflow-hidden">
+        <div className="aspect-square w-full overflow-hidden lg:aspect-auto">
           <Image
             className="rounded-none rounded-t-md duration-300 ease-in-out group-hover:scale-110"
             source={poster}

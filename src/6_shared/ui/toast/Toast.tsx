@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { ToastProps } from '@shared/ui/toast/types.ts';
 import SuccessIcon from '@shared/assets/icons/success.svg?react';
 import FailedIcon from '@shared/assets/icons/failed.svg?react';
 import { cn } from '@shared/lib/utils/cn.ts';
+import { createPortal } from 'react-dom';
 
 const Toast: React.FC<ToastProps> = ({ type, title, message, isActive }) => {
+  const [modalRoot] = useState(() => document.getElementById('modal-root')!);
+
   const icons = {
     success: <SuccessIcon className="h-10 w-10 shrink-0 text-green-400" />,
     failed: <FailedIcon className="h-10 w-10 shrink-0 text-red-600" />,
   };
-  return (
+  return createPortal(
     <div
       className={cn(
         'bg-gradient-card fixed top-4 right-4 left-4 z-100 translate-y-full rounded-md px-6 py-4 opacity-0 transition-all duration-400 sm:top-auto sm:right-5 sm:bottom-5 sm:left-auto sm:w-90 lg:right-20 lg:bottom-10',
@@ -27,7 +30,8 @@ const Toast: React.FC<ToastProps> = ({ type, title, message, isActive }) => {
           <p className="text-text-secondary text-[18px]">{message}</p>
         </div>
       </div>
-    </div>
+    </div>,
+    modalRoot,
   );
 };
 

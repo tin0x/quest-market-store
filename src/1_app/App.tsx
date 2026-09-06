@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '@app/layouts/Layout.tsx';
 import AuthLayout from '@app/layouts/AuthLayout.tsx';
 import AuthProvider from '@app/providers/auth-provider/AuthProvider.tsx';
-import { ToastWidget } from '@widgets/toast-widget';
 import { ErrorBoundaryPage } from '@pages/error-boundary-page';
 import { HomePage } from '@pages/home-page';
 import { InvalidPathPage } from '@pages/invalid-path-page';
@@ -20,6 +19,7 @@ import { OrderDetailsWidget } from '@widgets/order-details-widget';
 import { BrowsePage } from '@pages/browse-page';
 import { ProductDetailsPage } from '@pages/product-details-page';
 import { AboutPage } from '@pages/about-page';
+import { ToastWidget } from '@widgets/toast-widget';
 
 const App = () => {
   const routes = createBrowserRouter([
