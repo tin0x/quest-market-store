@@ -14,6 +14,9 @@ const SideDrawer: React.FC<SideDrawerProps> = ({ className, drawerClass, isOpen,
 
   useEffect(() => {
     if (isOpen) onClose();
+    // Intentionally runs only when the route changes.
+    // isOpen and onClose must not trigger this effect.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
   useEffect(() => {

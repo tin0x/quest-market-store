@@ -1,51 +1,55 @@
 @theme {
-    --color-text-primary: #FFFFFF;
-    --color-text-secondary: #a9aec8;
-    --color-text-dark: #1B1A55;
-    --color-text-link: #00CCFF;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a9aec8;
+  --color-text-dark: #1b1a55;
+  --color-text-link: #00ccff;
 
-    --color-icon-primary: #FFFFFF;
-    --color-icon-secondary: #a9aec8;
+  --color-icon-primary: #ffffff;
+  --color-icon-secondary: #a9aec8;
 
-    --color-body: #070F2B;
-    --color-primary: #070F2B;
-    --color-surface: #1B1A55;
+  --color-body: #070f2b;
+  --color-primary: #070f2b;
+  --color-surface: #1b1a55;
 
-    --color-card: #2f364c;
-    --color-card-secondary: #434271;
+  --color-card: #2f364c;
+  --color-card-secondary: #434271;
 
-    --color-gradient-card:  #1d233a;
-    --color-input-primary: #1B1A55;
-    --color-input-secondary: #535C91;
-    --color-button-primary: #FFFFFF;
-    --color-button-secondary: #1B1A55;
+  --color-gradient-card: #1d233a;
+  --color-input-primary: #1b1a55;
+  --color-input-secondary: #535c91;
+  --color-button-primary: #ffffff;
+  --color-button-secondary: #1b1a55;
 
-    --radius-sm: 0.6rem;
-    --radius-md: 1.2rem;
-    --radius-lg: 1.5rem;
-    --radius-circle: 50%;
+  --radius-sm: 0.6rem;
+  --radius-md: 1.2rem;
+  --radius-lg: 1.5rem;
+  --radius-circle: 50%;
 
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
     }
-
-    @keyframes wobble {
-        0%, 100% {
-            transform: rotate(0deg);
-        }
-        15%, 45%, 75% {
-            transform: rotate(-10deg);
-        }
-        30%, 60% {
-            transform: rotate(15deg);
-        }
+    100% {
+      transform: translateX(-100%);
     }
+  }
 
-    --animate-scroll: scroll 5s linear 1s;
-    --animate-wobble: wobble 1.6s infinite ease-in-out;
+  @keyframes wobble {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    15%,
+    45%,
+    75% {
+      transform: rotate(-10deg);
+    }
+    30%,
+    60% {
+      transform: rotate(15deg);
+    }
+  }
+
+  --animate-scroll: scroll 5s linear 1s;
+  --animate-wobble: wobble 1.6s infinite ease-in-out;
 }

@@ -1,26 +1,25 @@
-
 :root {
-    --bg-primary: #070F2B;
-    --skeleton-base:  #1B1A55;
-    --skeleton-base-secondary: #364667;
-    --skeleton-highlight: rgb(199 193 193 / 0.6);
+  --bg-primary: #070f2b;
+  --skeleton-base: #1b1a55;
+  --skeleton-base-secondary: #364667;
+  --skeleton-highlight: rgb(199 193 193 / 0.6);
 }
 
 html {
-    font-family: 'Instrument Sans', sans-serif;
-    font-weight: 400;
-    font-size: 100%;
-    @apply text-text-primary;
-    scrollbar-width: thin;
-    scroll-behavior: smooth;
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 100%;
+  @apply text-text-primary;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-primary);
+  background-color: var(--bg-primary);
 }
 
 #root {
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
