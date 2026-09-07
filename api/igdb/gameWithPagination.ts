@@ -41,7 +41,7 @@ const gameWithPagination = async (req: VercelRequest, res: VercelResponse) => {
     const response = await fetch('https://api.igdb.com/v4/games', {
       method: 'POST',
       headers: {
-        'Client-ID': userId,
+        'Client-ID': userId!,
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
       },

@@ -25,7 +25,7 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
     const response = await fetch('https://api.igdb.com/v4/games/', {
       method: 'POST',
       headers: {
-        'Client-ID': clientId,
+        'Client-ID': clientId!,
         Authorization: `Bearer ${currentToken}`,
         'Content-Type': 'text/plain',
       },

@@ -17,7 +17,7 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
-        'Client-ID': userId,
+        'Client-ID': userId!,
       },
       body: `
         fields name, cover.url, age_ratings.organization.name, age_ratings.rating_category.rating, summary, videos.video_id, genres.name, storyline, first_release_date, screenshots.url, player_perspectives.name, total_rating;

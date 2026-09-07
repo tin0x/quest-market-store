@@ -20,7 +20,7 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
     const response = await fetch('https://api.igdb.com/v4/search', {
       method: 'POST',
       headers: {
-        'Client-ID': clientId,
+        'Client-ID': clientId!,
         Authorization: `Bearer ${token}`,
         'Content-Type': 'text/plain',
       },
