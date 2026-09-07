@@ -1,3 +1,10 @@
+declare const process: {
+  env: {
+    TWITCH_CLIENT_ID?: string;
+    TWITCH_CLIENT_SECRET?: string;
+  };
+};
+
 let cachedToken: string | null = null;
 let tokenExpiredAt = 0;
 
