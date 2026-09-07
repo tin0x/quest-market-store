@@ -31,7 +31,7 @@ const Accordion: React.FC<AccordionProps> = ({ className, topSlot, innerSlot }) 
           'grid-rows-[1fr]': showAccordion,
         })}
       >
-        <div className="overflow-hidden pt-10">{innerSlot}</div>
+        <div className={cn('overflow-hidden', { ['pt-10']: showAccordion })}>{innerSlot}</div>
       </div>
     </div>
   );
