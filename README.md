@@ -10,7 +10,7 @@ The development workflow also follows consistent **Git conventions**.
 
 ## Live Demo
 
-- **Deployed App:** [Link to Vercel]()
+- **Deployed App:** [Link to Vercel](https://quest-market-store.vercel.app/)
 - **Design Concept:** UI/UX concept inspired by [Figma Community](https://www.figma.com/community/file/1541511338761813063/ecommerce-games-store-gameverse)
 - **IGDB API:** [Link to API](https://api-docs.igdb.com/#getting-started)
 - **Supabase SDK:** [Link to BaaS](https://supabase.com/docs/guides/getting-started/quickstarts/reactjs)
