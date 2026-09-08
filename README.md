@@ -1,4 +1,10 @@
-# 🎮 Quest Market - Store
+ <h1 align="center">
+  <img src="./public/favicon.svg" width="100" alt="Quest Market logo" />
+  <br />
+  Quest Market - Store
+</h1>
+
+---
 
 Quest Market - a modern, responsive web application and digital store for exploring, filtering, and purchasing video games, featuring secure checkout simulations, user profile management, wishlist tracking, and order history analytics.
 
@@ -14,6 +20,26 @@ The development workflow also follows consistent **Git conventions**.
 - **Design Concept:** UI/UX concept inspired by [Figma Community](https://www.figma.com/community/file/1541511338761813063/ecommerce-games-store-gameverse)
 - **IGDB API:** [Link to API](https://api-docs.igdb.com/#getting-started)
 - **Supabase SDK:** [Link to BaaS](https://supabase.com/docs/guides/getting-started/quickstarts/reactjs)
+
+---
+
+## Screenshots
+
+<p align="center">
+  <img src="./screenshots/screenshot-1.webp" alt="Home page" />
+</p>
+
+<p align="center">
+  <img src="./screenshots/screenshot-2.webp" alt="Games page" />
+</p>
+
+<p align="center">
+  <img src="./screenshots/screenshot-3.webp" alt="Game details page" />
+</p>
+
+<p align="center">
+  <img src="./screenshots/screenshot-4.webp" alt="Profile page" />
+</p>
 
 ---
 
