@@ -41,7 +41,7 @@ const ProductDetailsPage: React.FC = () => {
     ? [
         { subtitle: 'Age-Rating', value: `${data.ageRatings.ratingCategory}+` },
         { subtitle: 'Player-Perspective', value: data.playerPerspective },
-        { subtitle: 'Genre', value: data.genres.join(', ') },
+        { subtitle: 'Genre', value: Array.isArray(data.genres) ? data.genres.join(', ') : data.genres },
         { subtitle: 'Release Date', value: data?.firstRelease ?? 'unknown' },
       ]
     : [];

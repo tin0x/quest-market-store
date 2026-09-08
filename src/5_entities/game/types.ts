@@ -66,7 +66,7 @@ export type GameById = {
   };
   cover: string;
   firstRelease: string | null;
-  genres: string[];
+  genres: string[] | string;
   playerPerspective: string;
   screenshots: string[];
   videoId: string;

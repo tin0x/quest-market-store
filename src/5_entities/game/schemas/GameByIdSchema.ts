@@ -24,12 +24,14 @@ const GameByIdSchema = z.object({
     })
     .nullish(),
   first_release_date: z.number().nullish(),
-  genres: z.array(
-    z.object({
-      id: z.number(),
-      name: z.string(),
-    }),
-  ),
+  genres: z
+    .array(
+      z.object({
+        id: z.number(),
+        name: z.string(),
+      }),
+    )
+    .nullish(),
   name: z.string(),
   player_perspectives: z
     .array(
